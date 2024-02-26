@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TrainComponent } from './train/train.component';
 import { PhysiqueComponent } from './physique/physique.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'train',component:TrainComponent},
   {path:'phy',component:PhysiqueComponent},
+  {path:'dash',component:DashboardComponent},
 
 ];
 

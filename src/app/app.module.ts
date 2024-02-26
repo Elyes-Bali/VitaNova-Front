@@ -16,6 +16,7 @@ import { LogoComponent } from './logo/logo.component';
 import { RegisterComponent } from './register/register.component';
 import { TrainComponent } from './train/train.component';
 import { PhysiqueComponent } from './physique/physique.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PhysiqueComponent } from './physique/physique.component';
     LogoComponent,
     RegisterComponent,
     TrainComponent,
-    PhysiqueComponent
+    PhysiqueComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
