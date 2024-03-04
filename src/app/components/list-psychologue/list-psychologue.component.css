@@ -1,0 +1,62 @@
+/* styles.css */
+
+.psychologue-list {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .psychologue-item {
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .psychologue-item div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .psychologue-item strong {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .psychologue-item p {
+    margin: 5px 0;
+  }
+  
+  .psychologue-item ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .psychologue-item li {
+    margin-bottom: 5px;
+  }
+  
+  .action-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .action-button:hover {
+    background-color: #45a049;
+  }
+  
+  .delete-button {
+    background-color: #ff5555;
+  }
+  
+  .delete-button:hover {
+    background-color: #e04141;
+  }
+  

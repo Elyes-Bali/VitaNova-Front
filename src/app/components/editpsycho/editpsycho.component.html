@@ -1,0 +1,25 @@
+<p>editpsycho works!</p>
+<h3>Edit Psychologue</h3>
+<div>
+    <div>
+        <label> <b> Psychologue ID: </b></label> {{psychologue.psychologueId}}
+    </div>
+    <div>
+        <label> <b> Nom: </b></label>
+        <input [(ngModel)]="psychologue.nom" placeholder="Enter Nom"/>
+    </div>
+    <div>
+        <label> <b> Prenom: </b></label>
+        <input [(ngModel)]="psychologue.prenom" placeholder="Enter Prenom"/>
+    </div>
+    <div>
+        <label> <b> Email: </b></label>
+        <input [(ngModel)]="psychologue.email" placeholder="Enter Email"/>
+    </div>
+    <div>
+        <label> <b> Phone Number: </b></label>
+        <input [(ngModel)]="psychologue.phonenumber" placeholder="Enter Phone Number"/>
+    </div>
+    <!-- Add other input fields for additional properties as needed -->
+    <button (click)="updatePsychologue()">Update Psychologue</button>
+</div>

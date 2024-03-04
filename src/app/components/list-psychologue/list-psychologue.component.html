@@ -1,0 +1,19 @@
+<div class="psychologue-list">
+  <h1>List of Psychologues</h1>
+  <ul>
+    <li *ngFor="let psychologue of psychologues" class="psychologue-item">
+      <div>
+        <strong>{{ psychologue.nom}} {{ psychologue.prenom }}</strong>
+        <p>Email: {{ psychologue.email }}</p>
+        <p>Phone Number: {{ psychologue.phonenumber }}</p>
+        <!-- Add other properties as needed -->
+        
+        <!-- Add button to navigate to /add route -->
+        <button routerLink="/edit-psy/{{psychologue.psychologueId}}" class="action-button">edit</button>
+        <a routerLink="/show-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">View</a>
+        <a routerLink="/delete-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">delete</a>
+      </div>
+    </li>
+  </ul>
+  <button routerLink="/add-psy" class="action-button">add</button>
+</div>

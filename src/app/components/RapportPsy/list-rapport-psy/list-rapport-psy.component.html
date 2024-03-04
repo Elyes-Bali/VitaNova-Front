@@ -1,0 +1,23 @@
+<div>
+  <h2>List of Rapport Psy</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Psychologue</th>
+        <th>Client</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rapportPsy of rapportPsyList">
+        <td>{{ rapportPsy.idRapportPsy }}</td>
+        <td>{{ rapportPsy.description }}</td>
+        <td>{{ rapportPsy.dateRappPs | date: 'short' }}</td>
+        <td>{{ rapportPsy.psychologue?.nom}}</td>
+        <td>{{ rapportPsy.client?.nom }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

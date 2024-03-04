@@ -1,0 +1,12 @@
+<p>show-rapportpsy works!</p>
+<div *ngIf="rapportPsy">
+    <h2>RapportPsy Details</h2>
+    <p><strong>Description:</strong> {{ rapportPsy.description }}</p>
+    <p><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
+    <p><strong>Psychologue:</strong> {{ rapportPsy.psychologue?.nom}}</p>
+    <p><strong>Client:</strong> {{ rapportPsy.client?.nom}}</p>
+    <!-- Add more details as needed -->
+  
+    <!-- You can also add buttons or links to navigate back or edit the rapportPsy -->
+  </div>
+  
