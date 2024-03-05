@@ -1,0 +1,61 @@
+<div class="mainSection">
+  <div class="contentBox">
+    <h1 class="text-bold text-white">New Product :</h1>
+    <div class="text-bold text-white">
+      <form class="form" (submit)="addProduct()">
+        <div class="form-group">
+          <label for="nom">Name:</label>
+          <input type="text" id="nom" [(ngModel)]="newProduct.prodName" name="Product Name" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="prenom">Type:</label>
+          <input type="text" id="prenom" [(ngModel)]="newProduct.typeProd" name="Type" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="price">Price:</label>
+          <input type="number" id="price" [(ngModel)]="newProduct.price" name="Price" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" id="description" [(ngModel)]="newProduct.descriptionP" name="More info" required>
+        </div>
+       
+        <button class="submit-button" type="submit">Add Product</button>
+      </form>
+      <button routerLink="/listProds">List</button>
+    </div>
+  </div>
+  <div class="imgContainer">
+    <img src="../../assets/images/prod1.png" alt="home" />
+  </div>
+</div>
+
+<!-- <div>
+  <form class="form" (submit)="addProduct()">
+    <div class="form-group">
+      <label for="nom">Name:</label>
+      <input type="text" id="nom" [(ngModel)]="newProduct.prodName" name="Product Name" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="prenom">Type:</label>
+      <input type="text" id="prenom" [(ngModel)]="newProduct.typeProd" name="Type" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="price" [(ngModel)]="newProduct.price" name="Price" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text" id="description" [(ngModel)]="newProduct.descriptionP" name="More info" required>
+    </div>
+   
+    <button class="submit-button" type="submit">Add Product</button>
+  </form>
+  <button routerLink="/listProds">List</button>
+</div> -->

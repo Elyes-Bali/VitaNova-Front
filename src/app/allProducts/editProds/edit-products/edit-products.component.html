@@ -1,0 +1,24 @@
+<h3>Edit Product</h3>
+<div>
+    <div>
+        <label> <b> Product ID: </b></label> {{product.idProducts}}
+    </div>
+    <div>
+        <label> <b> Name: </b></label>
+        <input [(ngModel)]="product.prodName" placeholder="Enter Name"/>
+    </div>
+    <div>
+        <label> <b> Type: </b></label>
+        <input [(ngModel)]="product.typeProd" placeholder="Enter Type"/>
+    </div>
+    <div>
+        <label> <b> Price: </b></label>
+        <input [(ngModel)]="product.price" placeholder="Enter Price"/>
+    </div>
+    <div>
+        <label> <b> Info: </b></label>
+        <input [(ngModel)]="product.descriptionP" placeholder="Enter Info"/>
+    </div>
+    <!-- Add other input fields for additional properties as needed -->
+    <button (click)="UpdateProduct()">Update Product</button>
+</div>

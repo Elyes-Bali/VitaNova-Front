@@ -1,0 +1,68 @@
+<div class="mainSection">
+  <div class="contentBox">
+    <h1 class="text-bold text-white">Our Community</h1>
+    <p class="text-white">
+      A whole world of freelance talent at your fingertips
+      <i class="fa fa-diamond text-white" aria-hidden="true"></i>
+      <br />
+      Find the perfect freelance services for your business !
+    </p>
+
+    <div>
+      <div class="btnn rounded-pill">
+        <Input
+          class="sea"
+          icon="search"
+          placeholder="Search..."
+          onChange=""
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div class="imgContainer">
+    <img src="../../assets/images/prod1.png" alt="home" />
+  </div>
+</div>
+
+<!-- <div class="psychologue-list">
+    <h1>List of Products</h1>
+    <ul>
+      <li *ngFor="let prods of products" class="psychologue-item">
+        <div>
+          <strong>Product: {{ prods.prodName}} </strong>
+          <p>Type: {{ prods.typeProd }}</p>
+          <p>Price: {{ prods.price }}</p>
+          <p>More Info: {{ prods.descriptionP }}</p>
+          Add other properties as needed 
+          
+           Add button to navigate to /add route 
+          <button routerLink="/editeProds/{{prods.idProducts}}" class="action-button">Edit</button>
+          <a routerLink="/detailProds/{{ prods.idProducts}}" class="btn btn-info" style="margin-left: 10px">View</a>
+          <a routerLink="/deleteProds/{{ prods.idProducts}}" class="btn btn-info" style="margin-left: 10px">delete</a> 
+        </div>
+      </li>
+    </ul>
+    <button routerLink="/prod" class="action-button">Add</button>
+  </div> -->
+<div class=" aaa">
+  <div class="">
+    <div
+      *ngFor="let prods of products"
+      class="card caP "
+      style="width: 15rem"
+    >
+      <img src="../../assets/images/prod1.png" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ prods.prodName }}</h5>
+        <p class="card-text">{{ prods.typeProd }}</p>
+        <h3>{{ prods.price }}</h3>
+        <a
+          routerLink="/detailProds/{{ prods.idProducts }}"
+          class="btn btn-primary"
+          >Details</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

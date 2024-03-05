@@ -7,6 +7,12 @@ import { RegisterComponent } from './register/register.component';
 import { TrainComponent } from './train/train.component';
 import { PhysiqueComponent } from './physique/physique.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductsComponent } from './products/products.component';
+import { ListProductsComponent } from './allProducts/listProds/list-products/list-products.component';
+import { EditProductsComponent } from './allProducts/editProds/edit-products/edit-products.component';
+import { DetailsProductsComponent } from './allProducts/detailProds/details-products/details-products.component';
+import { DeleteProductsComponent } from './allProducts/deleteProds/delete-products/delete-products.component';
+import { DashProductsComponent } from './Dashs/productsDash/dash-products/dash-products.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -16,6 +22,12 @@ const routes: Routes = [
   {path:'train',component:TrainComponent},
   {path:'phy',component:PhysiqueComponent},
   {path:'dash',component:DashboardComponent},
+  {path:'prod',component:ProductsComponent},
+  {path:'dashProds',component:DashProductsComponent},
+  {path:'listProds',component:ListProductsComponent},
+  {path:'editeProds/:id',component:EditProductsComponent},
+  {path:'detailProds/:id',component:DetailsProductsComponent},
+  {path:'deleteProds/:id',component:DeleteProductsComponent},
 
 ];
 
