@@ -1,20 +1,44 @@
 <p>detailpsycho works!</p>
-<h3> View Psychologue Details</h3>
+<h3>View Psychologue Details</h3>
+
 <div>
-    <div>
-        <label> <b> Psychologue ID: </b></label> {{psychologue.psychologueId}}
+  <!-- ... existing code ... -->
+
+  <div *ngIf="consultationCount !== undefined">
+    <div class="consultation-box">
+      <label><b>Number of Consultations: </b></label> {{consultationCount}}
     </div>
+
     <div>
-        <label> <b> Nom: </b></label> {{psychologue.nom}}
+      <label><b>Select Year:</b></label>
+      <select [(ngModel)]="selectedYear" (change)="getConsultationCountPerMonth()">
+        <option *ngFor="let year of availableYears" [value]="year">{{year}}</option>
+      </select>
     </div>
+
     <div>
-        <label> <b> Prenom: </b></label> {{psychologue.prenom}}
+      <label><b>Select Month:</b></label>
+      <select [(ngModel)]="selectedMonth" (change)="getConsultationCountPerMonth()">
+        <option *ngFor="let month of availableMonths" [value]="month">{{month}}</option>
+      </select>
     </div>
-    <div>
-        <label> <b> Email: </b></label> {{psychologue.email}}
+
+    <div *ngIf="consultationCountPerMonth !== undefined">
+      <div class="consultation-box">
+        <label><b>Number of Consultations This Month: </b></label> {{consultationCountPerMonth}}
+      </div>
     </div>
-    <div>
-        <label> <b> Phone Number: </b></label> {{psychologue.phonenumber}}
+
+    <!-- Add Chart -->
+    <div *ngIf="chart">
+      <canvas #chart></canvas>
     </div>
-    <!-- Add other properties as needed -->
+  </div>
+
+  <div *ngIf="psychologue.clients && psychologue.clients.length > 0">
+    <h4>Clients:</h4>
+    <table>
+      <!-- ... existing code ... -->
+    </table>
+  </div>
 </div>

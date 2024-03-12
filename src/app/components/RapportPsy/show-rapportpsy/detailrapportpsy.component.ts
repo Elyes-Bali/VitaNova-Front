@@ -37,5 +37,19 @@ export class ShowRapportpsyComponent implements OnInit {
       }
     );
   }
+  generatePdf(): void {
+    if (this.rapportPsy) {
+      this.rapportPsyService.generatePdf(this.rapportPsy.idRapportPsy!)
+        .subscribe(response => {
+          console.log('PDF generated successfully:', response);
+          // Handle success, e.g., show a success message to the user
+        }, error => {
+          console.error('Error generating PDF:', error);
+          // Handle error, e.g., show an error message to the user
+        });
+    } else {
+      console.error('RapportPsy is not defined');
+    }
+  }
 
 }

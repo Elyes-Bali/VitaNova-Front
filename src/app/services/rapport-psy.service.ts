@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RapportPsyService {
   readonly rapport = 'http://localhost:8085/rapportpsy/';
+  readonly pdf = 'http://localhost:8085/';
   constructor(private httpclient: HttpClient) { }
 
   getAllRapportPsy(){
@@ -25,4 +26,9 @@ export class RapportPsyService {
   deleterapportPsychologue(id: number): Observable<void> {
     const url = `${this.rapport}deleterapportpsychologue/${id}`;
     return this.httpclient.delete<void>(url);
+}
+generatePdf(rapportPsyId: number): Observable<any> {
+  const url = `${this.pdf}generate-pdf/${rapportPsyId}`;
+  return this.httpclient.get(url);
 }}
+

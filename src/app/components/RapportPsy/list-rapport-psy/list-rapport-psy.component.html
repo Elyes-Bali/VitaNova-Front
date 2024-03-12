@@ -1,23 +1,61 @@
-<div>
-  <h2>List of Rapport Psy</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Psychologue</th>
-        <th>Client</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rapportPsy of rapportPsyList">
-        <td>{{ rapportPsy.idRapportPsy }}</td>
-        <td>{{ rapportPsy.description }}</td>
-        <td>{{ rapportPsy.dateRappPs | date: 'short' }}</td>
-        <td>{{ rapportPsy.psychologue?.nom}}</td>
-        <td>{{ rapportPsy.client?.nom }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!-- <div class="rapport-psy-list">
+  <h1>List of Rapport Psy</h1>
+  <ul>
+    <li *ngFor="let rapportPsy of rapportPsyList" class="rapport-psy-item">
+      <div>
+        <strong>ID: {{ rapportPsy.idRapportPsy }}</strong>
+        <p>Description: {{ rapportPsy.description }}</p>
+        <p>Date: {{ rapportPsy.dateRappPs | date: 'short' }}</p>
+        <p>Psychologue: {{ rapportPsy.psychologue?.nom }}</p>
+        <p>Client: {{ rapportPsy.client?.nom }}</p>
+         Add other properties as needed 
+
+         Add button to navigate to /edit-rapport route
+        <button routerLink="/edit-rapportpsy/{{rapportPsy.idRapportPsy}}" class="action-button">edit</button>
+        <a routerLink="/show-rapportpsy/{{rapportPsy.idRapportPsy}}" class="btn btn-info" style="margin-left: 10px">View</a>
+        <a routerLink="/delete-rapportpsy/{{rapportPsy.idRapportPsy}}" class="btn btn-info" style="margin-left: 10px">delete</a>
+      </div>
+    </li>
+  </ul>
+  <button routerLink="/add-rapportpsy" class="action-button">add</button>
+</div> -->
+
+<div class="row my-5">
+  <h3 class="fs-4 mb-3">Product List</h3>
+  
+  <div class="col">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search Products" class="search-input mb-2">
+
+<table class="table bg-white rounded shadow-sm table-hover">
+<thead>
+<tr>
+<th scope="col">id</th>
+<th scope="col">description</th>
+<th scope="col">date</th>
+<th scope="col">psychologue</th>
+<th scope="col">patient</th>
+</tr>
+</thead>
+<tbody>
+<ng-container *ngIf="rapport && rapport.length">
+<tr *ngFor="let prods of rapport">
+  <!-- Check if searchTerm is empty or if the product matches the search term -->
+  <ng-container *ngIf="!searchTerm || 
+                     prods.client?.nom?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase())||
+                         prods.description?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase()) 
+                       ">
+      <td>{{ prods.idRapportPsy }}</td>
+      <td>{{ prods.description }}</td>
+      <td>{{ prods.dateRappPs }} </td>
+      <td>{{ prods.psychologue?.nom }}</td>
+      <td>{{prods.client?.nom}}</td>
+      <td><button routerLink="/edit-rapportpsy/{{prods.idRapportPsy}}" class="action-button">edit</button></td>
+      <!-- <td><a routerLink="/deleteProds/{{ prods.idProducts}}" class="btn btn-danger" style="margin-left: 10px">delete</a> or<button routerLink="/editeProds/{{prods.idProducts}}" class="btn btn-info" style="margin-left: 10px">Edit</button> </td> -->
+  </ng-container>
+</tr>
+</ng-container>
+<tr *ngIf="(!rapport || rapport.length === 0) && searchTerm">
+<td colspan="4">No matching products found.</td>
+</tr>
+</tbody>
+</table>

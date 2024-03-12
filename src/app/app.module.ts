@@ -28,6 +28,8 @@ import { ShowRapportpsyComponent } from './components/RapportPsy/show-rapportpsy
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,8 @@ import { ShowRapportpsyComponent } from './components/RapportPsy/show-rapportpsy
     ListRapportPsyComponent,
     AddRapportPsyComponent,
     EditRapportpsyComponent,
-    ShowRapportpsyComponent
+    ShowRapportpsyComponent,
+  
    
   ],
   imports: [
@@ -60,6 +63,7 @@ import { ShowRapportpsyComponent } from './components/RapportPsy/show-rapportpsy
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

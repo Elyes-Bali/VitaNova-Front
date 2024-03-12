@@ -5,6 +5,9 @@
     <p><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
     <p><strong>Psychologue:</strong> {{ rapportPsy.psychologue?.nom}}</p>
     <p><strong>Client:</strong> {{ rapportPsy.client?.nom}}</p>
+    <div>
+      <button (click)="generatePdf()" class="btn btn-primary">Generate PDF</button>
+    </div>
     <!-- Add more details as needed -->
   
     <!-- You can also add buttons or links to navigate back or edit the rapportPsy -->
