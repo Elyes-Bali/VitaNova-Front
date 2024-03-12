@@ -23,6 +23,7 @@ import { DetailsProductsComponent } from './allProducts/detailProds/details-prod
 import { DeleteProductsComponent } from './allProducts/deleteProds/delete-products/delete-products.component';
 import { DashProductsComponent } from './Dashs/productsDash/dash-products/dash-products.component';
 import { DeleteProdsDashComponent } from './Dashs/prodsDelDash/delete-prods-dash/delete-prods-dash.component';
+import { AddToCartComponent } from './Cart/addToCart/add-to-cart/add-to-cart.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { DeleteProdsDashComponent } from './Dashs/prodsDelDash/delete-prods-dash
     DeleteProductsComponent,
     DashProductsComponent,
     DeleteProdsDashComponent,
+    AddToCartComponent,
 
   ],
   imports: [

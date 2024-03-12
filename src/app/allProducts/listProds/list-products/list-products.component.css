@@ -167,6 +167,9 @@
   }
   .aaa{
     display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
+
+  }
+  .bod{
+    background-color: rgb(186, 186, 186);
   }

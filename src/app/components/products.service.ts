@@ -14,13 +14,23 @@ export class ProductsService {
   constructor(private httpclient: HttpClient) { }
   
   addProduct(product: Products) {
-    return this.httpclient.post(this.PRODUCT_API_URL + 'addprod', product);
+    const formData = new FormData();
+    formData.append('prodName', product.prodName ?? '');
+    formData.append('typeProd', product.typeProd ?? '');
+    formData.append('price', (product.price ?? 0).toString());
+    formData.append('quantityP', (product.quantityP ?? 0).toString());
+    formData.append('descriptionP', product.descriptionP ?? '');
+    if (product.imageUrl instanceof File) {
+      formData.append('file', product.imageUrl);
+    }
+    return this.httpclient.post(this.PRODUCT_API_URL + 'addProduct', formData);
   }
+  
   getAllProducts(){
     return this.httpclient.get<Products[]>(this.PRODUCT_API_URL+'getallprods');
   }
   editProduct(id: number ,product: Products) {
-    const url = this.PRODUCT_API_URL + 'update/' + product.idProducts; // Assuming there's an "id" property in the Psychologue object
+    const url = this.PRODUCT_API_URL + 'update/' + product.idProducts; // Assuming there's an "id" property in the Product object
     return this.httpclient.put(url, product);
   }
 

@@ -45,24 +45,17 @@
     </ul>
     <button routerLink="/prod" class="action-button">Add</button>
   </div> -->
-<div class=" aaa">
-  <div class="">
-    <div
-      *ngFor="let prods of products"
-      class="card caP "
-      style="width: 15rem"
-    >
-      <img src="../../assets/images/prod1.png" class="card-img-top" alt="..." />
-      <div class="card-body">
+  <div class="aaa mt-4" style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+    <div *ngFor="let prods of products" class="card caP" style="width: 15rem; margin-right: 10px; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <img src="../../assets/images/prod1.png" class="card-img-top" alt="..." style="border-top-left-radius: 8px; border-top-right-radius: 8px;"/>
+      <div class="card-body bod">
         <h5 class="card-title">{{ prods.prodName }}</h5>
         <p class="card-text">{{ prods.typeProd }}</p>
         <h3>{{ prods.price }}</h3>
-        <a
-          routerLink="/detailProds/{{ prods.idProducts }}"
-          class="btn btn-primary"
-          >Details</a
-        >
+        <h3>{{ prods.quantityP }}</h3>
+        <a routerLink="/detailProds/{{ prods.idProducts }}" class="btn btn-primary">Details</a>
       </div>
     </div>
   </div>
-</div>
+  
+  

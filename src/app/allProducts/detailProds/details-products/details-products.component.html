@@ -1,19 +1,49 @@
-<h3>View Product Details</h3>
-<div>
-  <div>
-    <label> <b> Product ID: </b></label> {{ product.idProducts }}
+<div class="mainSection">
+  <div class="contentBox">
+    <h1 class="text-bold text-black">Product Details</h1>
+
+    <div class="text-bold text-black">
+      <div>
+        <div>
+          <label> <b> Product ID: </b></label> {{ product.idProducts }}
+        </div>
+        <div>
+          <label> <b> Product Name: </b></label> {{ product.prodName }}
+        </div>
+        <div>
+          <label> <b> Type: </b></label> {{ product.typeProd }}
+        </div>
+        <div>
+          <label> <b> Price: </b></label> {{ product.price }} TND
+        </div>
+        <div>
+          <label> <b> Quantity: </b></label> {{ product.quantityP }}
+        </div>
+        <div>
+          <label> <b> Product Details: </b></label> {{ product.descriptionP }}
+        </div>
+        <img [src]="product.imageUrl" alt="Product Image">
+
+        <!-- Add other properties as needed -->
+      </div>
+      <!-- <button routerLink="/listProds">List</button> -->
+    </div>
+    <button class="btn btn-success" (click)="addToCart()">Add to Cart</button>
   </div>
-  <div>
-    <label> <b> Product Name: </b></label> {{ product.prodName }}
+  <div class="imgContainer">
+    <!-- <h1>All Details</h1>
+    <button class="btn btn-success">+ Cart</button> -->
+    <div class="card" style="width: 18rem">
+      <br class="card-body" />
+      <h5 class="card-title">{{ product.price }} TND</h5>
+      <input type="number" max="5" min="1" [defaultValue]="1" />
+      <a routerLink="/" class="btn btn-warning rounded-pill mt-1">Add to Cart</a>
+
+      <h6 class="card-subtitle mb-2 text-body-secondary mt-1">
+        Shipped by Ideal
+      </h6>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Sold by Ideal</h6>
+      <br />
+    </div>
   </div>
-  <div>
-    <label> <b> Type: </b></label> {{ product.typeProd }}
-  </div>
-  <div>
-    <label> <b> Price: </b></label> {{ product.price }} TND
-  </div>
-  <div>
-    <label> <b> Product Details: </b></label> {{ product.descriptionP}}
-  </div>
-  <!-- Add other properties as needed -->
 </div>

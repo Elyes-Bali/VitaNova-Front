@@ -13,6 +13,7 @@ import { EditProductsComponent } from './allProducts/editProds/edit-products/edi
 import { DetailsProductsComponent } from './allProducts/detailProds/details-products/details-products.component';
 import { DeleteProductsComponent } from './allProducts/deleteProds/delete-products/delete-products.component';
 import { DashProductsComponent } from './Dashs/productsDash/dash-products/dash-products.component';
+import { AddToCartComponent } from './Cart/addToCart/add-to-cart/add-to-cart.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'dash',component:DashboardComponent},
   {path:'prod',component:ProductsComponent},
   {path:'dashProds',component:DashProductsComponent},
+  {path:'cart',component:AddToCartComponent},
   {path:'listProds',component:ListProductsComponent},
   {path:'editeProds/:id',component:EditProductsComponent},
   {path:'detailProds/:id',component:DetailsProductsComponent},
