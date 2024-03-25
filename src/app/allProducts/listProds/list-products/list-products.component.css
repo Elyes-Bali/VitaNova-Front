@@ -117,15 +117,7 @@
     color: aqua;
   }
   
-  #cmnt {
-    background: Orgb(0, 101, 219);
-    background: linear-gradient(
-      180deg,
-      rgb(249, 233, 233) 50%,
-      rgb(251, 104, 160) 70%
-    );
-    min-height: 500px;
-  }
+ 
   .form {
     width: 300px;
     margin: 0 auto;
@@ -158,18 +150,61 @@
     cursor: pointer;
   }
   
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  .caP{
-    display: flex;
-    justify-content: space-between;
-  }
-  .aaa{
-    display: flex;
-  justify-content: center;
-
-  }
+  
   .bod{
-    background-color: rgb(186, 186, 186);
+    background-color: rgb(255, 255, 255);
   }
+  /* Add these styles to ensure equal sizing for the cards and images */
+.card.caP {
+  flex-basis: 20%; /* Adjust the width to fit four cards per row */
+  margin-right: 1%; /* Adjust the spacing between cards */
+}
+
+.card.caP .card-img-top {
+  width: 150px; /* Ensure the image fills the entire width of the card */
+  height: auto; /* Maintain aspect ratio */
+   margin-left: 100px;
+}
+
+.card.caP .card-body {
+  padding: 1rem; /* Add padding to the card body */
+}
+
+.card.caP .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card.caP .card-text {
+  font-size: 1rem;
+}
+
+.card.caP .btn-primary {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+.aaa{
+  margin-top: 50px !important;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5; /* Adjust to change disabled button opacity */
+  cursor: not-allowed;
+}
+

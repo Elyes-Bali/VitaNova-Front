@@ -181,6 +181,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Details</th>
+                <th scope="col">Expiration</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -208,6 +209,7 @@
                     <td>{{ prods.price }} TND</td>
                     <td>{{ prods.quantityP }}</td>
                     <td>{{ prods.descriptionP }}</td>
+                    <td>{{ prods.expiration }}</td>
                     <td>
                       <a
                         routerLink="/deleteProds/{{ prods.idProducts }}"

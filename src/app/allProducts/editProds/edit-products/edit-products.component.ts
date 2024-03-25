@@ -30,7 +30,7 @@ export class EditProductsComponent {
   UpdateProduct(): void {
     this.productService.editProduct(this.id, this.product).subscribe(() => {
       // Redirect to the psychologue details page or another appropriate location after update
-      this.router.navigate(['/listProds/']);
+      this.router.navigate(['/dashProds/']);
     });
   }
 }

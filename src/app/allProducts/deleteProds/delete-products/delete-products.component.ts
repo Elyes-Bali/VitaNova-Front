@@ -25,11 +25,15 @@ export class DeleteProductsComponent {
       this.product = data;
     });
   }
-
+  confirmDelete(): void {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.deleteProduct();
+    }
+  }
   deleteProduct(): void {
     this.productService.deleteProduct(this.id).subscribe(() => {
       // Redirect to a page or component after the psychologue is deleted
-      this.router.navigate(['/']); // Replace with your desired route
+      this.router.navigate(['/dashProds']); // Replace with your desired route
     });
   }
 }

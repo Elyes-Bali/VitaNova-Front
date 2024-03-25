@@ -19,7 +19,7 @@ export class DashProductsComponent implements OnInit{
   searchTerm: string = ''; // Holds the search term entered by the user
   products: Products[] = []; // Holds the list of all products
   filteredProducts: Products[] = [];
-  pageSize = 4; // Number of products per page
+  pageSize = 8; // Number of products per page
   currentPage = 1; // Current page
   totalPages = 0; // Total number of pages
   pages: number[] = []; // Array of page numbers
@@ -120,8 +120,5 @@ export class DashProductsComponent implements OnInit{
       this.goToPage(this.currentPage + 1);
     }
   }
-  
-  
-
   
 }

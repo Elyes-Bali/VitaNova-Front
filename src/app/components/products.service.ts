@@ -13,22 +13,26 @@ export class ProductsService {
   readonly PRODUCT_API_URL = 'http://localhost:8085/vita/product/';
   constructor(private httpclient: HttpClient) { }
   
-  addProduct(product: Products) {
-    const formData = new FormData();
-    formData.append('prodName', product.prodName ?? '');
-    formData.append('typeProd', product.typeProd ?? '');
-    formData.append('price', (product.price ?? 0).toString());
-    formData.append('quantityP', (product.quantityP ?? 0).toString());
-    formData.append('descriptionP', product.descriptionP ?? '');
-    if (product.imageUrl instanceof File) {
-      formData.append('file', product.imageUrl);
-    }
+  // addProduct(product: Products) {
+  //   const formData = new FormData();
+  //   formData.append('prodName', product.prodName ?? '');
+  //   formData.append('typeProd', product.typeProd ?? '');
+  //   formData.append('price', (product.price ?? 0).toString());
+  //   formData.append('quantityP', (product.quantityP ?? 0).toString());
+  //   formData.append('descriptionP', product.descriptionP ?? '');
+  //   formData.append('imageUrl', product.imageUrl ?? ''); // Append imageUrl directly as a string
+  //   return this.httpclient.post(this.PRODUCT_API_URL + 'addProduct', formData);
+  // }
+  addProduct(formData: FormData) {
     return this.httpclient.post(this.PRODUCT_API_URL + 'addProduct', formData);
   }
+  
+  
   
   getAllProducts(){
     return this.httpclient.get<Products[]>(this.PRODUCT_API_URL+'getallprods');
   }
+  
   editProduct(id: number ,product: Products) {
     const url = this.PRODUCT_API_URL + 'update/' + product.idProducts; // Assuming there's an "id" property in the Product object
     return this.httpclient.put(url, product);
