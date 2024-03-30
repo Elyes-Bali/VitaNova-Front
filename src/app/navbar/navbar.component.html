@@ -21,6 +21,24 @@
            <li class="nav-item">
             <a class="nav-link" routerLink="cart" routerLinkActive="active-link">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Users</a>
+          </li>
+
+          <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+            <li class="nav-item">
+              <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+            <li class="nav-item">
+              <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+            </li>
+            <li class="nav-item">
+              <a href class="nav-link" (click)="logout()">LogOut</a>
+            </li>
+          </ul>
           <!--
           <li class="nav-item">
             <a class="nav-link" routerLink="contact" routerLinkActive="active-link">Contact</a>

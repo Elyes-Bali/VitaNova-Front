@@ -14,6 +14,11 @@ import { DetailsProductsComponent } from './allProducts/detailProds/details-prod
 import { DeleteProductsComponent } from './allProducts/deleteProds/delete-products/delete-products.component';
 import { DashProductsComponent } from './Dashs/productsDash/dash-products/dash-products.component';
 import { AddToCartComponent } from './Cart/addToCart/add-to-cart/add-to-cart.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ModifierUserComponent } from './modifier-user/modifier-user.component';
+import { VerifiactionComponent } from './verifiaction/verifiaction.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -30,7 +35,11 @@ const routes: Routes = [
   {path:'editeProds/:id',component:EditProductsComponent},
   {path:'detailProds/:id',component:DetailsProductsComponent},
   {path:'deleteProds/:id',component:DeleteProductsComponent},
-
+  { path: 'forgetpassword', component: ForgetpasswordComponent },
+  { path: 'resetpassword', component: ResetpasswordComponent },
+  {path:'listUser',component:ListUserComponent},
+  {path:'edituser/:id',component:ModifierUserComponent},
+  {path:'verify',component:VerifiactionComponent},
 ];
 
 @NgModule({

@@ -24,6 +24,11 @@ import { DeleteProductsComponent } from './allProducts/deleteProds/delete-produc
 import { DashProductsComponent } from './Dashs/productsDash/dash-products/dash-products.component';
 import { DeleteProdsDashComponent } from './Dashs/prodsDelDash/delete-prods-dash/delete-prods-dash.component';
 import { AddToCartComponent } from './Cart/addToCart/add-to-cart/add-to-cart.component';
+import { VerifiactionComponent } from './verifiaction/verifiaction.component';
+import { ModifierUserComponent } from './modifier-user/modifier-user.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 
 @NgModule({
@@ -49,6 +54,11 @@ import { AddToCartComponent } from './Cart/addToCart/add-to-cart/add-to-cart.com
     DashProductsComponent,
     DeleteProdsDashComponent,
     AddToCartComponent,
+    VerifiactionComponent,
+    ListUserComponent,
+    ModifierUserComponent,
+    ForgetpasswordComponent,
+    ResetpasswordComponent
 
   ],
   imports: [
