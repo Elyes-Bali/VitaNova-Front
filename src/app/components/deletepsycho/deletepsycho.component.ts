@@ -9,7 +9,7 @@ import { PsychologueService } from 'src/app/services/psychologue.service';
   styleUrls: ['./deletepsycho.component.css']
 })
 export class DeletepsychoComponent {
-
+  status: boolean = true;
   id: number=0;
   psychologue: Psychologue = new Psychologue();
 

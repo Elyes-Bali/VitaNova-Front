@@ -1,23 +1,32 @@
-<p>edit-rapportpsy works!</p>
-<div *ngIf="rapportPsy">
-    <h2>Edit RapportPsy</h2>
-    <form (ngSubmit)="updateRapportPsy()">
-      <label for="description">Description:</label>
-      <input type="text" id="description" name="description" [(ngModel)]="rapportPsy.description" required>
-  
-      <label for="dateRappPs">Date:</label>
-      <input type="date" id="dateRappPs" name="dateRappPs" [(ngModel)]="rapportPsy.dateRappPs" required>
-  
-      <label for="psychologue">Psychologue:</label>
-      <select id="psychologue" name="psychologue" [(ngModel)]="rapportPsy.psychologue">
-        <option *ngFor="let psychologue of psychologues" [ngValue]="psychologue">{{ psychologue.nom }} {{ psychologue.prenom }}</option>
-      </select>
-  
-      <label for="client">Client:</label>
-      <select id="client" name="client" [(ngModel)]="rapportPsy.client">
-        <option *ngFor="let client of clients" [ngValue]="client">{{ client.nom }} {{ client.prenom }}</option>
-      </select>
-  
-      <button type="submit">Update RapportPsy</button>
+<div class="container">
+  <div *ngIf="rapportPsy">
+    <h3>Edit RapportPsy</h3>
+    <form (ngSubmit)="updateRapportPsy()" class="form">
+      <div class="form-group">
+        <label for="description"><b>Description:</b></label>
+        <input type="text" id="description" name="description" [(ngModel)]="rapportPsy.description" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="dateRappPs"><b>Date:</b></label>
+        <input type="date" id="dateRappPs" name="dateRappPs" [(ngModel)]="rapportPsy.dateRappPs" required class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="psychologue"><b>Psychologue:</b></label>
+        <select id="psychologue" name="psychologue" [(ngModel)]="rapportPsy.psychologue" class="form-control">
+          <option *ngFor="let psychologue of psychologues" [ngValue]="psychologue">
+            {{ psychologue.nom }} {{ psychologue.prenom }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="client"><b>Client:</b></label>
+        <select id="client" name="client" [(ngModel)]="rapportPsy.client" class="form-control">
+          <option *ngFor="let client of clients" [ngValue]="client">
+            {{ client.nom }} {{ client.prenom }}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update RapportPsy</button>
     </form>
   </div>
+</div>

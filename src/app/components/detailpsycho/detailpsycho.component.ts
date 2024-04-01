@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angula
 import { ActivatedRoute } from '@angular/router';
 import { Psychologue } from '../../Models/Psychologue';
 import { PsychologueService } from '../../services/psychologue.service';
-import { Chart } from 'chart.js';
+
 
 @Component({
   selector: 'app-detailpsycho',
@@ -10,6 +10,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./detailpsycho.component.css']
 })
 export class DetailpsychoComponent implements OnInit, AfterViewInit {
+  status: boolean = true;
+ 
   id: number = 0;
   psychologue: Psychologue = new Psychologue();
   consultationCount: number = 0;
@@ -37,7 +39,7 @@ export class DetailpsychoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.createChart();  // Initialize the chart when the view has been initialized
+    //this.createChart();  // Initialize the chart when the view has been initialized
   }
 
   getConsultationCount(): void {
@@ -46,7 +48,7 @@ export class DetailpsychoComponent implements OnInit, AfterViewInit {
         console.log('Consultation Count:', count);
         this.consultationCount = count;
         // Update the chart after fetching data
-        this.updateChart();
+       // this.updateChart();
       });
   }
 
@@ -58,10 +60,10 @@ export class DetailpsychoComponent implements OnInit, AfterViewInit {
     ).subscribe(count => {
       this.consultationCountPerMonth = count;
       // Update the chart after fetching data
-      this.updateChart();
+      //this.updateChart();
     });
   }
-
+/*
   createChart(): void {
     if (this.chartRef && this.chartRef.nativeElement) {
       const canvas: any = this.chartRef.nativeElement;
@@ -92,5 +94,5 @@ export class DetailpsychoComponent implements OnInit, AfterViewInit {
       // If chart doesn't exist, create it
       this.createChart();
     }
-  }
+  }*/
 }

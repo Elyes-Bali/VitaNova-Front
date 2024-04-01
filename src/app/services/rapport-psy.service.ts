@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RapportPsyService {
-  readonly rapport = 'http://localhost:8085/rapportpsy/';
-  readonly pdf = 'http://localhost:8085/';
+  readonly rapport = 'http://localhost:8085/vita/rapportpsy/';
+  readonly pdf = 'http://localhost:8085/vita/';
   constructor(private httpclient: HttpClient) { }
 
   getAllRapportPsy(){

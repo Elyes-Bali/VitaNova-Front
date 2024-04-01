@@ -20,16 +20,17 @@
   <button routerLink="/add-rapportpsy" class="action-button">add</button>
 </div> -->
 
+
 <div class="row my-5">
-  <h3 class="fs-4 mb-3">Product List</h3>
-  
+  <h3 class="fs-4 mb-3">Rapports List</h3>
+  <td><a routerLink="/add-rapportpsy/" class="btn btn-danger" style="margin-left: 10px">add</a> 
   <div class="col">
-      <input type="text" [(ngModel)]="searchTerm" placeholder="Search Products" class="search-input mb-2">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="filter through rapports" class="search-input mb-2">
 
 <table class="table bg-white rounded shadow-sm table-hover">
 <thead>
 <tr>
-<th scope="col">id</th>
+
 <th scope="col">description</th>
 <th scope="col">date</th>
 <th scope="col">psychologue</th>
@@ -42,15 +43,16 @@
   <!-- Check if searchTerm is empty or if the product matches the search term -->
   <ng-container *ngIf="!searchTerm || 
                      prods.client?.nom?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase())||
-                         prods.description?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase()) 
+                         prods.description?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase()) ||  prods.psychologue?.nom?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase()) 
                        ">
-      <td>{{ prods.idRapportPsy }}</td>
+    
       <td>{{ prods.description }}</td>
       <td>{{ prods.dateRappPs }} </td>
       <td>{{ prods.psychologue?.nom }}</td>
-      <td>{{prods.client?.nom}}</td>
-      <td><button routerLink="/edit-rapportpsy/{{prods.idRapportPsy}}" class="action-button">edit</button></td>
-      <!-- <td><a routerLink="/deleteProds/{{ prods.idProducts}}" class="btn btn-danger" style="margin-left: 10px">delete</a> or<button routerLink="/editeProds/{{prods.idProducts}}" class="btn btn-info" style="margin-left: 10px">Edit</button> </td> -->
+      <td>{{prods.client?.prenom}}</td>
+      <td><button routerLink="/edit-rapportpsy/{{prods.idRapportPsy}}" class="btn btn-danger" style="margin-left: 10px">edit</button></td>
+      <td><a routerLink="/show-rapportpsy/{{ prods.idRapportPsy}}" class="btn btn-danger" style="margin-left: 10px">show</a> 
+        <td><a routerLink="/deleterapportpsy/{{ prods.idRapportPsy}}" class="btn btn-danger" style="margin-left: 10px">delete</a> 
   </ng-container>
 </tr>
 </ng-container>

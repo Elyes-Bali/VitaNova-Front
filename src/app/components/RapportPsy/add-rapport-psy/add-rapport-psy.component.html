@@ -1,22 +1,30 @@
-<div>
+<div class="container">
   <h2>Add RapportPsy</h2>
-  <form (ngSubmit)="addRapportPsy()">
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="description" [(ngModel)]="newRapportPsy.description" required>
+  <form (ngSubmit)="addRapportPsy()" class="form">
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" [(ngModel)]="newRapportPsy.description" required class="form-control">
+    </div>
 
-    <label for="dateRappPs">Date:</label>
-    <input type="date" id="dateRappPs" name="dateRappPs" [(ngModel)]="newRapportPsy.dateRappPs" required>
+    <div class="form-group">
+      <label for="dateRappPs">Date:</label>
+      <input type="date" id="dateRappPs" name="dateRappPs" [(ngModel)]="newRapportPsy.dateRappPs" required class="form-control">
+    </div>
 
-    <label for="psychologue">Psychologue:</label>
-    <select id="psychologue" name="psychologue" [(ngModel)]="newRapportPsy.psychologue">
-      <option *ngFor="let psychologue of psychologues" [ngValue]="psychologue">{{psychologue.psychologueId}}{{ psychologue.nom }} {{ psychologue.prenom }}</option>
-    </select>
+    <div class="form-group">
+      <label for="psychologue">Psychologue:</label>
+      <select id="psychologue" name="psychologue" [(ngModel)]="newRapportPsy.psychologue" class="form-control">
+        <option *ngFor="let psychologue of psychologues" [ngValue]="psychologue">{{psychologue.psychologueId}}{{ psychologue.nom }} {{ psychologue.prenom }}</option>
+      </select>
+    </div>
 
-    <label for="client">Client:</label>
-    <select id="client" name="client" [(ngModel)]="newRapportPsy.client">
-      <option *ngFor="let client of clients" [ngValue]="client">{{client.clientId}}{{ client.nom }} {{ client.prenom }}</option>
-    </select>
+    <div class="form-group">
+      <label for="client">Client:</label>
+      <select id="client" name="client" [(ngModel)]="newRapportPsy.client" class="form-control">
+        <option *ngFor="let client of clients" [ngValue]="client">{{client.clientId}}{{ client.nom }} {{ client.prenom }}</option>
+      </select>
+    </div>
 
-    <button type="submit">Add RapportPsy</button>
+    <button type="submit" class="btn btn-primary">Add RapportPsy</button>
   </form>
 </div>

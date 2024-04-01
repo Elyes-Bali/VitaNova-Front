@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditpsychoComponent {
   id: number=0;
   psychologue: Psychologue = new Psychologue();
+  status: boolean = true;
+ 
 
   constructor(
     private route: ActivatedRoute,

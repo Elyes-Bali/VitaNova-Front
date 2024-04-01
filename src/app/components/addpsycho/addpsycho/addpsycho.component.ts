@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Psychologue } from '../../../Models/Psychologue';
+import { Psychologue, Specialty } from '../../../Models/Psychologue';
 import { PsychologueService } from '../../../services/psychologue.service';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
@@ -13,6 +13,9 @@ export class AddPsychoComponent {
     prenom: '',
     email: '',
     phonenumber: '',
+    specialty: Specialty.DEPRESSION, // Set default specialty
+    gender: '',
+
     chats: [],
     rapportPsy: [],
     notifications: [],
@@ -33,6 +36,9 @@ export class AddPsychoComponent {
             prenom: '',
             email: '',
             phonenumber: '',
+            specialty: Specialty.DEPRESSION, // Reset specialty
+            gender: '', 
+
             chats: [],
             rapportPsy: [],
             notifications: [],

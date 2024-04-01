@@ -1,15 +1,19 @@
-<p>show-rapportpsy works!</p>
-<div *ngIf="rapportPsy">
+<div class="container">
+  <div *ngIf="rapportPsy">
     <h2>RapportPsy Details</h2>
-    <p><strong>Description:</strong> {{ rapportPsy.description }}</p>
-    <p><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
-    <p><strong>Psychologue:</strong> {{ rapportPsy.psychologue?.nom}}</p>
-    <p><strong>Client:</strong> {{ rapportPsy.client?.nom}}</p>
-    <div>
-      <button (click)="generatePdf()" class="btn btn-primary">Generate PDF</button>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><strong>Description:</strong> {{ rapportPsy.description }}</p>
+        <p class="card-text"><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
+        <p class="card-text"><strong>Psychologue:</strong> {{ rapportPsy.psychologue?.nom }}</p>
+        <p class="card-text"><strong>Client:</strong> {{ rapportPsy.client?.nom }}</p>
+        <!-- Add more details as needed -->
+
+        <div class="text-center">
+          <button (click)="generatePdf()" class="btn btn-primary">Generate PDF</button>
+        </div>
+        <!-- You can also add buttons or links to navigate back or edit the rapportPsy -->
+      </div>
     </div>
-    <!-- Add more details as needed -->
-  
-    <!-- You can also add buttons or links to navigate back or edit the rapportPsy -->
   </div>
-  
+</div>

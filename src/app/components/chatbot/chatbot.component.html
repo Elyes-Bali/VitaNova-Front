@@ -1,0 +1,31 @@
+
+    <div class="chatbot-container">
+        <div id="header">
+            <h1>Chatbot</h1>
+        </div>
+        <div id="chatbot">
+          <div id="conversation">
+            <div class="chatbot-message" *ngFor="let question of questions" (click)="selectQuestion(question)">
+              <p class="chatbot-text">{{ question.text }}</p>
+            
+            </div>
+            <div class="chatbot-message" *ngIf="answerText">
+              <p class="chatbot-texts">{{ answerText }}</p>
+              
+            </div>
+          </div>
+          <div id="input-form">
+            <ng-container>
+              <p class="chatbot-text" *ngIf="selectedQuestion">  {{ selectedQuestion.text }}</p>
+              
+
+       
+              <button (click)="getAnswer()" class="send-button">Get Answer</button>
+            </ng-container>
+          </div>
+          
+        </div>  
+        
+
+    </div>
+

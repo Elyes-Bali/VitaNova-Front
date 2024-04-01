@@ -19,6 +19,7 @@ export class AddRapportPsyComponent implements OnInit {
   };
   psychologues: Psychologue[] = [];
   clients: Client[] = [];
+  status: boolean = true;
 
   constructor(
     private rapportPsyService: RapportPsyService,

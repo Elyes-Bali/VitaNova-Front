@@ -1,44 +1,121 @@
-<p>detailpsycho works!</p>
-<h3>View Psychologue Details</h3>
-
-<div>
-  <!-- ... existing code ... -->
-
-  <div *ngIf="consultationCount !== undefined">
-    <div class="consultation-box">
-      <label><b>Number of Consultations: </b></label> {{consultationCount}}
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper" style="width: 20%;">
+    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+      <i class="fas fa-user-secret me-2"></i>Admin
     </div>
-
-    <div>
-      <label><b>Select Year:</b></label>
-      <select [(ngModel)]="selectedYear" (change)="getConsultationCountPerMonth()">
-        <option *ngFor="let year of availableYears" [value]="year">{{year}}</option>
-      </select>
-    </div>
-
-    <div>
-      <label><b>Select Month:</b></label>
-      <select [(ngModel)]="selectedMonth" (change)="getConsultationCountPerMonth()">
-        <option *ngFor="let month of availableMonths" [value]="month">{{month}}</option>
-      </select>
-    </div>
-
-    <div *ngIf="consultationCountPerMonth !== undefined">
-      <div class="consultation-box">
-        <label><b>Number of Consultations This Month: </b></label> {{consultationCountPerMonth}}
-      </div>
-    </div>
-
-    <!-- Add Chart -->
-    <div *ngIf="chart">
-      <canvas #chart></canvas>
+    <div class="list-group list-group-flush my-3">
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active">
+        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-project-diagram me-2"></i>Projects
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-chart-line me-2"></i>Analytics
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-paperclip me-2"></i>Reports
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-shopping-cart me-2"></i>Store Management
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-gift me-2"></i>Products
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-comment-dots me-2"></i>Chat
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+        <i class="fas fa-map-marker-alt me-2"></i>Outlet
+      </a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+        <i class="fas fa-power-off me-2"></i>Logout
+      </a>
     </div>
   </div>
+  <!-- /#sidebar-wrapper -->
 
-  <div *ngIf="psychologue.clients && psychologue.clients.length > 0">
-    <h4>Clients:</h4>
-    <table>
-      <!-- ... existing code ... -->
-    </table>
+  <!-- Page Content -->
+  <div id="page-content-wrapper" style="width: 80%;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+      <div class="d-flex align-items-center">
+        <h2 class="fs-2 m-0">Dashboard</h2>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user me-2"></i>John Doe
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid px-4">
+      <div class="row my-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Psychologue Information</h5>
+              <div class="form-group">
+                <label for="nom"><b>Name:</b></label>
+                <p class="card-text">{{ psychologue.nom }}</p>
+              </div>
+              <div class="form-group">
+                <label for="prenom"><b>Last Name:</b></label>
+                <p class="card-text">{{ psychologue.prenom }}</p>
+              </div>
+              <div class="form-group">
+                <label for="email"><b>Email:</b></label>
+                <p class="card-text">{{ psychologue.email }}</p>
+              </div>
+              <div class="form-group">
+                <label for="phonenumber"><b>Phone Number:</b></label>
+                <p class="card-text">{{ psychologue.phonenumber }}</p>
+              </div>
+              <div class="form-group">
+                <label for="specialty"><b>Specialty:</b></label>
+                <p class="card-text">{{ psychologue.specialty }}</p>
+              </div>
+              <div class="form-group">
+                <label for="gender"><b>Gender:</b></label>
+                <p class="card-text">{{ psychologue.gender }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Actions</h5>
+              <div class="form-group">
+                <a [routerLink]="['/stats', psychologue.psychologueId, 2024, 'March']" class="btn btn-info">View
+                  Stats</a>
+                  <a [routerLink]="['/psy']" class="btn btn-info">return to list</a>
+              </div>
+              <div *ngIf="psychologue.clients && psychologue.clients.length > 0">
+                <h5 class="card-title">Clients</h5>
+                <table class="table">
+                  <!-- ... existing code ... -->
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

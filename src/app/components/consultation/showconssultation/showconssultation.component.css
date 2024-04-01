@@ -1,0 +1,23 @@
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .detail-item {
+        margin-bottom: 20px;
+    }
+
+    .detail-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .detail-value {
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }

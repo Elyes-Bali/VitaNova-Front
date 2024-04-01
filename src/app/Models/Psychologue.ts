@@ -7,6 +7,8 @@ export class Psychologue {
     prenom?: string;
     email?: string;
     phonenumber?: string;
+    specialty?: Specialty;
+    gender?: string;
     chats?: Chat[];
     rapportPsy?: RapportPsy[];
     notifications?: Notifications[];
@@ -40,4 +42,43 @@ export class Psychologue {
     psychologue?: Psychologue;
     rapportPsy?: RapportPsy;
   }  
-  
+
+  export interface Consultation {
+  idConsultation?: number;
+  startTime: string; // Assuming LocalTime is serialized as string
+  consultationdate: string; // Assuming LocalDate is serialized as string
+  psychologue: Psychologue;
+  client: Client;
+}
+export interface Answer {
+  idanswer: number;
+  text: string;
+  question: Question;
+}
+export interface Question {
+  idquestion: number;
+  text: string;
+  answer: Answer;
+}
+export enum Specialty {
+  DEPRESSION = 'DEPRESSION',
+  RELATIONSHIP = 'RELATIONSHIP',
+  ANXIETY = 'ANXIETY'
+}
+export class User{
+  id?:number;
+  nom?:string;
+  email?:string;
+  password?:string;
+  gender?:string;
+  prenom?:string;
+  desctiption?:string;
+  achievments?:string;
+  fears?:string;
+  age?:number;
+  roles?: string; // Enumérations devraient être traitées différemment
+  connected?: boolean;
+  banned?: boolean;
+
+
+}

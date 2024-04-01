@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ListPsychologueComponent implements OnInit {
  
     psychologues: Psychologue[] = [];
+    status: boolean = true;
  
   
     constructor(private psychologueService: PsychologueService,private router: Router  ) { }

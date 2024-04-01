@@ -1,0 +1,65 @@
+
+<!-- <div class="rapport-psy-list">
+  <h1>List of Rapport Psy</h1>
+  <ul>
+    <li *ngFor="let rapportPsy of rapportPsyList" class="rapport-psy-item">
+      <div>
+        <strong>ID: {{ rapportPsy.idRapportPsy }}</strong>
+        <p>Description: {{ rapportPsy.description }}</p>
+        <p>Date: {{ rapportPsy.dateRappPs | date: 'short' }}</p>
+        <p>Psychologue: {{ rapportPsy.psychologue?.nom }}</p>
+        <p>Client: {{ rapportPsy.client?.nom }}</p>
+         Add other properties as needed 
+
+         Add button to navigate to /edit-rapport route
+        <button routerLink="/edit-rapportpsy/{{rapportPsy.idRapportPsy}}" class="action-button">edit</button>
+        <a routerLink="/show-rapportpsy/{{rapportPsy.idRapportPsy}}" class="btn btn-info" style="margin-left: 10px">View</a>
+        <a routerLink="/delete-rapportpsy/{{rapportPsy.idRapportPsy}}" class="btn btn-info" style="margin-left: 10px">delete</a>
+      </div>
+    </li>
+  </ul>
+  <button routerLink="/add-rapportpsy" class="action-button">add</button>
+</div> -->
+
+
+<div class="row my-5">
+    <h3 class="fs-4 mb-3">Rapports List</h3>
+    
+    <div class="col">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="filter through rapports" class="search-input mb-2">
+  
+  <table class="table bg-white rounded shadow-sm table-hover">
+  <thead>
+  <tr>
+  <th scope="col">nom</th>
+  <th scope="col">description</th>
+  <th scope="col">gender</th>
+  <th scope="col">psychologue</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngIf="rapport && rapport.length">
+  <tr *ngFor="let prods of rapport">
+    <!-- Check if searchTerm is empty or if the product matches the search term -->
+    <ng-container *ngIf="!searchTerm || 
+                       prods.gender?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase())||
+                           prods.specialty?.toLocaleLowerCase()?.includes(searchTerm.toLowerCase())
+                         ">
+        <td>{{ prods.nom }}</td>
+        <td>{{ prods.prenom}}</td>
+        <td>{{ prods.gender}} </td>
+        <td>{{ prods.specialty}}</td>
+        
+        <td><button (click)="reserveConsultation(prods.psychologueId)" class="btn btn-danger" style="margin-left: 10px">Reserve</button></td>
+
+    
+    </ng-container>
+  </tr>
+  </ng-container>
+  <tr *ngIf="(!rapport || rapport.length === 0) && searchTerm">
+  <td colspan="4">No matching products found.</td>
+  </tr>
+  </tbody>
+  </table>
+  

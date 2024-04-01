@@ -1,19 +1,88 @@
-<div class="psychologue-list">
-  <h1>List of Psychologues</h1>
-  <ul>
-    <li *ngFor="let psychologue of psychologues" class="psychologue-item">
-      <div>
-        <strong>{{ psychologue.nom}} {{ psychologue.prenom }}</strong>
-        <p>Email: {{ psychologue.email }}</p>
-        <p>Phone Number: {{ psychologue.phonenumber }}</p>
-        <!-- Add other properties as needed -->
-        
-        <!-- Add button to navigate to /add route -->
-        <button routerLink="/edit-psy/{{psychologue.psychologueId}}" class="action-button">edit</button>
-        <a routerLink="/show-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">View</a>
-        <a routerLink="/delete-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">delete</a>
+
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper" style="width: 20%;">
+      <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+              class="fas fa-user-secret me-2"></i>Admin</div>
+      <div class="list-group list-group-flush my-3">
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                  class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-project-diagram me-2"></i>Projects</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-chart-line me-2"></i>Analytics</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-paperclip me-2"></i>Reports</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-shopping-cart me-2"></i>Store Mng</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-gift me-2"></i>Products</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-comment-dots me-2"></i>Chat</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                  class="fas fa-map-marker-alt me-2"></i>Outlet</a>
+          <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+                  class="fas fa-power-off me-2"></i>Logout</a>
       </div>
-    </li>
-  </ul>
-  <button routerLink="/add-psy" class="action-button">add</button>
-</div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" style="width: 100%;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+          <div class="d-flex align-items-center">
+            
+              <h2 class="fs-2 m-0">Dashboard</h2>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
+                          role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fas fa-user me-2"></i>John Doe
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Settings</a></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+
+    
+        
+      <div class="psychologue-list" style="width: 100%;">
+        <h1>List of Psychologues</h1>
+        <button routerLink="/add-psy" class="action-button">add a psychologue</button>
+        <ul class="flex-wrap">
+            <li *ngFor="let psychologue of psychologues" class="psychologue-item">
+                <div>
+                    <strong>{{ psychologue.nom}} {{ psychologue.prenom }}</strong>
+                    <p>Email: {{ psychologue.email }}</p>
+                    <p>Phone Number: {{ psychologue.phonenumber }}</p>
+                    <p>Specialty: {{psychologue.specialty}}</p>
+                    <p>Gender: {{psychologue.gender}}</p>
+                    
+                    <!-- Add other properties as needed -->
+                    
+                    <!-- Add button to navigate to /edit route -->
+                    <button routerLink="/edit-psy/{{psychologue.psychologueId}}" class="action-button">edit</button>
+                    <a routerLink="/show-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">View</a>
+                    <a routerLink="/delete-psy/{{ psychologue.psychologueId}}" class="btn btn-info" style="margin-left: 10px">delete</a>
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+  
+
+<!-- /#page-content-wrapper -->

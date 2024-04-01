@@ -1,28 +1,36 @@
-<p class="title">Add Psycho Works!</p>
-<h2>Add Psychologue</h2>
-
-<form class="form" (submit)="addPsychologue()">
-  <div class="form-group">
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" [(ngModel)]="newPsychologue.nom" name="nom" required>
-  </div>
-
-  <div class="form-group">
-    <label for="prenom">Prenom:</label>
-    <input type="text" id="prenom" [(ngModel)]="newPsychologue.prenom" name="prenom" required>
-  </div>
-
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" [(ngModel)]="newPsychologue.email" name="email" required>
-  </div>
-
-  <div class="form-group">
-    <label for="phonenumber">Phone Number:</label>
-    <input type="text" id="phonenumber" [(ngModel)]="newPsychologue.phonenumber" name="phonenumber" required>
-  </div>
- 
-  <button class="submit-button" type="submit">Add Psychologue</button>
-
-  
-</form>
+<div class="container">
+  <h2>Add New Psychologue</h2>
+  <form (ngSubmit)="addPsychologue()">
+    <div class="form-group">
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" [(ngModel)]="newPsychologue.nom" name="nom" required>
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom:</label>
+      <input type="text" id="prenom" [(ngModel)]="newPsychologue.prenom" name="prenom" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="newPsychologue.email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="phonenumber">Numéro de téléphone:</label>
+      <input type="text" id="phonenumber" [(ngModel)]="newPsychologue.phonenumber" name="phonenumber" required>
+    </div>
+    <div class="form-group">
+      <label for="specialty">Spécialité:</label>
+      <select id="specialty" [(ngModel)]="newPsychologue.specialty" name="specialty" required>
+        <option value="ANXIETY">Anxiety</option>
+        <option value="DEPRESSION">Depression</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="gender">Genre:</label>
+      <select id="gender" [(ngModel)]="newPsychologue.gender" name="gender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Psychologue</button>
+  </form>
+</div>

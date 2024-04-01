@@ -1,0 +1,82 @@
+<style>
+  .form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .action-button {
+    display: block;
+    width: 40%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .action1-button {
+    display: block;
+    width: 5%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .action-button:hover {
+    background-color: #45a049;
+  }
+</style>
+<div class="container">
+    <h2>List of Consultations</h2>
+    <button routerLink="/psyc" class="action1-button">add</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Start Time</th>
+          <th>Consultation Date</th>
+          <th>Psychologue</th>
+          <th>Client</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consultation of consultations">
+          <td>{{ consultation.startTime }}</td>
+          <td>{{ consultation.consultationdate }}</td>
+          <td>{{ consultation.psychologue.nom }}</td>
+          <td>{{ consultation.client.nom }}</td>
+          <td>
+            <!-- Add buttons for actions -->
+            <button routerLink="/showc/{{consultation.idConsultation}}" class="action-button">show</button>
+            <button routerLink="/editconsultation/{{consultation.idConsultation}}" class="action-button">edit</button>
+            <!-- You can add more buttons for other actions as needed -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
