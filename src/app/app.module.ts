@@ -29,6 +29,7 @@ import { ModifierUserComponent } from './modifier-user/modifier-user.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { FoodDataServiceComponent } from './food-data-service/food-data-service.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ListUserComponent } from './list-user/list-user.component';
     ListUserComponent,
     ModifierUserComponent,
     ForgetpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    FoodDataServiceComponent
 
   ],
   imports: [
@@ -70,7 +72,7 @@ import { ListUserComponent } from './list-user/list-user.component';
 
     
   ],
-  providers: [],
+  providers: [ FoodDataServiceComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

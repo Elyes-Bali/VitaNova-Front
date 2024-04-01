@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from 'src/app/_services/storage.service';
 import { CartService } from 'src/app/components/cart.service';
 import { ProductsService } from 'src/app/components/products.service';
@@ -11,12 +11,13 @@ import { Cart, Products } from 'src/app/models/products';
   styleUrls: ['./details-products.component.css']
 })
 export class DetailsProductsComponent {
+  products: Products[] = [];
   id: number=0;
   product: Products = new Products();
   quantity: number = 1; // Default quantity is 1
- ownerId: number=0;
- isLoggedIn = false;
-  constructor(private route: ActivatedRoute, private productService: ProductsService, private cartService: CartService,private storageService: StorageService) { }
+  ownerId: number=0;
+  isLoggedIn = false;
+  constructor(private route: ActivatedRoute, private productService: ProductsService, private cartService: CartService,private storageService: StorageService,private router:Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -26,16 +27,27 @@ export class DetailsProductsComponent {
 
       this.ownerId = user.id;
     }
-    // Retrieve userId from session storage
-    // this.ownerId = window.sessionStorage.getItem('id') ? parseInt(window.sessionStorage.getItem('id')!) : 0;
-    // console.log('Retrieved userId:', this.ownerId); 
-    // Fetch product data
     this.productService.getproductId(this.id).subscribe(data => {
       console.log('Received product data:', data); // Log the received data
       this.product = data;
     }, error => {
       console.error('Error fetching product data:', error); // Log any errors
     });
+    this.getAllProducts();
+    
+  }
+  getAllProducts(): void {
+    this.productService.getAllProducts().subscribe(
+      
+      (data) => {
+        this.products = data;
+      },
+      (error: any) => {
+        console.error('Failed to retrieve products:', error);
+      }
+      
+    );
+    console.log('listProdsComponent initialized');
   }
 
   addToCart() {
@@ -89,4 +101,14 @@ export class DetailsProductsComponent {
   onMouseLeave(): void {
     this.productImage.nativeElement.style.transformOrigin = 'center';
   }
+  reloadAndNavigate(productId: number | undefined): void {
+    if (productId !== undefined) {
+      this.router.navigate(['./detailProds', productId])
+        .then(() => window.location.href = window.location.href); // Reload the page after navigation
+    } else {
+      console.error('Product ID is undefined.');
+    }
+  }
+  
+  
 }

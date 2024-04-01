@@ -2,10 +2,10 @@
   <div class="contentBox">
     <h1 class="text-bold text-white">Our Community</h1>
     <p class="text-white">
-      A whole world of freelance talent at your fingertips
+    A whole world of Premuim Products at your Fingertips
       <i class="fa fa-diamond text-white" aria-hidden="true"></i>
       <br />
-      Find the perfect freelance services for your business !
+      Find the Perfect Product for your Yourself !
     </p>
 
     <div>
@@ -24,6 +24,33 @@
     <img src="../../assets/images/prod1.png" alt="home" />
   </div>
 </div>
+<!-- your-component.component.html -->
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Enter food item...">
+  <button (click)="searchFood(searchQuery)">Search</button>
+</div>
+
+<div *ngIf="searchResults && searchResults.length > 0">
+  <h2>Search Results:</h2>
+  <ul class="search-results">
+    <li *ngFor="let item of searchResults; let i = index">
+      <div *ngIf="i < 5"> <!-- Limit to the first five results -->
+        
+        <h3>{{ item.description }} - {{ item.foodNutrients[0]?.nutrientName }}: {{ item.foodNutrients[0]?.value }} {{ item.foodNutrients[0]?.unitName }}</h3>
+        <!-- Display other relevant information here -->
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="searchResults && searchResults.length === 0">
+  <p>No results found.</p>
+</div>
+
+<div *ngIf="!searchResults">
+  <p>Loading...</p>
+</div>
+
 
 <div class="">
   <ng-container *ngFor="let prodsChunk of paginatedProducts">

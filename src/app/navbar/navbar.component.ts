@@ -28,8 +28,11 @@ export class NavbarComponent {
 
       this.username = user.username;
     }
+    
   }
-
+  isUserRoleAdmin(): boolean {
+    return this.roles.includes('ROLE_ADMIN');
+  }
   logout(): void {
     this.storageService.clean();
     this.router.navigate(['/login']);

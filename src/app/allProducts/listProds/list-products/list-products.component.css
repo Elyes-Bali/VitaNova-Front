@@ -207,4 +207,17 @@
   opacity: 0.5; /* Adjust to change disabled button opacity */
   cursor: not-allowed;
 }
+/* your-component.component.css */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-results {
+  list-style-type: none;
+  padding: 0;
+}
+
+.search-results li {
+  margin-bottom: 10px;
+}
 
