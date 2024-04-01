@@ -52,8 +52,13 @@ export class LoginComponent {
         if (this.roles.includes('ROLE_ADMIN')) {
           this.router.navigate(['/psy']); // Redirect to /admin if role is admin
         }
+        if (this.roles.includes('ROLE_ADMIN')) {
+          this.router.navigate(['/psy']); // Redirect to /admin if role is admin
+        }
         if (this.roles.includes('ROLE_CLIENT')) {
-          this.router.navigate(['/consultations']); // Redirect to /admin if role is admin
+          this.router.navigate(['/consultations']); 
+
+          // Redirect to /admin if role is admin
         }  else {
           this.reloadPage();
         }

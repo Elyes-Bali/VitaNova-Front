@@ -26,15 +26,15 @@
     <h3 class="fs-4 mb-3">Rapports List</h3>
     
     <div class="col">
-        <input type="text" [(ngModel)]="searchTerm" placeholder="filter through rapports" class="search-input mb-2">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="filter through psychologues" class="search-input mb-2">
   
   <table class="table bg-white rounded shadow-sm table-hover">
   <thead>
   <tr>
   <th scope="col">nom</th>
-  <th scope="col">description</th>
+  <th scope="col">prenom</th>
   <th scope="col">gender</th>
-  <th scope="col">psychologue</th>
+  <th scope="col">specialty</th>
 
   </tr>
   </thead>
@@ -62,4 +62,4 @@
   </tr>
   </tbody>
   </table>
-  
+  <button routerLink="/chatbot" class="btn btn-primary">Chat</button>
