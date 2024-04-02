@@ -11,7 +11,17 @@
                  [(ngModel)]="form.username"
                  required #username="ngModel">
         </div>
-
+        <div class="mb-3">
+          <label for="genderSelect" class="form-label">Sélectionnez votre genre :</label>
+          <select class="form-select" id="genderSelect" name="gender" [(ngModel)]="gender">
+            <option value="" disabled selected>Choisissez...</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
+        
+        
         <div class="mb-3 pass text-center">
           <i class="fas fa-envelope"></i>
           <input type="email"
