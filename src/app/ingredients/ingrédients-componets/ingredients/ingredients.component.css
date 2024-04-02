@@ -1,0 +1,10 @@
+/* Style pour les cartes des ingrédients */
+.ingredient-card {
+    height: 300px; /* Hauteur fixe pour toutes les cartes */
+}
+
+/* Style pour les images à l'intérieur des cartes */
+.ingredient-card img {
+    height: 250px; /* Hauteur fixe pour les images */
+    object-fit: cover; /* Ajustement d'objet pour couvrir la totalité de la zone de l'image */
+}

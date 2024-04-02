@@ -1,0 +1,11 @@
+<div *ngIf="posts">
+  <h2>Feed</h2>
+  <div class="col-md-12 text-end">
+    <button type="button" class="btn btn-success" [routerLink]="'new'">New Post</button>
+  </div>
+  <div *ngFor="let post of posts" class="post" (click)="viewPost(post.idPosts)">
+    <h3>{{ post.post }}</h3>
+    <p>{{ post.description }}</p>
+    <img *ngIf="post.imageP" [src]="post.imageP" alt="Post Image">
+  </div>
+</div>

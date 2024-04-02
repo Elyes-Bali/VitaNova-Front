@@ -1,0 +1,16 @@
+<div class="community-list" *ngIf="communities">
+  <h2>Communities</h2>
+  <div class="row">
+    <div class="col-md-4"><input type="search" placeholder="Search" [(ngModel)]="searchTerm" (input)=searchCommunity() class="form-control"></div>
+    <div class="col-md-12 text-end">
+      <button type="button" class="btn btn-success" [routerLink]="'new'">New community</button>
+    </div>
+  </div>
+  <ul>
+    <li *ngFor="let community of communities" class="community-item">
+      <h3>{{ community.name }}</h3>
+      <p>{{ community.description }}</p>
+      <button class="join-button" (click)="joinCommunity(community.idCommunity)">Join</button>
+    </li>
+  </ul>
+</div>

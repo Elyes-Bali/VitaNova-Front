@@ -1,0 +1,101 @@
+<br>
+<div *ngFor="let item of ingredients">
+    <div [id]="'confirmationAlert' + item.idIngredients" class="alert alert-danger" role="alert" style="display: none;">
+        Êtes-vous sûr de vouloir supprimer cette Ingredients ?<br>
+        <button type="button" class="btn btn-danger" (click)="deleteIngredient(item.idIngredients)">Oui</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelDelete(item.idIngredients)">Non</button>
+    </div>
+</div>
+<div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+</div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <h5 class="card-header">Liste des Ingrédients</h5>
+                <button mat-button (click)="openModal(template)">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter un nouveau
+                </button>
+                <!-- Affichage de l'alerte de succès -->
+                <div *ngIf="successMessage" class="alert alert-success">
+                    {{ successMessage }}
+                </div>
+
+                <!-- Affichage de l'alerte d'erreur -->
+                <div *ngIf="errorMessage" class="alert alert-danger">
+                    {{ errorMessage }}</div>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Produits</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ingredient of ingredients">
+                                <td>{{ ingredient.idIngredients }}</td>
+                                <td>{{ ingredient.description }}</td>
+                                <td>{{ ingredient.products }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-success"
+                                        (click)="updateIngredient(ingredient.idIngredients,ingredient)">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-link btn-lg btn-rounded text-danger"
+                                        (click)="confirmDelete(ingredient.idIngredients)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Ajouter un nouvel ingrédient</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form (submit)="addIngredient()">
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="newIngredient.description"
+                    name="description">
+            </div>
+            <div class="form-group">
+                <label for="products">Produits:</label>
+                <input type="text" class="form-control" id="products" [(ngModel)]="newIngredient.products"
+                    name="products">
+            </div>
+            <div class="form-group">
+                <label for="fileInput" class="form-label"> Select Image
+                </label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="fileInput"
+                  (change)="selectFile($event)"
+                  name="fileInput"
+                  accept="image/jpeg, image/png, image/gif, image/bmp, image/webp"
+                />
+              </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </div>
+</ng-template>

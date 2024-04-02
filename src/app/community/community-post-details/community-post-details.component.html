@@ -1,0 +1,54 @@
+<div class="container mt-4" *ngIf="post">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">{{ post.description }}</h2>
+      <div class="float-right" *ngIf="post.idOwner== ownerId">
+        <button class="btn btn-danger btn-sm" (click)="deletePost()">Delete</button>
+      </div>
+      <p class="card-text">{{ post.post }}</p>
+      <img *ngIf="post.imageP" [src]="post.imageP" class="img-fluid mb-3" alt="Post Image">
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Add a comment..." [(ngModel)]="newComment">
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="addComment()">Add</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Comments</h3>
+        </div>
+        <div class="col-sm-6 right">
+          <div class="btn-group" dropdown>
+            Trier par:
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                    aria-controls="dropdown-basic">
+              {{ sortCriteria }} <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('default')">default</a></li>
+              <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('date')">date</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="list-group mb-3">
+        <li *ngFor="let comment of commentsPage.content" class="list-group-item">
+          <div>{{ comment.comment }}</div>
+          <div>{{ comment.createdDate | date }}</div>
+          <!-- Delete Icon -->
+          <div class="float-right" *ngIf="comment.idOwner== ownerId">
+            <button class="btn btn-danger btn-sm" (click)="deleteComment(comment.idComments)">Delete</button>
+          </div>
+        </li>
+      </ul>
+
+
+      <pagination [totalItems]="commentsPage.totalElements" [(ngModel)]="currentPage"
+                  (pageChanged)="pageChanged($event)" [itemsPerPage]="5"
+                  [maxSize]="4"></pagination>
+
+    </div>
+  </div>
+</div>
