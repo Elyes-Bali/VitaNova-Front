@@ -112,3 +112,21 @@
   .adds{
     text-decoration: none;
   }
+
+  .select-container {
+    text-align: center;
+  }
+  
+  .chart-select {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .chart-canvas {
+    width: 100%;
+    margin-top: 20px;
+  }
+  

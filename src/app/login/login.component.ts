@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -76,8 +77,41 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-
+  getRoleBasedRoute(): string {
+    switch(this.roles[0]) {  // Assuming a single role per user
+      case 'ROLE_ADMIN':
+        return '/listUser';  // Replace with your admin dashboard route
+      case 'ROLE_CLIENT':
+        return '/';  // Replace with your client home route
+      case 'ROLE_COACH':
+        return '/';  // Replace with your coach dashboard route
+        case 'ROLE_NUTRITOINISTE':
+          return '/listUser'; 
+      default:
+        return '/';  // Default route if role doesn't match
+    }
+  }
   reloadPage(): void {
     window.location.reload();
   }
 }
+
+//   getRoleBasedRoute(): string {
+//     switch(this.roles[0]) {  // Assuming a single role per user
+//       case 'ROLE_ADMIN':
+//         return '/listUser';  // Replace with your admin dashboard route
+//       case 'ROLE_CLIENT':
+//         return '/';  // Replace with your client home route
+//       case 'ROLE_COACH':
+//         return '/';  // Replace with your coach dashboard route
+//         case 'ROLE_NUTRITOINISTE':
+//           return '/listUser'; 
+//       default:
+//         return '/';  // Default route if role doesn't match
+//     }
+//   }
+//   reloadPage(): void {
+//     window.location.reload();
+//     this.getRoleBasedRoute();
+//   }
+// }

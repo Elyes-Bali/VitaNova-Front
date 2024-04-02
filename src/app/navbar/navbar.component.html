@@ -15,9 +15,10 @@
           
           <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && isUserRoleAdmin()">
           <li class="nav-item">
-            <a class="nav-link" routerLink="dash" routerLinkActive="active-link">Dash</a>
+            <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Dash</a>
           </li>
         </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && !isUserRoleAdmin()">
           <li class="nav-item">
             <a class="nav-link" routerLink="listProds" routerLinkActive="active-link">Market</a>
           </li>
@@ -26,9 +27,10 @@
             <a class="nav-link" routerLink="cart" routerLinkActive="active-link">Cart</a>
           </li>
         </ul>
-          <!-- <li class="nav-item">
+      </ul>
+           <!-- <li class="nav-item">
             <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Users</a>
-          </li> -->
+          </li>  -->
 
           <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
             <li class="nav-item">

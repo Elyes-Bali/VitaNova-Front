@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/components/products.service';
 import { FoodDataServiceComponent } from 'src/app/food-data-service/food-data-service.component';
@@ -9,12 +9,15 @@ import { Products } from 'src/app/models/products';
   templateUrl: './list-products.component.html',
   styleUrls: ['./list-products.component.css']
 })
-export class ListProductsComponent {
+export class ListProductsComponent implements OnInit{
   products: Products[] = [];
   currentPage = 1;
   itemsPerPage = 12;
   searchQuery: string = ''; 
   searchResults: any[] = [];
+ 
+
+
   selectedFood: any; 
   constructor(private productService: ProductsService,private router: Router, private foodDataService:FoodDataServiceComponent ) { }
 
@@ -23,14 +26,19 @@ export class ListProductsComponent {
     console.log('ListPsychologueComponent initialized');
 
     this.getAllProducts();
-   
+    // this.renderBarChart('count'); 
   }
+
+  
+  
+ 
 
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       
       (data) => {
         this.products = data;
+       
       },
       (error: any) => {
         console.error('Failed to retrieve products:', error);
@@ -82,4 +90,12 @@ export class ListProductsComponent {
   showFoodNutrients(food: any): void {
     this.selectedFood = food; // Set the selected food item
   }
+ 
+ 
+  
+
+ 
+ 
+ 
+  
 }

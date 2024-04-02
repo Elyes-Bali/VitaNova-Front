@@ -23,8 +23,8 @@
         </div>
         <a [routerLink]="['/forgetpassword']" class="link">You forget your password? Click here</a>
 
-        <div class="alert alert-danger" *ngIf="isLoginFailed">Signup failed: {{ errorMessage }} </div>
-
+        <div class="alert alert-danger" *ngIf="isLoginFailed">Signup failed: {{ errorMessage }} <br/>
+        <a routerLink="/verify">Click here to verify your email</a></div>
         <button
           type="submit"
           class="btn btn-primary mt-4 rounded-pill btlog d-block mx-auto"
@@ -54,6 +54,8 @@
 
       <div class="alert alert-success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
+        <br>
+        <a [routerLink]="getRoleBasedRoute()">Navigate</a>
       </div>
     </div>
   </div>

@@ -69,7 +69,7 @@ import { FoodDataServiceComponent } from './food-data-service/food-data-service.
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
+   
     
   ],
   providers: [ FoodDataServiceComponent ],
