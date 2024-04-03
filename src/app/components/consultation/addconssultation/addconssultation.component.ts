@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Client, Psychologue, Consultation } from 'src/app/Models/Psychologue';
+import { Client, Psychologue, Consultation, User } from 'src/app/Models/Psychologue';
 import { PsychologueService } from 'src/app/services/psychologue.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-addconssultation',
@@ -15,37 +16,48 @@ export class AddconssultationComponent implements OnInit {
     startTime: '',
     consultationdate: '',
     psychologue: new Psychologue(),
-    client: {} as Client
+    client: {} as Client,
+    user : {} as User,
   };
 
   clients: Client[] = [];
   selectedPsychologueId!: number;
+  selectedUserId!: number;
 
   constructor(
     private psychologueService: PsychologueService,
     private router: Router,
     private snackBar: MatSnackBar, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService :UserService
   ) {}
 
   ngOnInit() {
     // Fetch the list of clients when the component is initialized
-    this.fetchClients();
+    
 
     // Retrieve the selected psychologue ID from the route parameters
     this.route.params.subscribe(params => {
-      this.selectedPsychologueId = +params['psychologueId'];
-      if (this.selectedPsychologueId) {
-        // Fetch the selected psychologue from the service
-        this.psychologueService.getPsychologueById(this.selectedPsychologueId).subscribe(
-          psychologue => {
-            // Assign the selected psychologue to newConsultation
-            this.newConsultation.psychologue = psychologue;
+      console.log('User ID:', params['userId']); // Add this line to check the value of the user ID
+  
+      this.selectedUserId = +params['userId'];
+      if (this.selectedUserId) {
+        console.error('works user')
+        // Fetch the selected user from the service
+        this.userService.getuserId(this.selectedUserId).subscribe(
+          user => {
+            // Assign the selected user to newConsultation
+            this.newConsultation.user = user;
+  
+            // Update the user field in the form
+            this.newConsultation.user.nom = user.nom;
           },
-          error => console.error('Error fetching psychologue', error)
+          error => console.error('Error fetching user', error)
         );
       }
     });
+    
+  
   }
 
   fetchClients() {
@@ -53,6 +65,7 @@ export class AddconssultationComponent implements OnInit {
       data => this.clients = data,
       error => console.error('Error fetching clients', error)
     );
+
   }
 
   addConsultation() {

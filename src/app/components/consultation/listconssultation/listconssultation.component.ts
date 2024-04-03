@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {PsychologueService} from '../../../services/psychologue.service';
 import { Router } from '@angular/router';
 import { Consultation } from 'src/app/Models/Psychologue';
+import { StorageService } from 'src/app/_services/storage.service';
 
 @Component({
   selector: 'app-listconssultation',
@@ -14,15 +15,17 @@ export class ListconssultationComponent {
   
   consultations: Consultation[] = [];
 
-  constructor(private psychologueService: PsychologueService,private router: Router  ){ }
+  constructor(private psychologueService: PsychologueService,private router: Router,private storageService: StorageService  ){ }
 
   ngOnInit(): void {
       console.log('ListConsultationComponent initialized');
-      this.getAllConsultations();
+     
+      const userId = this.storageService.getUser().id;
+      this.getAllConsultations(userId);
   }
 
-  getAllConsultations(): void {
-      this.psychologueService.getallconsultation().subscribe(
+  getAllConsultations(userId:number): void {
+      this.psychologueService.getConsultationsByUserId(userId).subscribe(
           (data) => {
               this.consultations = data;
           },

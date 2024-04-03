@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Client, Psychologue,Consultation } from '../Models/Psychologue';
+import { Client, Psychologue,Consultation, User } from '../Models/Psychologue';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -70,7 +70,10 @@ export class PsychologueService {
   }
   getAnswerByQuestionId(questionId: number): Observable<any> {
     return this.httpclient.get<any>(`${this.count}answers/${questionId}`);
+  }  getConsultationsByUserId(userId: number): Observable<Consultation[]> {
+    return this.httpclient.get<Consultation[]>(`${this.count}user/${userId}`);
   }
+
   
 }
 

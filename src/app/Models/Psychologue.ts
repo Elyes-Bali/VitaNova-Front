@@ -49,6 +49,7 @@ export class Psychologue {
   consultationdate: string; // Assuming LocalDate is serialized as string
   psychologue: Psychologue;
   client: Client;
+  user:User;
 }
 export interface Answer {
   idanswer: number;

@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  readonly USER_API_URL='http://localhost:8085/vita/user/'
+  readonly USER_API_URL='http://localhost:8085/vita/api/user/'
+  readonly user ='http://localhost:8085/vita/api/user/'
   constructor(private httpclient: HttpClient) { }
   loginUser(user:User){
     return this.httpclient.post(this.USER_API_URL+'login',user);
@@ -22,7 +23,7 @@ export class UserService {
   }
 
   getuserId(id: number): Observable<User> {
-    return this.httpclient.get<User>(`${this.USER_API_URL}getuserid/${id}`);
+    return this.httpclient.get<User>(`${this.USER_API_URL}getUser/${id}`);
   }
 
 updateUser(id: number , user : User){
@@ -30,5 +31,8 @@ updateUser(id: number , user : User){
   return this.httpclient.put(url,user)
 
 
+}
+getUsersWithPsychiatristSpecialty(): Observable<User[]> {
+  return this.httpclient.get<User[]>(`${this.user}psy`);
 }
 }

@@ -58,7 +58,7 @@ const routes: Routes = [
     {path:'admin/edit-rapportpsy/:id',component:EditrapportpsyAdminComponent},
 
    { path: 'stats/:psychologueId/:year/:month', component: StatsComponent },
-   {path: 'addc/:psychologueId', component: AddconssultationComponent },
+   {path: 'addc/:userId', component: AddconssultationComponent },
    {path:'editconsultation/:id',component:UpdateconssultationComponent},
    {path:'showc/:id',component:ShowconssultationComponent},
    {path:'deletec/:id',component:DeleteconssultationComponent},

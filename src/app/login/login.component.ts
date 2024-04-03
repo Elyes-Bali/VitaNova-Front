@@ -49,14 +49,16 @@ export class LoginComponent {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().roles;
         
-        if (this.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/psy']); // Redirect to /admin if role is admin
-        }
-        if (this.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/psy']); // Redirect to /admin if role is admin
-        }
-        if (this.roles.includes('ROLE_CLIENT')) {
-          this.router.navigate(['/consultations']); 
+      
+        if (this.roles.includes('ROLE_PSYCOLOGIST')) {
+          this.router.navigate(['/rapportpsy']); }
+        else if (this.roles.includes('ROLE_ADMIN')) {
+            // Redirect to /admin if role is admin
+            this.router.navigate(['/psy']);
+          } else if (this.roles.includes('ROLE_CLIENT')) {
+            // Redirect to /client if role is client
+            this.router.navigate(['/consultations']);
+        
 
           // Redirect to /admin if role is admin
         }  else {
