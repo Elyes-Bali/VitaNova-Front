@@ -1,54 +1,79 @@
-<div class="container mt-4" *ngIf="post">
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title">{{ post.description }}</h2>
-      <div class="float-right" *ngIf="post.idOwner== ownerId">
-        <button class="btn btn-danger btn-sm" (click)="deletePost()">Delete</button>
-      </div>
-      <p class="card-text">{{ post.post }}</p>
-      <img *ngIf="post.imageP" [src]="post.imageP" class="img-fluid mb-3" alt="Post Image">
+<div class="container mt-4 mb-5" *ngIf="post">
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-8">
+      <div class="feed p-2">
 
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Add a comment..." [(ngModel)]="newComment">
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button" (click)="addComment()">Add</button>
+        <div class="bg-white border mt-2">
+          <div>
+            <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+              <div class="d-flex flex-row align-items-center feed-text px-2">
+
+                <div class="d-flex flex-column flex-wrap ml-2"><span
+                  class="font-weight-bold">{{ post.post }}</span>
+                  <span class="text-black-50 time">{{ post.createdDate | timeago }}</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 px-3"><span>{{ post.description }}</span></div>
+
+          <div *ngIf="post.imageP" class="feed-image p-2 px-3"><img class="img-fluid img-responsive"
+                                                                    src="{{post.imageP}}"></div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>Comments</h3>
-        </div>
-        <div class="col-sm-6 right">
-          <div class="btn-group" dropdown>
-            Trier par:
-            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-                    aria-controls="dropdown-basic">
-              {{ sortCriteria }} <span class="caret"></span>
-            </button>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                role="menu" aria-labelledby="button-basic">
-              <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('default')">default</a></li>
-              <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('date')">date</a></li>
-            </ul>
+
+        <div class="d-flex  align-items-center p-2 bg-white border">
+          <div class="input-group">
+            <input type="text" class="form-control input-text" [(ngModel)]="newComment"
+                   placeholder="What do you think ? "
+                   aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-lg" type="button"><i class="fa fa-paper-plane" (click)="addComment()"></i></button>
+            </div>
           </div>
         </div>
-      </div>
-      <ul class="list-group mb-3">
-        <li *ngFor="let comment of commentsPage.content" class="list-group-item">
-          <div>{{ comment.comment }}</div>
-          <div>{{ comment.createdDate | date }}</div>
-          <!-- Delete Icon -->
-          <div class="float-right" *ngIf="comment.idOwner== ownerId">
-            <button class="btn btn-danger btn-sm" (click)="deleteComment(comment.idComments)">Delete</button>
+
+        <div *ngIf="commentsPage">
+          <div class="col-sm-6 right align-items-end">
+            <div class="btn-group" dropdown>
+              Trier par:
+              <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                      aria-controls="dropdown-basic">
+                {{ sortCriteria }} <span class="caret"></span>
+              </button>
+              <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="button-basic">
+                <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('default')">default</a>
+                </li>
+                <li role="menuitem"><a class="dropdown-item" (click)="loadCommentsByCriteria('date')">date</a></li>
+              </ul>
+            </div>
           </div>
-        </li>
-      </ul>
+          <div class="bg-white border mt-2" *ngFor="let comment of commentsPage.content">
+            <div>
+              <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+                <div class="d-flex flex-row align-items-center feed-text px-2"><img class="rounded-circle"
+                                                                                    src="assets/images/user-icon.jpg"
+                                                                                    width="45">
+                  <div class="d-flex flex-column flex-wrap ml-2">
+                    <span class="font-weight-bold">{{ comment.user.username }}</span>
+                    <div *ngFor="let ach of comment.user.achievements">
+                      <span class="badge badge-primary" style="background-color: grey">{{ ach.publicName }}</span>
+                    </div>
+                    <span class="text-black-50 time">{{ comment.createdDate | timeago }}</span>
 
+                  </div>
+                </div>
+                <div class="feed-icon px-2"><i class="fa fa-trash" style="color: #ff4d4d"
+                                               (click)="deleteComment(comment.idComments)"></i></div>
+              </div>
+            </div>
+            <div class="p-2 px-3"><span>{{ comment.comment }}</span></div>
+          </div>
+          <pagination *ngIf="commentsPage.content.length>0" [totalItems]="commentsPage.totalElements" [(ngModel)]="currentPage"
+                      (pageChanged)="pageChanged($event)" [itemsPerPage]="5"
+                      [maxSize]="4"></pagination>
 
-      <pagination [totalItems]="commentsPage.totalElements" [(ngModel)]="currentPage"
-                  (pageChanged)="pageChanged($event)" [itemsPerPage]="5"
-                  [maxSize]="4"></pagination>
-
+        </div>
+      </div>
     </div>
   </div>
 </div>

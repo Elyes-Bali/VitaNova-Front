@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { ProductsComponent } from '../products/products.component';
-import { Products } from '../models/products';
+import { ProductType, Products } from '../models/products';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,5 +45,13 @@ export class ProductsService {
   deleteProduct(id: number): Observable<void> {
     const url = `${this.PRODUCT_API_URL}deleteprod/${id}`;
     return this.httpclient.delete<void>(url);
+  }
+
+  countProductsByTypeProd(): Observable<Map<ProductType, number>> {
+    return this.httpclient.get<Map<ProductType, number>>(`${this.PRODUCT_API_URL}countByTypeProd`);
+  }
+
+  calculateTotalPriceByTypeProd(): Observable<Map<ProductType, number>> {
+    return this.httpclient.get<Map<ProductType, number>>(`${this.PRODUCT_API_URL}sumPriceByTypeProd`);
   }
 }

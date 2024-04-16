@@ -1,10 +1,21 @@
-/* Style pour les cartes des ingrédients */
 .ingredient-card {
-    height: 300px; /* Hauteur fixe pour toutes les cartes */
+    overflow: hidden; /* Ensures the image doesn't overflow the card */
 }
 
-/* Style pour les images à l'intérieur des cartes */
-.ingredient-card img {
-    height: 250px; /* Hauteur fixe pour les images */
-    object-fit: cover; /* Ajustement d'objet pour couvrir la totalité de la zone de l'image */
+.ingredient-image {
+    width: 100%; /* Makes the image take full width of the card */
+    height: 200px; /* Set a fixed height or use auto */
+    object-fit: cover; /* Ensures the image covers the space without distorting */
+}
+.chart-container {
+    overflow-x: auto; /* Allows horizontal scrolling */
+    white-space: nowrap; /* Keeps the charts on one line */
+    padding: 10px 0;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+}
+
+.chart-container > div {
+    display: inline-block; /* Ensures charts are inline */
+    flex-shrink: 0; /* Prevents reduction in chart size */
+    width: 400px; /* Manages chart width */
 }

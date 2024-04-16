@@ -13,8 +13,7 @@ export class RecipesService {
   constructor(private http: HttpClient) { }
 
   addRecipe(recipe: Recipes): Observable<Recipes> {
-    console.log(recipe)
-    return this.http.post<Recipes>(this.baseUrl, recipe);
+     return this.http.post<Recipes>(this.baseUrl, recipe);
   }
 
   getRecipeById(id: number): Observable<Recipes> {
@@ -43,4 +42,25 @@ export class RecipesService {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete(url);
   }
+  getAveragePreparationTime(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/average-preparation-time`);
+  }
+
+  getMostPopularIngredients(): Observable<Object[]> {
+    return this.http.get<Object[]>(`${this.baseUrl}/most-popular-ingredients`);
+  }
+
+  getRecipesAddedOnDate(date: Date): Observable<number> {
+ 
+    return this.http.get<number>(`${this.baseUrl}/recipes-added-on-date?date=${date}`);
+  }
+  getRecipeStats(startDate: string, endDate: string, type: string): Observable<any> {
+    const url=this.baseUrl+"/stats?start="+startDate+"&end="+endDate+"&type="+type;
+ 
+    console.log(url);
+    return this.http.get<any>(`${this.baseUrl}/stats?start=${startDate}&end=${endDate}&type=${type}`);
+}
+
+
+ 
 }

@@ -1,33 +1,30 @@
-.community-list {
-  max-width: 600px;
-  margin: 0 auto;
+body {
+  background: #eee;
+
 }
 
-.community-item {
-  background-color: #f9f9f9;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.ratings i {
+  color: green;
 }
 
-.community-item h3 {
-  margin-top: 0;
+.install span {
+  font-size: 12px;
 }
 
-.community-item p {
-  margin-bottom: 10px;
+.col-md-4 {
+  margin-top: 27px;
 }
 
-.join-button {
-  background-color: #007bff;
+.avatar {
+  width: 70px;
+  height: 70px;
+  /*border-radius: 50%;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
   color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
+  margin: 10px;
 }
 
-.join-button:hover {
-  background-color: #0056b3;
-}

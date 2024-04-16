@@ -12,6 +12,13 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  status = false;
+  sortOption: string = 'name';
+  addToggle()
+  {
+    this.status = !this.status;
+  }
+
   ingredients: Ingredients[] = [];
   ALLingredients: Ingredients[] = [];
   currentFile?: File;

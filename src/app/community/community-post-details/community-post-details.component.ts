@@ -5,6 +5,7 @@ import {Comments, Posts} from "../../models/posts";
 import {PagedResponse} from "../../models/PagedResponse";
 import {CommentsService} from "../comments.service";
 import {PageChangedEvent} from "ngx-bootstrap/pagination";
+import {StorageService} from "../../_services/storage.service";
 
 @Component({
   selector: 'app-community-post-details',
@@ -20,13 +21,16 @@ export class CommunityPostDetailsComponent implements OnInit {
   sortCriteria = "default"
   ownerId = 1;
   communityId: number;
+  currentUserName: string;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private postsService: PostsService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private storageService: StorageService
   ) {
+    this.currentUserName = this.storageService.getUser()?.username;
   }
 
 
@@ -49,7 +53,7 @@ export class CommunityPostDetailsComponent implements OnInit {
 
   addComment() {
     if (this.newComment) {
-      let comment = {comment: this.newComment, idOwner: this.ownerId} as Comments;
+      let comment = {comment: this.newComment} as Comments;
       this.commentsService.addNewComment(comment, this.post.idPosts).subscribe(value => this.commentsPage.content.push(value));
     }
   }
@@ -68,5 +72,9 @@ export class CommunityPostDetailsComponent implements OnInit {
     this.commentsService
       .getAllCommentsByPage(this.currentPage, this.post.idPosts, this.sortCriteria)
       .subscribe(value => this.commentsPage = value);
+  }
+
+  isContentOwner(username: string){
+    return this.currentUserName===username;
   }
 }

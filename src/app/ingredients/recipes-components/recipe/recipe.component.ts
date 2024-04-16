@@ -10,19 +10,33 @@ import { IngredientsService } from '../../services/ingredients.service';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
+  status = false;
+  sortOption: string = 'name';
+  addToggle()
+  {
+    this.status = !this.status;
+  }
+
   modalRef?: BsModalRef;
   ingredientSets: Ingredients[] = [];
   selectedIngredients: Ingredients[] = []; // Initialisez selectedIngredients
   recipe:  Recipes = {
     idRecepies: 0,
+    name:'',
+    dateAdded:new Date(),
+    datePreparation:new Date(),
     description: '',
     images: '',
     ingredients: [] // Initialisez newRecipe.ingredients à une tableau vide
   };; // Déclarer la propriété recipe
   newRecipe: Recipes = {
     idRecepies: 0,
+ 
+    dateAdded:new Date(),
+    datePreparation:new Date(),
     description: '',
     images: '',
+    name:'',
     ingredients: [] // Initialisez newRecipe.ingredients à une tableau vide
   };
   deleteSuccessAlertVisible = false;
@@ -46,8 +60,7 @@ export class RecipeComponent implements OnInit {
   addRecipe(): void {
     this.newRecipe.ingredients = this.selectedIngredients;
 
-    console.log(this.newRecipe);
- 
+  
    
     this.modalRef?.hide();
     this.recipeService.addRecipe(this.newRecipe)
@@ -77,7 +90,7 @@ export class RecipeComponent implements OnInit {
             // Code pour masquer le formulaire (par exemple, utiliser une variable de contrôle)
           }, 400);
         }
-      );
+      ); 
   }
 // Supposons que vous avez une méthode pour ajouter des ingrédients sélectionnés
 addSelectedIngredient(selectedIngredient: Ingredients) {
@@ -100,7 +113,7 @@ addSelectedIngredient(selectedIngredient: Ingredients) {
     );
   }
   isSelected(ingredient: any): boolean {
-    return this.selectedIngredients.includes(ingredient);
+     return this.selectedIngredients.includes(ingredient);
   }
 
   // Méthode pour basculer la sélection d'un ingrédient
@@ -121,10 +134,12 @@ addSelectedIngredient(selectedIngredient: Ingredients) {
     });
   }
   updateRecipe(recipeId: number,recipe:Recipes) {
-    this.modalRef?.hide();
+    this.modalRef?.hide(); 
+      this.recipe.ingredients = this.selectedIngredients;
+
 
     // Logique pour mettre à jour une recette avec l'ID recipeId
-    console.log(recipe);
+    console.log(recipe.ingredients);
   
     this.recipeService.updateRecipe(recipe).subscribe(
       () => {
@@ -137,7 +152,7 @@ addSelectedIngredient(selectedIngredient: Ingredients) {
            this.successMessage = '';
           this.errorMessage = '';
           // Code pour masquer le formulaire (par exemple, utiliser une variable de contrôle)
-        }, 400);
+        }, 600);
          this.loadRecipes();
                // Mettez à jour les données si nécessaire
       },
@@ -149,7 +164,7 @@ addSelectedIngredient(selectedIngredient: Ingredients) {
           this.successMessage = '';
 
           // Code pour masquer le formulaire (par exemple, utiliser une variable de contrôle)
-        }, 300);
+        }, 600);
         console.error('Erreur lors de la mise à jour de la recette :', error);
       }
     );

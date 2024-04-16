@@ -9,8 +9,11 @@ import { Observable } from 'rxjs';
 export class CartService {
   readonly PRODUCT_API_URL = 'http://localhost:8085/vita/cart/';
   constructor(private httpclient: HttpClient) { }
-  addProduct(cart: Cart) {
-    return this.httpclient.post(this.PRODUCT_API_URL + 'addtocart', cart);
+  // addProduct(cart: Cart) {
+  //   return this.httpclient.post(this.PRODUCT_API_URL + 'addtocart', cart);
+  // }
+  addToCart(ownerId: number, cartItem: any): Observable<any> {
+    return this.httpclient.post<any>(this.PRODUCT_API_URL + 'addtocart/' + ownerId, cartItem);
   }
 
   getAllCartItems(){
@@ -20,5 +23,13 @@ export class CartService {
   deleteProductCart(id: number): Observable<void> {
     const url = `${this.PRODUCT_API_URL}deletecart/${id}`;
     return this.httpclient.delete<void>(url);
+  }
+
+  // getCartByOwnerId(id: number): Observable<Cart> {
+  //   return this.httpclient.get<Cart[]>(`${this.PRODUCT_API_URL}getCartByOwnerId/${id}`);
+  // }
+
+  getCartByOwnerId(id: number): Observable<Cart[]> {
+    return this.httpclient.get<Cart[]>(`${this.PRODUCT_API_URL}getCartByOwnerId/${id}`);
   }
 }

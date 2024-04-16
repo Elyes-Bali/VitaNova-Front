@@ -8,9 +8,9 @@
     </div>
     <div class="list-group list-group-flush my-3">
       <a
-        href="#"
+        href="/listUser"
         class="list-group-item list-group-item-action bg-transparent second-text active"
-        ><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a
+        ><i class="fas fa-user me-2"></i>Users</a
       >
       <a
         routerLink="/dashProds"
@@ -120,6 +120,24 @@
             </div>
           </a>
         </div>
+        <div class="row">
+          <div class="col-md-12 select-container">
+            <select [(ngModel)]="selectedChart" (change)="toggleChart()" class="chart-select">
+              <option value="productCount">Product Count</option>
+              <option value="productPrice">Product Price</option>
+            </select>
+          </div>
+        </div>
+                
+        <div class="row">
+          <div class="col-md-12">
+            <canvas #chartCanvas *ngIf="selectedChart === 'productCount'" class="chart-canvas"></canvas>
+            <canvas #priceChartCanvas *ngIf="selectedChart === 'productPrice'" class="chart-canvas"></canvas>
+          </div>
+        </div>
+        
+        
+        
 
         <!-- <div class="col-md-3">
                     <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
@@ -255,3 +273,15 @@
   </div>
 </div>
 <!-- /#page-content-wrapper -->
+<!-- <div class="row">
+  <div class="col-md-12">
+  
+      <canvas #chartCanvas></canvas>
+   
+  </div>
+</div> -->
+<!-- <div class="row">
+  <div class="col-md-12">
+<canvas #priceChartCanvas></canvas>
+</div>
+</div> -->

@@ -14,14 +14,18 @@ import {DetailsProductsComponent} from './allProducts/detailProds/details-produc
 import {DeleteProductsComponent} from './allProducts/deleteProds/delete-products/delete-products.component';
 import {DashProductsComponent} from './Dashs/productsDash/dash-products/dash-products.component';
 import {AddToCartComponent} from './Cart/addToCart/add-to-cart/add-to-cart.component';
-import {CreateCommunityComponent} from "./community/create-community/create-community.component";
+import {ForgetpasswordComponent} from './forgetpassword/forgetpassword.component';
+import {ResetpasswordComponent} from './resetpassword/resetpassword.component';
+import {ListUserComponent} from './list-user/list-user.component';
+import {ModifierUserComponent} from './modifier-user/modifier-user.component';
+import {VerifiactionComponent} from './verifiaction/verifiaction.component';
 import {CommunityListComponent} from "./community/community-list/community-list.component";
 import {CommunityPostsComponent} from "./community/community-posts/community-posts.component";
 import {CommunityPostDetailsComponent} from "./community/community-post-details/community-post-details.component";
-import {CommunityPostCreateComponent} from "./community/community-post-create/community-post-create.component";
-import { IngredientsComponent } from './ingredients/ingrédients-componets/ingredients/ingredients.component';
-import { RecipeComponent } from './ingredients/recipes-components/recipe/recipe.component';
- import { ListComponent } from './ingredients/listingredients/list/list.component';
+import {IngredientsComponent} from './ingredients/ingrédients-componets/ingredients/ingredients.component';
+import {RecipeComponent} from './ingredients/recipes-components/recipe/recipe.component';
+import {ListComponent} from './ingredients/listingredients/list/list.component';
+import {CommunityListAdminComponent} from "./community/community-list-admin/community-list-admin.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -38,15 +42,19 @@ const routes: Routes = [
   {path: 'editeProds/:id', component: EditProductsComponent},
   {path: 'detailProds/:id', component: DetailsProductsComponent},
   {path: 'deleteProds/:id', component: DeleteProductsComponent},
-  {path: 'community/new', component: CreateCommunityComponent},
+  {path: 'forgetpassword', component: ForgetpasswordComponent},
+  {path: 'resetpassword', component: ResetpasswordComponent},
+  {path: 'listUser', component: ListUserComponent},
+  {path: 'edituser/:id', component: ModifierUserComponent},
+  {path: 'verify', component: VerifiactionComponent},
   {path: 'community/:communityId/feed', component: CommunityPostsComponent},
   {path: 'community/:communityId/feed/post/:postId', component: CommunityPostDetailsComponent},
-  {path: 'community/:communityId/feed/new', component: CommunityPostCreateComponent},
   {path: 'community', component: CommunityListComponent},
-  {path:'ingredients',component:IngredientsComponent},
-  
-  {path:'recipes',component:RecipeComponent},
-  {path:'listIngredients',component:ListComponent}
+  {path: 'admin/community', component: CommunityListAdminComponent},
+  {path: 'listIngredients', component: ListComponent},
+  {path: 'listRecette', component: RecipeComponent},
+  {path: 'ingredients', component: IngredientsComponent},
+
 ];
 
 @NgModule({

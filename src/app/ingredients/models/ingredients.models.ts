@@ -15,14 +15,22 @@ export class Ingredients {
   }
   export class Recipes {
     idRecepies: number;
+    dateAdded: Date;
+    datePreparation:Date;
     description: string;
     images: string;
+    name: string;
+
     ingredients: Ingredients[];
 
-    constructor(idRecepies: number, description: string, images: string, ingredients: Ingredients[]) {
+    constructor(idRecepies: number,dateAdded:Date,datePreparation:Date, description: string, images: string,name: string, ingredients: Ingredients[]) {
         this.idRecepies = idRecepies;
+        
+        this.dateAdded=dateAdded;
+        this.datePreparation=datePreparation;
         this.description = description;
         this.images = images;
+        this.name=name;
         this.ingredients = ingredients;
     }
   }

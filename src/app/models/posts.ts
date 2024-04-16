@@ -1,7 +1,9 @@
+import {User} from "./user";
+
 export interface Posts {
   idPosts: number;
   idOwner: number;
-  comments: Comments[];
+  createdDate: Date;
   description: string;
   post: string;
   imageP: string;
@@ -11,7 +13,8 @@ export interface Comments {
   idComments: number;
   createdDate: Date;
   comment: string;
-  idOwner: number;
+  posts: Posts,
+  user: User
 }
 
 

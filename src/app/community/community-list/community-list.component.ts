@@ -34,6 +34,15 @@ export class CommunityListComponent implements OnInit {
     this.communityService.searchCommunity(this.searchTerm).subscribe(communities => {
       this.communities = communities;
     });
+  }
 
+  getRandomInitials(name: string): string {
+    const words = name.split(' ');
+    const initials = words.map(word => word.charAt(0)).join('');
+    return initials.toUpperCase();
+  }
+
+  getRandomColor(): string {
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
   }
 }

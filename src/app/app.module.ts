@@ -24,20 +24,28 @@ import {DeleteProductsComponent} from './allProducts/deleteProds/delete-products
 import {DashProductsComponent} from './Dashs/productsDash/dash-products/dash-products.component';
 import {DeleteProdsDashComponent} from './Dashs/prodsDelDash/delete-prods-dash/delete-prods-dash.component';
 import {AddToCartComponent} from './Cart/addToCart/add-to-cart/add-to-cart.component';
-import {CreateCommunityComponent} from './community/create-community/create-community.component';
+import {VerifiactionComponent} from './verifiaction/verifiaction.component';
+import {ModifierUserComponent} from './modifier-user/modifier-user.component';
+import {ForgetpasswordComponent} from './forgetpassword/forgetpassword.component';
+import {ResetpasswordComponent} from './resetpassword/resetpassword.component';
+import {ListUserComponent} from './list-user/list-user.component';
+import {FoodDataServiceComponent} from './food-data-service/food-data-service.component';
+import {NgOptimizedImage} from "@angular/common";
+import {PaginationModule} from "ngx-bootstrap/pagination";
 import {CommunityListComponent} from './community/community-list/community-list.component';
 import {CommunityPostsComponent} from './community/community-posts/community-posts.component';
-import {NgOptimizedImage} from "@angular/common";
 import {CommunityPostDetailsComponent} from './community/community-post-details/community-post-details.component';
-import {PaginationModule} from "ngx-bootstrap/pagination";
-import { IngredientsComponent } from './ingredients/ingrédients-componets/ingredients/ingredients.component';
+import {IngredientsComponent} from './ingredients/ingrédients-componets/ingredients/ingredients.component';
 
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { CommunityPostCreateComponent } from './community/community-post-create/community-post-create.component';
-import { RecipeComponent } from './ingredients/recipes-components/recipe/recipe.component';
-  import { ListComponent } from './ingredients/listingredients/list/list.component';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {RecipeComponent} from './ingredients/recipes-components/recipe/recipe.component';
+import {ListComponent} from './ingredients/listingredients/list/list.component';
+import {BsModalService} from 'ngx-bootstrap/modal';
+import {httpInterceptorProviders} from "./_helpers/http.interceptor";
+import {TimeagoModule} from "ngx-timeago";
+import {CommunityListAdminComponent} from './community/community-list-admin/community-list-admin.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -62,15 +70,20 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     DashProductsComponent,
     DeleteProdsDashComponent,
     AddToCartComponent,
-    CreateCommunityComponent,
+    VerifiactionComponent,
+    ListUserComponent,
+    ModifierUserComponent,
+    ForgetpasswordComponent,
+    ResetpasswordComponent,
+    FoodDataServiceComponent,
     CommunityListComponent,
     CommunityPostsComponent,
     CommunityPostDetailsComponent,
-    CommunityPostCreateComponent,
     IngredientsComponent,
     RecipeComponent,
- 
+
     ListComponent,
+    CommunityListAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,12 +91,13 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ChartModule,
     NgOptimizedImage,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule, TimeagoModule.forRoot()
   ],
-    providers: [BsModalService],
+  providers: [BsModalService, FoodDataServiceComponent, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

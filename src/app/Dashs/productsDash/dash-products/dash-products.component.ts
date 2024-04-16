@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/components/products.service';
 import { Products } from 'src/app/models/products';
-
+import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-dash-products',
   templateUrl: './dash-products.component.html',
   styleUrls: ['./dash-products.component.css']
 })
-export class DashProductsComponent implements OnInit{
+export class DashProductsComponent implements OnInit,AfterViewInit{
   status = false;
   sortOption: string = 'name';
   addToggle()
@@ -18,6 +18,8 @@ export class DashProductsComponent implements OnInit{
  
   searchTerm: string = ''; // Holds the search term entered by the user
   products: Products[] = []; // Holds the list of all products
+  prods: { [key: string]: number } = {}; // Holds the count of products by type
+
   filteredProducts: Products[] = [];
   pageSize = 8; // Number of products per page
   currentPage = 1; // Current page
@@ -26,11 +28,31 @@ export class DashProductsComponent implements OnInit{
   pagedProducts: Products[] = []; 
   
   constructor(private productService: ProductsService) { }
-
+   @ViewChild('chartCanvas') chartCanvas!: ElementRef;
+  @ViewChild('priceChartCanvas') priceChartCanvas!: ElementRef;
+  chart: Chart | undefined;
+  priceChart: Chart | undefined;
+  selectedChart: 'productPrice' | 'productCount' = 'productCount'; 
   ngOnInit(): void {
     this.getAllProducts();
+    this.getprod();
+   this.getprodPrice();
   }
 
+  ngAfterViewInit() {
+    if (this.chartCanvas.nativeElement) {
+      // Call renderChart with appropriate arguments based on the selected chart
+      if (this.selectedChart === 'productCount') {
+        this.renderChart([], []);
+      } else if (this.selectedChart === 'productPrice') {
+        this.renderChartprice([], []);
+      }
+    } else {
+      console.error('Canvas element not found');
+    }
+  }
+  
+  
   getAllProducts(): void {
     this.productService.getAllProducts().subscribe(
       (data) => {
@@ -79,9 +101,6 @@ export class DashProductsComponent implements OnInit{
     }
   }
   
-  
-  
-  
   updatePagination(): void {
     // Calculate total number of pages
     this.totalPages = Math.ceil(this.filteredProducts.length / this.pageSize);
@@ -121,4 +140,149 @@ export class DashProductsComponent implements OnInit{
     }
   }
   
+
+
+  getprod(): void {
+    this.productService.countProductsByTypeProd().subscribe(
+      (data) => {
+        if (data && typeof data === 'object') {
+          // Filter out properties with null values and convert the rest to an object
+          const filteredData = Object.entries(data)
+            .filter(([_, value]) => value !== null)
+            .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+  
+          // Extract keys and values from the filtered data
+          const labels = Object.keys(filteredData);
+          const values = Object.values(filteredData).map(val => Number(val));
+  
+          // Render the chart with the extracted data
+          this.renderChart(labels, values);
+        } else {
+          console.error('Data returned is not in the expected format:', data);
+        }
+      },
+      (error: any) => {
+        console.error('Failed to retrieve product counts by type:', error);
+      }
+    );
+
+  }
+  
+  
+  renderChart(labels: string[], values: number[]): void {
+    if (!this.chartCanvas || !this.chartCanvas.nativeElement) {
+      console.error('Canvas element not found');
+      return;
+    }
+  
+    // Check if there's an existing chart instance
+    if (this.chart) {
+      // Destroy the existing chart instance
+      this.chart.destroy();
+    }
+  
+    const ctx = this.chartCanvas.nativeElement.getContext('2d');
+    if (!ctx) {
+      console.error('Canvas context not found');
+      return;
+    }
+  
+    this.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Number of Products By Categorie',
+          data: values,
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  getprodPrice(): void {
+    this.productService.calculateTotalPriceByTypeProd().subscribe(
+      (data) => {
+        if (data && typeof data === 'object') {
+          // Filter out properties with null values and convert the rest to an object
+          const filteredData = Object.entries(data)
+            .filter(([_, value]) => value !== null)
+            .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+  
+          // Extract keys and values from the filtered data
+          const labels = Object.keys(filteredData);
+          const values = Object.values(filteredData).map(val => Number(val));
+  
+          // Render the chart with the extracted data
+          this.renderChartprice(labels, values);
+        } else {
+          console.error('Data returned is not in the expected format:', data);
+        }
+      },
+      (error: any) => {
+        console.error('Failed to retrieve product counts by type:', error);
+      }
+    );
+
+  }
+  renderChartprice(labels: string[], values: number[]): void {
+    if (!this.priceChartCanvas || !this.priceChartCanvas.nativeElement) {
+      console.error('Canvas element not found');
+      return;
+    }
+  
+    // Check if there's an existing chart instance
+    if (this.priceChart) {
+      // Destroy the existing chart instance
+      this.priceChart.destroy();
+    }
+  
+    const ctx = this.priceChartCanvas.nativeElement.getContext('2d');
+    if (!ctx) {
+      console.error('Canvas context not found');
+      return;
+    }
+  
+    this.priceChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'totale prices(tnd) for each categorie',
+          data: values,
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  toggleChart(): void {
+    if (this.selectedChart === 'productCount') {
+      this.getprod();
+    } else if (this.selectedChart === 'productPrice') {
+      this.getprodPrice();
+    }
+  }
+  
 }
+  
+  
+
+
+
