@@ -1,0 +1,32 @@
+.container {
+    margin: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .rapport-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .rapport-table th,
+  .rapport-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .rapport-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .no-rapport-message {
+    font-style: italic;
+    color: #999;
+  }

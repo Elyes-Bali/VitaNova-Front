@@ -1,0 +1,27 @@
+<h2>Add Consultation</h2>
+
+<form [formGroup]="consultationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="startTime">Start Time:</label>
+    <input type="time" id="startTime" formControlName="startTime" required>
+  </div>
+
+
+  <div>
+    <label for="consultationDate">Consultation Date:</label>
+    <input type="text" id="consultationDate" name="consultationDate" formControlName="consultationDate" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+
+  <div>
+    <label for="psychiatristId">Psychiatrist:</label>
+    <select id="psychiatristId" name="psychiatristId" formControlName="psychiatristId" required>
+      <option *ngFor="let psychiatrist of psychiatrists" [value]="psychiatrist.id">{{ psychiatrist.username }}</option>
+    </select>
+  </div>
+
+
+
+  <button type="submit" [disabled]="consultationForm.invalid">Add Consultation</button>
+</form>

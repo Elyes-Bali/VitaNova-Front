@@ -1,0 +1,21 @@
+<div class="chat-container">
+    <!-- Chat input section -->
+    <div class="chat-input">
+      <label for="questionSelect" class="question-label">Select a Question:</label>
+      <select id="questionSelect" [(ngModel)]="selectedQuestionId" class="question-select">
+        <option *ngFor="let question of questions" [value]="question.idquestion">{{ question.text }}</option>
+      </select>
+      <button (click)="getAnswer()" class="send-button">Get Answer</button>
+    </div>
+  
+    <!-- Chat messages section -->
+    <div class="chat-messages">
+      <!-- Bot and user messages -->
+      <div class="message bot-message" *ngIf="answerText">
+        <p class="message-text">{{ answerText }}</p>
+      </div>
+      <div class="message user-message" *ngIf="selectedQuestionId">
+        <p class="message-text">{{ getQuestionText() }}</p>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,25 @@
+<p>editconsultation works!</p>
+<div class="container">
+    <h2>Edit Consultation</h2>
+    <form [formGroup]="consultationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="startTime">Start Time</label>
+        <input type="time" class="form-control" id="startTime" formControlName="startTime">
+      </div>
+      <div class="form-group">
+        <label for="consultationDate">Consultation Date:</label>
+        <input type="text" id="consultationDate" name="consultationDate" formControlName="consultationDate" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      
+      <div class="form-group">
+        <label for="psychiatristId">Psychiatrist</label>
+        <select class="form-control" id="psychiatristId" formControlName="psychiatristId">
+          <option *ngFor="let psychiatrist of psychiatrists" [value]="psychiatrist.id">{{ psychiatrist.username }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

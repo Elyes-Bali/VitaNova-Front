@@ -1,0 +1,39 @@
+<div class="container">
+  <h2 class="title">List of Rapport Psy</h2>
+  <button [routerLink]="['/addrapport']">Add</button>
+  
+  <ng-container *ngIf="rapports && rapports.length > 0; else noRapports">
+    <table class="rapport-table">
+      <thead>
+        <tr>
+          <th>Rapport ID</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Psychiatrist</th>
+          <th>Client</th>
+          <th>Actions</th> <!-- New column for actions -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rapport of rapports">
+          <td>{{ rapport.idRapportPsy }}</td>
+          <td>{{ rapport.description }}</td>
+          <td>{{ rapport.dateRappPs | date: 'medium' }}</td>
+          <td>{{ rapport.psychiatrist.username }}</td>
+          <td>{{ rapport.clients.username }}</td>
+          <td>
+            <button [routerLink]="['/editrapport', rapport.idRapportPsy]">modify</button>
+           
+            <button [routerLink]="['/showrap', rapport.idRapportPsy]">show</button>
+            
+            <button [routerLink]="['/deleter', rapport.idRapportPsy]">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  
+  <ng-template #noRapports>
+    <p class="no-rapport-message">No rapport psy available.</p>
+  </ng-template>
+</div>

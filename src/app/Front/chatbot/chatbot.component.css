@@ -1,0 +1,47 @@
+.chatbot-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .questions-list {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .questions-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .questions-list li {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-bottom: 5px;
+  }
+  
+  .questions-list li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .answer-section {
+    flex: 2;
+  }
+  
+  .answer-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .answer-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  .answer-section div {
+    margin-top: 10px;
+  }
+  

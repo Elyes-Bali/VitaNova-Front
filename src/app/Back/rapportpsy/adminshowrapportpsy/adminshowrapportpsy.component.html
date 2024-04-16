@@ -1,0 +1,11 @@
+
+
+<div *ngIf="rapportPsy">
+    <h2>Rapport Psy Details</h2>
+    <p><strong>ID:</strong> {{ rapportPsy.idRapportPsy }}</p>
+    <p><strong>Description:</strong> {{ rapportPsy.description }}</p>
+    <p><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
+    <p><strong>Psychiatrist:</strong> {{ rapportPsy.psychiatrist.username }} {{ rapportPsy.psychiatrist.prenom }}</p>
+    <p><strong>Clients:</strong> {{ rapportPsy.clients.username }} {{ rapportPsy.clients.prenom }}</p>
+  </div>
+  

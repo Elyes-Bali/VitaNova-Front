@@ -1,0 +1,50 @@
+<!-- consultation.component.html -->
+<div class="container my-5">
+  <div class="row justify-content-between align-items-center mb-4">
+    <div class="col-auto">
+      <h2>Consultations</h2>
+    </div>
+    <div class="col-auto">
+      <a routerLink="/addconsultation" class="btn btn-primary">Add Consultation</a>
+    </div>
+  </div>
+
+  <div *ngIf="consultations.length === 0">
+    <div class="alert alert-info">No consultations found.</div>
+  </div>
+
+  <div *ngIf="consultations.length > 0">
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Start Time</th>
+            <th>Date</th>
+            <th>Psychiatrist</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let consultation of consultations">
+            <td>{{ consultation.idConsultation }}</td>
+            <td>{{ consultation.startTime }}</td>
+            <td>{{ consultation.consultationdate }}</td>
+            <td>{{ consultation.psychiatrist.username }}</td>
+            <td>
+              <div class="btn-group">
+                <a routerLink="/show/{{ consultation.idConsultation }}" class="btn btn-sm btn-primary">
+                  View
+                </a>
+                <a routerLink="/editconsultation/{{ consultation.idConsultation }}" class="btn btn-sm btn-warning">
+                  Edit
+                </a>
+                <!-- Add delete button if needed -->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

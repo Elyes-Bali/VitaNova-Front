@@ -1,0 +1,23 @@
+<table class="table bg-white rounded shadow-sm table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.gender }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="user.id && reserveConsultation(user.id)">Reserve</button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>

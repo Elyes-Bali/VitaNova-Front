@@ -1,0 +1,20 @@
+<table class="table bg-white rounded shadow-sm table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nom</th>
+        <th scope="col">Prenom</th>
+      
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.prenom }}</td>
+       
+        <td><button [routerLink]="['/stats', user.id, 2024, 'March']">stats</button></td>
+       
+      </tr>
+    </tbody>
+  </table>
+  
