@@ -16,8 +16,9 @@
       <td>{{ user.gender }}</td>
       <td>
         <button class="btn btn-danger" (click)="user.id && reserveConsultation(user.id)">Reserve</button>
-        
+        <a [routerLink]="['/rating', user.id]" class="btn btn-primary">Rate</a>
       </td>
+
     </tr>
   </tbody>
 </table>

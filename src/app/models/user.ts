@@ -38,3 +38,9 @@ export interface Consultation {
     psychiatrist: User;
     clients: User;
   }
+  export interface Feedback {
+    id?: number;
+    therapist: User;
+    user: User;
+    rating: number; // Rating from 0 to 5
+  }

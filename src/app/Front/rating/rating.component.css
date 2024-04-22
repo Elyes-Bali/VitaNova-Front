@@ -1,0 +1,15 @@
+.rating {
+    unicode-bidi: bidi-override;
+    direction: ltr;
+    text-align: left;
+  }
+  .star {
+    display: inline-block;
+    font-size: 25px;
+    color: #ccc; /* Default star color */
+    cursor: pointer;
+  }
+  .star.filled {
+    color: yellow; /* Color of filled stars */
+  }
+  

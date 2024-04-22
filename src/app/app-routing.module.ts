@@ -28,6 +28,8 @@ import { StatsComponent } from './stats/stats.component';
 import { AdminlisrapportpsyComponent } from './Back/rapportpsy/adminlisrapportpsy/adminlisrapportpsy.component';
 import { AdminshowrapportpsyComponent } from './Back/rapportpsy/adminshowrapportpsy/adminshowrapportpsy.component';
 import { ChatbotComponent } from './front/chatbot/chatbot.component';
+import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
+import { RatingComponent } from './Front/rating/rating.component';
 
 
 
@@ -62,7 +64,8 @@ const routes: Routes = [
   {path:'rapadmin',component:AdminlisrapportpsyComponent},
   {path:'showrapadmin/:id',component:AdminshowrapportpsyComponent},
   {path:'chatbot',component:ChatbotComponent},
-
+  {path:'calendar',component:TimeCalendarComponent},
+  {path:'rating/:id',component:RatingComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Consultation, RapportPsy, User } from '../models/user';
+import { Consultation, Feedback, RapportPsy, User } from '../models/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class PsychiatristService {
   private baseUrl = 'http://localhost:8085/vita/consultation'
   private rapport = 'http://localhost:8085/vita/rapportpsy'
   private url = 'http://localhost:8085/vita'
+  private apiUrl1 = 'http://localhost:8085/vita/rating';
   constructor(private http: HttpClient) { }
 
   getPsychiatrists(): Observable<User[]> {
@@ -74,4 +75,15 @@ export class PsychiatristService {
   }
   getAnswerByQuestionId(questionId: number): Observable<any> {
     return this.http.get<any>(`${this.url}answers/${questionId}`);
+}
+findAvailableTimeSlots(date: string, psychologistId: number): Observable<string[]> {
+  const url = `${this.url}/${psychologistId}/${date}`;
+  return this.http.get<string[]>(url);
+}  saveFeedback(feedback: Feedback) {
+  return this.http.post(this.apiUrl1, feedback);
+}
+
+
+getAverageRating(therapistId: number): Observable<number> {
+  return this.http.get<number>(`http://localhost:8085/vita/{{therapistId}}/average-rating`);
 }}

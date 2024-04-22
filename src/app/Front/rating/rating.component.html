@@ -1,0 +1,19 @@
+<div>
+    <h3>User Details</h3>
+    <p><strong>Name:</strong> {{ user?.username }}</p>
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+    <!-- Add more details as needed -->
+</div>
+
+<div>
+    <h2>Add Rating</h2>
+    <label for="rating">Rating:</label>
+    <div class="rating">
+        <span class="star" (click)="setRating(1)" [class.filled]="selectedRating >= 1">&#9733;</span>
+        <span class="star" (click)="setRating(2)" [class.filled]="selectedRating >= 2">&#9733;</span>
+        <span class="star" (click)="setRating(3)" [class.filled]="selectedRating >= 3">&#9733;</span>
+        <span class="star" (click)="setRating(4)" [class.filled]="selectedRating >= 4">&#9733;</span>
+        <span class="star" (click)="setRating(5)" [class.filled]="selectedRating >= 5">&#9733;</span>
+    </div>
+    <button (click)="submitFeedback()">Submit</button>
+</div>

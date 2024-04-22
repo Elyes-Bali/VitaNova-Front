@@ -43,6 +43,8 @@ import { StatsComponent } from './stats/stats.component';
 import { AdminlisrapportpsyComponent } from './Back/rapportpsy/adminlisrapportpsy/adminlisrapportpsy.component';
 import { AdminshowrapportpsyComponent } from './Back/rapportpsy/adminshowrapportpsy/adminshowrapportpsy.component';
 import { ChatbotComponent } from './front/chatbot/chatbot.component';
+import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
+import { RatingComponent } from './Front/rating/rating.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { ChatbotComponent } from './front/chatbot/chatbot.component';
     AdminlisrapportpsyComponent,
     AdminshowrapportpsyComponent,
     ChatbotComponent,
+    TimeCalendarComponent,
+    RatingComponent,
     
    
   ],
