@@ -30,6 +30,8 @@ import { AdminshowrapportpsyComponent } from './Back/rapportpsy/adminshowrapport
 import { ChatbotComponent } from './front/chatbot/chatbot.component';
 import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
 import { RatingComponent } from './Front/rating/rating.component';
+import { StatspsyComponent } from './Back/statspsy/statspsy.component';
+import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
 
 
 
@@ -66,6 +68,8 @@ const routes: Routes = [
   {path:'chatbot',component:ChatbotComponent},
   {path:'calendar',component:TimeCalendarComponent},
   {path:'rating/:id',component:RatingComponent},
+  {path:'statspsy/:id',component:StatspsyComponent},
+  {path:'statspsyconsultation',component:StatspsyconsultationComponent},
 ];
 
 @NgModule({

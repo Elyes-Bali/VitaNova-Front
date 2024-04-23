@@ -45,6 +45,8 @@ import { AdminshowrapportpsyComponent } from './Back/rapportpsy/adminshowrapport
 import { ChatbotComponent } from './front/chatbot/chatbot.component';
 import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
 import { RatingComponent } from './Front/rating/rating.component';
+import { StatspsyComponent } from './Back/statspsy/statspsy.component';
+import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
 
 
 @NgModule({
@@ -85,6 +87,8 @@ import { RatingComponent } from './Front/rating/rating.component';
     ChatbotComponent,
     TimeCalendarComponent,
     RatingComponent,
+    StatspsyComponent,
+    StatspsyconsultationComponent,
     
    
   ],

@@ -86,4 +86,12 @@ findAvailableTimeSlots(date: string, psychologistId: number): Observable<string[
 
 getAverageRating(therapistId: number): Observable<number> {
   return this.http.get<number>(`http://localhost:8085/vita/{{therapistId}}/average-rating`);
+}
+getConsultationCountPerClient(psychiatristId: number): Observable<Map<string, number>> {
+  const url = `${this.url}/psychiatrist/${psychiatristId}/consultationCountPerClient`;
+  return this.http.get<Map<string, number>>(url)
+
+}
+getTotalConsultationsPerPsychiatrist(): Observable<Map<string, number>> {
+  return this.http.get<Map<string, number>>(`${this.url}/totalConsultationsPerPsychiatrist`);
 }}
