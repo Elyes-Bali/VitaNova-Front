@@ -32,6 +32,8 @@ import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
 import { RatingComponent } from './Front/rating/rating.component';
 import { StatspsyComponent } from './Back/statspsy/statspsy.component';
 import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
+import { ListconsultationComponent } from './Back/Consultation/listconsultation/listconsultation.component';
+import { ShowconsultationadminComponent } from './Back/Consultation/showconsultationadmin/showconsultationadmin.component';
 
 
 
@@ -52,10 +54,11 @@ const routes: Routes = [
   {path:'edituser/:id',component:ModifierUserComponent},
   {path:'psyc',component:ListpsyfrontComponentComponent},
   {path:'consultations',component:ListConsultationComponent},
-
+  {path:'consultationsadmin',component:ListconsultationComponent},
   {path:'addconsultation/:id',component:AddconsultationComponent},
   {path:'editconsultation/:id',component:EditconsultationComponent},
   {path:'show/:id',component:ShowconsultationComponent},
+  {path:'showconsultationadmin/:id',component:ShowconsultationadminComponent},
   {path:'deletec/:id',component:DeleteconsultationComponent},
   {path:'addrapport',component:AddrapportpsyComponent},
   {path:'editrapport/:id',component:UpdaterapportpsyComponent},
@@ -68,7 +71,7 @@ const routes: Routes = [
   {path:'chatbot',component:ChatbotComponent},
   {path:'calendar',component:TimeCalendarComponent},
   {path:'rating/:id',component:RatingComponent},
-  {path:'statspsy/:id',component:StatspsyComponent},
+  {path:'statspsy',component:StatspsyComponent},
   {path:'statspsyconsultation',component:StatspsyconsultationComponent},
 ];
 

@@ -11,6 +11,7 @@ export class User{
     achievements?: string;
     fears?: string;
     age?: number;
+    rating?:number;
     banned?: boolean;
     activated?: boolean;
     activationToken?: string;

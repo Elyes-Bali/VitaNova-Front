@@ -1,5 +1,6 @@
 <div class="container">
-    <h2>Update Rapport Psy</h2>
+  
+    <h2>Update Rapport Psy </h2>
     <form [formGroup]="rapportPsyForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="description">Description</label>
@@ -24,7 +25,8 @@
           Please select a client
         </div>
       </div>
+      
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  
+  <button routerLink="/rap" class="router-link-button">back</button>

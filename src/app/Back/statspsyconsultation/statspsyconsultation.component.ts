@@ -12,6 +12,11 @@ export class StatspsyconsultationComponent {
   @ViewChild('consultationChart') consultationChartRef!: ElementRef;
   consultationsPerPsychiatrist: Map<string, number> = new Map();
   private destroy$: Subject<void> = new Subject<void>();
+  status = false;
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
 
   constructor(private psychiatristService: PsychiatristService) {}
 

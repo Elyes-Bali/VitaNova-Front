@@ -11,7 +11,11 @@ import { PsychiatristService } from 'src/app/services/psychiatrist.service';
 export class AdminshowrapportpsyComponent {
   rapportPsyId!: number;
   rapportPsy!: RapportPsy;
-
+  status = false;
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
   constructor(private rapportPsyService: PsychiatristService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

@@ -10,7 +10,13 @@ import { PsychiatristService } from 'src/app/services/psychiatrist.service';
 })
 export class AdminlisrapportpsyComponent {
   rapports: RapportPsy[] = [];
-
+  filteredRapports: RapportPsy[] = [];
+  filterTerm: string = ''; // Add filterTerm property
+  status = false;
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
   constructor(private psychiatristService: PsychiatristService) { }
 
   ngOnInit(): void {
@@ -21,6 +27,7 @@ export class AdminlisrapportpsyComponent {
     this.psychiatristService.getAllRapports().subscribe(
       (data: RapportPsy[]) => {
         this.rapports = data;
+        this.applyFilters();
       },
       (error) => {
         console.error('Error fetching rapports:', error);
@@ -28,4 +35,11 @@ export class AdminlisrapportpsyComponent {
     );
   }
 
+  applyFilters(): void {
+    this.filteredRapports = this.rapports.filter(rapport => {
+      // Filter by client or psychiatrist username
+      return rapport.clients.username?.toLowerCase().includes(this.filterTerm.toLowerCase()) ||
+             rapport.psychiatrist.username?.toLowerCase().includes(this.filterTerm.toLowerCase());
+    });
+  }
 }

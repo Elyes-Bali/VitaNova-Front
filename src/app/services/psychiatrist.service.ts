@@ -30,7 +30,7 @@ export class PsychiatristService {
   }
 
   getAllConsultations(): Observable<Consultation[]> {
-    return this.http.get<Consultation[]>(`${this.baseUrl}/consultation/getall`);
+    return this.http.get<Consultation[]>(`${this.url}/consultation/getall`);
   }
 
   getConsultationById(id: number): Observable<Consultation> {
@@ -94,4 +94,5 @@ getConsultationCountPerClient(psychiatristId: number): Observable<Map<string, nu
 }
 getTotalConsultationsPerPsychiatrist(): Observable<Map<string, number>> {
   return this.http.get<Map<string, number>>(`${this.url}/totalConsultationsPerPsychiatrist`);
-}}
+}
+}

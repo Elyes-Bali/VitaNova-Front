@@ -57,16 +57,16 @@
                 </ul>
             </div>
         </nav>
-  
-        <div class="container-fluid px-4">
-           
-  </div>
-<div *ngIf="rapportPsy" class="rapport-details">
-  <h2>Rapport Psy Details</h2>
-  <p><strong>ID:</strong> {{ rapportPsy.idRapportPsy }}</p>
-  <p><strong>Description:</strong> {{ rapportPsy.description }}</p>
-  <p><strong>Date:</strong> {{ rapportPsy.dateRappPs | date }}</p>
-  <p><strong>Psychiatrist:</strong> <span class="username">{{ rapportPsy.psychiatrist.username }} {{ rapportPsy.psychiatrist.prenom }}</span></p>
-  <p><strong>Clients:</strong> <span class="username">{{ rapportPsy.clients.username }} {{ rapportPsy.clients.prenom }}</span></p>
-</div>
-<a href="/rapadmin" class="router-link-button">Go back to rapadmin</a>
+        <div class="container">
+            <div *ngIf="consultation" class="rapport-details">
+              <h2>Consultation Details</h2>
+              <div>
+                <p><strong>Start Time:</strong> {{ consultation.startTime }}</p>
+                <p><strong>Consultation Date:</strong> {{ consultation.consultationdate }}</p>
+                <p><strong>Psychiatrist:</strong> <span class="username">{{ consultation.psychiatrist.username }}</span></p>
+                <p><strong>Client:</strong> <span class="username">{{ consultation.client.username }}</span></p>
+              </div>
+              <button routerLink="/consultationsadmin" class="router-link-button back-button">Back</button>
+            </div>
+          </div>
+          

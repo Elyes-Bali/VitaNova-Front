@@ -1,8 +1,17 @@
+
+
 <div class="container">
+  
   <h2 class="title">List of Rapport Psy</h2>
   <button [routerLink]="['/addrapport']">Add</button>
-  
-  <ng-container *ngIf="rapports && rapports.length > 0; else noRapports">
+  <button [routerLink]="['/statspsy']">Show Stats</button>
+
+  <!-- Filter input -->
+  <div class="filter-container">
+    <input type="text" placeholder="Filter by Client or Psychiatrist Username" [(ngModel)]="filterTerm" (input)="applyFilters()">
+  </div>
+
+  <ng-container *ngIf="filteredRapports && filteredRapports.length > 0; else noRapports">
     <table class="rapport-table">
       <thead>
         <tr>
@@ -15,24 +24,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let rapport of rapports">
+        <tr *ngFor="let rapport of filteredRapports">
           <td>{{ rapport.idRapportPsy }}</td>
           <td>{{ rapport.description }}</td>
           <td>{{ rapport.dateRappPs | date: 'medium' }}</td>
           <td>{{ rapport.psychiatrist.username }}</td>
           <td>{{ rapport.clients.username }}</td>
           <td>
-            <button [routerLink]="['/editrapport', rapport.idRapportPsy]">modify</button>
-           
-            <button [routerLink]="['/showrap', rapport.idRapportPsy]">show</button>
-            
-            <button [routerLink]="['/deleter', rapport.idRapportPsy]">delete</button>
+            <button [routerLink]="['/editrapport', rapport.idRapportPsy]">Modify</button>
+            <button [routerLink]="['/showrap', rapport.idRapportPsy]">Show</button>
+            <button [routerLink]="['/deleter', rapport.idRapportPsy]">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
   </ng-container>
-  
+
   <ng-template #noRapports>
     <p class="no-rapport-message">No rapport psy available.</p>
   </ng-template>

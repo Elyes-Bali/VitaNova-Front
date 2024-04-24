@@ -10,15 +10,17 @@ import { PsychiatristService } from 'src/app/services/psychiatrist.service';
 })
 export class ListrapportpsyComponent {
   rapports!: RapportPsy[];
+  filteredRapports!: RapportPsy[]; // Added property for filtered rapports
+  filterTerm: string = ''; 
 
   constructor(private psychiatristService: PsychiatristService, private storageService: StorageService) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
-      const user = this.storageService.getUser(); // Get user information from session
-      const psychiatristId = user?.id; // Assuming user object has an 'id' property for psychiatrist ID
+      const user = this.storageService.getUser();
+      const psychiatristId = user?.id;
       if (psychiatristId) {
-        this.getRapportsByPsychiatristId(psychiatristId); // Pass the psychiatrist ID to fetch rapports
+        this.getRapportsByPsychiatristId(psychiatristId);
       } else {
         console.error('Psychiatrist ID not found in session.');
       }
@@ -32,10 +34,19 @@ export class ListrapportpsyComponent {
       .subscribe(
         (data: RapportPsy[]) => {
           this.rapports = data;
+          this.applyFilters(); // Apply username filter initially
         },
         (error) => {
           console.error('Error fetching rapports:', error);
         }
       );
+  }
+
+  applyFilters(): void {
+    this.filteredRapports = this.rapports.filter(rapport => {
+      // Filter by client or psychiatrist username
+      return rapport.clients.username?.toLowerCase().includes(this.filterTerm.toLowerCase()) ||
+             rapport.psychiatrist.username?.toLowerCase().includes(this.filterTerm.toLowerCase());
+    });
   }
 }

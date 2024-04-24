@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { PsychiatristService } from 'src/app/services/psychiatrist.service';
 import Chart from 'chart.js/auto';
+import { StorageService } from 'src/app/_services/storage.service';
 
 @Component({
   selector: 'app-statspsy',
@@ -15,29 +16,36 @@ export class StatspsyComponent {
   psychologueId!: number;
   selectedYear!: number;
   selectedMonth!: string;
+  status = false;
+  psychiatristId!: number; // Declare psychiatristId property
+  addToggle() {
+    this.status = !this.status;       
+  }
   private destroy$: Subject<void> = new Subject<void>();
   constructor(
     private route: ActivatedRoute,
     private consultationService: PsychiatristService,
-    private router: Router
+    private router: Router,
+    private  storageService :StorageService
   ) {}
   ngOnInit(): void {
     // Extract route parameters
-    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
-      this.psychologueId = +params['id']; // Convert to number if needed
-      this.getConsultations();
-    });
+    if (this.storageService.isLoggedIn()) {
+      const user = this.storageService.getUser(); // Get user information from session
+      this.psychiatristId = user?.id; // Assign user's ID to psychiatristId
+      this.getConsultations(); // Call getConsultations after assigning psychiatristId
+    }
   }
 
   getConsultations(): void {
     this.consultationService
-      .getConsultationCountPerClient(this.psychologueId)
+      .getConsultationCountPerClient(this.psychiatristId)
       .subscribe(response => {
         this.consultationsPerClient = new Map(Object.entries(response));
         this.renderBarChart();
       });
-      
   }
+
   renderBarChart(): void {
     const ctx = this.consultationChartRef.nativeElement.getContext('2d');
     new Chart(ctx, {

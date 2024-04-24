@@ -1,35 +1,4 @@
-.container {
-    margin: 20px;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .rapport-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  .rapport-table th,
-  .rapport-table td {
-    padding: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  .rapport-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-    text-align: left;
-  }
-  
-  .no-rapport-message {
-    font-style: italic;
-    color: #999;
-  }
+
   :root {
     --main-bg-color: #009d63;
     --main-text-color: #009d63;
@@ -125,3 +94,44 @@
       margin-left: -15rem;
     }
   }
+  .rapport-details {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rapport-details h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333333;
+  }
+  
+  .rapport-details p {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .rapport-details strong {
+    font-weight: bold;
+  }
+  
+  .rapport-details .username {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .router-link-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .router-link-button:hover {
+    background-color: red;
+  }
+  

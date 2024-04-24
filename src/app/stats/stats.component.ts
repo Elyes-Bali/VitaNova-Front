@@ -29,6 +29,11 @@ export class StatsComponent {
   selectedMonth!: string;
   availableYears!: number[];
   availableMonths!: string[];
+
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
   private destroy$: Subject<void> = new Subject<void>();
   constructor(
     private route: ActivatedRoute,

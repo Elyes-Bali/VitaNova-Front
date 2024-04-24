@@ -5,30 +5,28 @@
   .title {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #333333;
+    margin-bottom: 20px;
   }
   
-  .rapport-table {
+  .consultation-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
   }
   
-  .rapport-table th,
-  .rapport-table td {
+  .consultation-table th, .consultation-table td {
+    border: 1px solid #dddddd;
     padding: 8px;
-    border: 1px solid #ccc;
   }
   
-  .rapport-table th {
+  .consultation-table th {
     background-color: #f2f2f2;
     font-weight: bold;
-    text-align: left;
   }
   
-  .no-rapport-message {
+  .no-consultation-message {
     font-style: italic;
-    color: #999;
+    color: #999999;
   }
   :root {
     --main-bg-color: #009d63;

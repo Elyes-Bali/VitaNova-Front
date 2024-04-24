@@ -47,6 +47,8 @@ import { TimeCalendarComponent } from './time-calendar/time-calendar.component';
 import { RatingComponent } from './Front/rating/rating.component';
 import { StatspsyComponent } from './Back/statspsy/statspsy.component';
 import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
+import { ListconsultationComponent } from './Back/Consultation/listconsultation/listconsultation.component';
+import { ShowconsultationadminComponent } from './Back/Consultation/showconsultationadmin/showconsultationadmin.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { StatspsyconsultationComponent } from './Back/statspsyconsultation/stats
     RatingComponent,
     StatspsyComponent,
     StatspsyconsultationComponent,
+    ListconsultationComponent,
+    ShowconsultationadminComponent,
     
    
   ],
