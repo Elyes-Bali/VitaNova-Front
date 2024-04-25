@@ -34,6 +34,8 @@ import { StatspsyComponent } from './Back/statspsy/statspsy.component';
 import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
 import { ListconsultationComponent } from './Back/Consultation/listconsultation/listconsultation.component';
 import { ShowconsultationadminComponent } from './Back/Consultation/showconsultationadmin/showconsultationadmin.component';
+import { ListconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/listconsultationpsychiatre/listconsultationpsychiatre.component';
+import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/showconsultationpsychiatre/showconsultationpsychiatre.component';
 
 
 
@@ -73,6 +75,8 @@ const routes: Routes = [
   {path:'rating/:id',component:RatingComponent},
   {path:'statspsy',component:StatspsyComponent},
   {path:'statspsyconsultation',component:StatspsyconsultationComponent},
+  {path:'consultationpsy',component:ListconsultationpsychiatreComponent},
+  {path:'showconsultationpsy/:id',component:ShowconsultationpsychiatreComponent},
 ];
 
 @NgModule({

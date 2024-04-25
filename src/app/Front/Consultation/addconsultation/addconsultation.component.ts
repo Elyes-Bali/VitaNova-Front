@@ -130,6 +130,7 @@ export class AddconsultationComponent implements OnInit {
       (response) => {
         // Handle successful response
         console.log('Consultation added successfully', response);
+        this.router.navigate(['/consultations']);
       },
       (error) => {
         // Handle error

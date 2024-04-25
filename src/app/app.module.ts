@@ -49,6 +49,8 @@ import { StatspsyComponent } from './Back/statspsy/statspsy.component';
 import { StatspsyconsultationComponent } from './Back/statspsyconsultation/statspsyconsultation.component';
 import { ListconsultationComponent } from './Back/Consultation/listconsultation/listconsultation.component';
 import { ShowconsultationadminComponent } from './Back/Consultation/showconsultationadmin/showconsultationadmin.component';
+import { ListconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/listconsultationpsychiatre/listconsultationpsychiatre.component';
+import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/showconsultationpsychiatre/showconsultationpsychiatre.component';
 
 
 @NgModule({
@@ -93,6 +95,8 @@ import { ShowconsultationadminComponent } from './Back/Consultation/showconsulta
     StatspsyconsultationComponent,
     ListconsultationComponent,
     ShowconsultationadminComponent,
+    ListconsultationpsychiatreComponent,
+    ShowconsultationpsychiatreComponent,
     
    
   ],

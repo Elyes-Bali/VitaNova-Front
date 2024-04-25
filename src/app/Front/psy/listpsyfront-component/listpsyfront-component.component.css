@@ -1,0 +1,11 @@
+.rating-stars {
+    color: yellow;
+  }
+  
+  .rating-stars i {
+    transition: color 0.3s;
+  }
+  
+  .rating-stars i:hover {
+    color: orange;
+  }

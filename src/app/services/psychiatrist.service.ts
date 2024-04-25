@@ -22,6 +22,11 @@ export class PsychiatristService {
   getConsultationsByUserId(userId: number): Observable<Consultation[]> {
     return this.http.get<Consultation[]>(`${this.consultation}${userId}`);
   }
+  getConsultationsBypsyId(userId: number): Observable<Consultation[]> {
+    const url = `${this.url}/psy/${userId}`;
+    return this.http.get<Consultation[]>(url);
+  }
+  
   addConsultation(consultation: Consultation): Observable<Consultation> {
     return this.http.post<Consultation>(`${this.baseUrl}/addconsultation`, consultation);
   }

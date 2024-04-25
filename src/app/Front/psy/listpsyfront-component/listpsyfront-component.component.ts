@@ -25,4 +25,8 @@ export class ListpsyfrontComponentComponent {
   reserveConsultation(psychiatristId: number): void {
     this.router.navigate(['/addconsultation', psychiatristId]);
   }
+  getStars(rating: number | undefined): any[] {
+    const stars = Math.round(rating || 0);
+    return Array(stars).fill(0);
+  }
 }
