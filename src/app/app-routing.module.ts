@@ -26,7 +26,8 @@ import {IngredientsComponent} from './ingredients/ingrédients-componets/ingredi
 import {RecipeComponent} from './ingredients/recipes-components/recipe/recipe.component';
 import {ListComponent} from './ingredients/listingredients/list/list.component';
 import {CommunityListAdminComponent} from "./community/community-list-admin/community-list-admin.component";
-
+ import { ListRecetteComponent } from './ingredients/listRecette/list-recette/list-recette.component';
+ 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'id1', component: ServiceComponent},
@@ -54,7 +55,8 @@ const routes: Routes = [
   {path: 'listIngredients', component: ListComponent},
   {path: 'listRecette', component: RecipeComponent},
   {path: 'ingredients', component: IngredientsComponent},
-
+  {path: 'allRecettes', component: ListRecetteComponent},
+  
 ];
 
 @NgModule({

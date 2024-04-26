@@ -61,6 +61,13 @@ export class RecipesService {
     return this.http.get<any>(`${this.baseUrl}/stats?start=${startDate}&end=${endDate}&type=${type}`);
 }
 
+getRecipesStatsByDishType(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrl}/stats/dish-types`);
+}
+
+getRecipesStatsByDuration(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrl}/stats/durations`);
+}
 
  
 }

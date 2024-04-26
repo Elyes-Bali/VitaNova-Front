@@ -143,33 +143,43 @@
               <form (submit)="addRecipe()">
                 <!-- Ajoutez les champs pour saisir les détails de la nouvelle recette ici -->
                 <div class="form-group">
-                  <label for="recipeDescription">Nom de la recette:</label>
-                  <input class="form-control" id="name" [(ngModel)]="newRecipe.name" name="name"/>
-             <br>
-                    <label for="recipeDescription">Description de la recette:</label>
-                    <textarea class="form-control" id="recipeDescription" [(ngModel)]="newRecipe.description" name="description"></textarea>
-                    <br>
-                      <label for="datePreparation">Date de préparation:</label>
-                      <input type="date" class="form-control" id="datePreparation" [(ngModel)]="newRecipe.datePreparation" name="datePreparation">
-                </div>
-                <br>
-                 
-                <div class="form-group">
-                    <label for="ingredientSet">Ingrédients:</label>
-                  
-                    <div>
-                         <div *ngFor="let ingredientSet of ingredientSets">
-                            <input type="checkbox" [value]="ingredientSet" [checked]="isSelected(ingredientSet)" (change)="toggleSelection(ingredientSet)">
-                            {{ ingredientSet.products }}
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <!-- Ajoutez d'autres champs nécessaires -->
-          <br>
-          <br>
-                <button type="submit" class="btn btn-primary">Ajouter</button>
+                  <label for="recipeName">Nom de la recette:</label>
+                  <input type="text" class="form-control" id="recipeName" [(ngModel)]="newRecipe.name" name="name"/>
+              </div>
+              <div class="form-group">
+                  <label for="recipeDescription">Description de la recette:</label>
+                  <textarea class="form-control" id="recipeDescription" [(ngModel)]="newRecipe.description" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="duration">Durée de préparation (en minutes):</label>
+                  <input type="number" class="form-control" id="duration" [(ngModel)]="newRecipe.duration" name="duration">
+              </div>
+              <div class="form-group">
+                <label for="dishType">Type de plat:</label>
+                <select class="form-control" id="dishType" [(ngModel)]="selectedDishType" name="dishType">
+                  <option *ngFor="let type of dishTypes" [ngValue]="type">{{ type.name }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="ingredientSet">Ingrédients:</label>
+                  <div *ngFor="let ingredientSet of ingredientSets">
+                      <input type="checkbox" [value]="ingredientSet" [checked]="isSelected(ingredientSet)" (change)="toggleSelection(ingredientSet)">
+                      {{ ingredientSet.products }}
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="fileInput" class="form-label"> Select Image
+                </label>
+                <input
+                  type="file"
+                  class="form-control"
+                  id="fileInput"
+                  (change)="selectFile($event)"
+                  name="fileInput"
+                  accept="image/jpeg, image/png, image/gif, image/bmp, image/webp"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Ajouter</button>
  
               </form>
             </div>
@@ -212,9 +222,11 @@
                   <th scope="col">Name</th>
                   <th scope="col">Date Added</th>
 
-                  <th scope="col">Date Preparation</th>
+                  <th scope="col">Duree Preparation</th>
 
                   <th scope="col">Description</th>
+                  <th scope="col">Tyepe de plat</th>
+
                   <th scope="col">Ingredients</th>
                   <th scope="col">Actions</th>
                 </tr>
@@ -224,9 +236,10 @@
                   <td>{{ recipe.idRecepies }}</td>
                   <td>{{ recipe.name }}</td>
                   <td>{{ recipe.dateAdded | date:'dd/MM/yyyy' }}</td>
-                  <td>{{ recipe.datePreparation | date:'dd/MM/yyyy' }}</td>
-
+                  <td>{{recipe.duration}}</td>
                   <td>{{ recipe.description }}</td>
+                  <td>{{ recipe?.dishType.name  }}</td>
+
                   <td>
                     <ul>
                       <li *ngFor="let ingredient of recipe.ingredients">

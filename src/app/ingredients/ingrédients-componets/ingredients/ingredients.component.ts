@@ -24,7 +24,8 @@ export class IngredientsComponent implements OnInit {
   data1: any;
   chartOptions1: any;
   subscription: Subscription;
- 
+  dataDishType: any;
+  dataDuration: any;
   searchText: string = '';
 
   modalRef?: BsModalRef;
@@ -83,7 +84,58 @@ ingredient?:Ingredients;
     this.initializeChartOptions();
     this.loadAveragePreparationTime();
     this.loadMostPopularIngredients();
- 
+    this.fetchStatsByDishType();
+    this.fetchStatsByDuration();
+  }
+
+  fetchStatsByDishType(): void {
+    this.recipesSerivce.getRecipesStatsByDishType().subscribe(data => {
+      this.dataDishType = {
+        labels: data.map(stat => stat[0]),
+        datasets: [{
+          data: data.map(stat => stat[1]),
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#E7E9ED",
+            "#4BC0C0"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#E7E9ED",
+            "#4BC0C0"
+          ]
+        }]
+      };
+    });
+  }
+
+  fetchStatsByDuration(): void {
+    this.recipesSerivce.getRecipesStatsByDuration().subscribe(data => {
+      this.dataDuration = {
+        labels: data.map(stat => `${stat[0]} minutes`),
+        datasets: [{
+          data: data.map(stat => stat[1]),
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#E7E9ED"
+          ],
+          hoverBackgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#E7E9ED"
+          ]
+        }]
+      };
+    });
   }
   initializeChartOptions(): void {
     ///this.chartOptions = this.data ;
@@ -93,50 +145,10 @@ ingredient?:Ingredients;
   }
 
   loadAveragePreparationTime(): void {
-    this.recipesSerivce.getAveragePreparationTime().subscribe(data => {
-      this.averagePreparationTime = data;
-      const date = new Date(data);
-      const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-  
-      // Format the data for the pie chart
-      this.data = {
-        labels: ['Average Preparation Time' ],
-        datasets: [{
-          data: [1] ,
-          backgroundColor: ['#42A5F5' ]
-        }]
-      };
-      this.chartOptions = {
-        responsive: true,
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem: { label: any; raw: any; }) {
-                return `${tooltipItem.label}: ${formattedDate}`;
-              }
-            }
-          }
-        }
-      };
-    });
+     
   }
   loadStats() {
-    const startDate ='2024-04-01';
-    const endDate ='2024-04-31';
-    const type = 'monthly'; // Or 'monthly'
-
-    this.recipesSerivce.getRecipeStats(startDate, endDate, type).subscribe(data => {
-        this.barChartData = {
-            labels: Object.keys(data),
-            datasets: [{
-                label: 'Number of Recipes Added',
-                data: Object.values(data),
-                backgroundColor: 'rgba(0, 123, 255, 0.5)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
-            }]
-        };
-    });
+   
 }
 
   loadChartData(): void {

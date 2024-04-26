@@ -19,6 +19,9 @@
             <li class="navbar-nav ml-auto" *ngIf="isLoggedIn">
               <a class="nav-link active" routerLink="/ingredients"  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Ingredients</a>
             </li>
+            <li class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+              <a class="nav-link active" routerLink="/allRecettes"  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Recettes</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && isUserRoleAdmin()">
           <li class="nav-item">

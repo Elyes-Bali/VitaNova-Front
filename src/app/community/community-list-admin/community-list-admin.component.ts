@@ -107,7 +107,8 @@ export class CommunityListAdminComponent {
 
   async onNewPostSubmit() {
     this.postFormSubmitted = true;
-     if (this.newPostForm.valid) {
+    console.log(this.newPostForm.get('postDescription')?.errors?.['required'])
+    if (this.newPostForm.valid) {
       let newPost = {
         post: this.newPostForm.value['post'],
         description: this.newPostForm.value['postDescription'],

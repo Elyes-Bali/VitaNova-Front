@@ -1,8 +1,10 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { RecipesService } from '../../services/recipes.service';
-import { Ingredients, Recipes } from '../../models/ingredients.models';
+import { DishType, Ingredients, Recipes } from '../../models/ingredients.models';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { IngredientsService } from '../../services/ingredients.service';
+import { DishTypeService } from '../../services/dish-type.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recipe',
@@ -12,7 +14,7 @@ import { IngredientsService } from '../../services/ingredients.service';
 export class RecipeComponent implements OnInit {
   status = false;
   sortOption: string = 'name';
-  addToggle()
+   addToggle()
   {
     this.status = !this.status;
   }
@@ -20,33 +22,38 @@ export class RecipeComponent implements OnInit {
   modalRef?: BsModalRef;
   ingredientSets: Ingredients[] = [];
   selectedIngredients: Ingredients[] = []; // Initialisez selectedIngredients
+  selectedDishType: DishType;
   recipe:  Recipes = {
     idRecepies: 0,
     name:'',
     dateAdded:new Date(),
-    datePreparation:new Date(),
+    duration:0,
     description: '',
     images: '',
+    dishType:null, 
     ingredients: [] // Initialisez newRecipe.ingredients à une tableau vide
   };; // Déclarer la propriété recipe
   newRecipe: Recipes = {
     idRecepies: 0,
  
     dateAdded:new Date(),
-    datePreparation:new Date(),
+     duration:0,
     description: '',
     images: '',
+    dishType:null, 
     name:'',
     ingredients: [] // Initialisez newRecipe.ingredients à une tableau vide
   };
   deleteSuccessAlertVisible = false;
-
+  dishTypes: DishType[] = [];
   recipes: any[] = [];
   successMessage: string = '';
   successMessageUpdate: string = '';
+  currentFile?: File;
+  imageToShow?: string;
 
   errorMessage: string = '';
-  constructor(private ingredientsService: IngredientsService,private recipeService: RecipesService, private modalService: BsModalService) {}
+  constructor(private dishTypeService: DishTypeService,private ingredientsService: IngredientsService,private recipeService: RecipesService, private modalService: BsModalService) {}
 
   openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template);
@@ -57,11 +64,24 @@ export class RecipeComponent implements OnInit {
     this.modalRef = this.modalService.show(template1);  
   }
 
-  addRecipe(): void {
+  onDishTypeChange(event: any) {
+    this.selectedDishType = event.target.value;
+    console.log('Selected dish type:', this.selectedDishType); // Or use this value for further processing
+  }
+  selectFile(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      const file: File = event.target.files[0];
+      this.currentFile = file;
+    }
+  }
+  async addRecipe(): Promise<void> {
     this.newRecipe.ingredients = this.selectedIngredients;
-
+    if (this.currentFile) {
+      this.newRecipe.images = await this.uploadMedia();
+    }
   
-   
+    this.newRecipe.dishType = this.selectedDishType;
+    console.log("disch",this.newRecipe.description);
     this.modalRef?.hide();
     this.recipeService.addRecipe(this.newRecipe)
       .subscribe(
@@ -100,7 +120,13 @@ addSelectedIngredient(selectedIngredient: Ingredients) {
   ngOnInit(): void {
     this.loadRecipes(); // Chargez les recettes lorsque le composant est initialisé
     this.getAllIngredients();
-
+    this.dishTypeService.getDishTypes().subscribe({
+      next: (types) => {
+        this.dishTypes = types;
+      },
+      error: (error) => console.error('There was an error fetching the dish types', error)
+    });
+ 
   }
   getAllIngredients(): void {
     this.ingredientsService.getAllIngredients().subscribe(
@@ -213,6 +239,21 @@ hideConfirmationAlert(recipeId: number) {
       confirmationAlert.style.display = 'none';
   }
 
+}
+async uploadMedia() {
+  return new Promise<string>((resolve, reject) => {
+    this.ingredientsService.upload(this.currentFile!).subscribe({
+      next: (obj: any) => {
+        if (obj instanceof HttpResponse) {
+          console.log(obj.body.url);
+          resolve(obj.body.url);
+        }
+      },
+      error: (error: any) => {
+        reject(error);
+      }
+    });
+  });
 }
 }
  

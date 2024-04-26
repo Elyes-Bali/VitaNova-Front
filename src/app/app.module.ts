@@ -46,7 +46,8 @@ import {httpInterceptorProviders} from "./_helpers/http.interceptor";
 import {TimeagoModule} from "ngx-timeago";
 import {CommunityListAdminComponent} from './community/community-list-admin/community-list-admin.component';
 import { ChartModule } from 'primeng/chart';
-
+import { ListRecetteComponent } from './ingredients/listRecette/list-recette/list-recette.component';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,10 +85,13 @@ import { ChartModule } from 'primeng/chart';
 
     ListComponent,
     CommunityListAdminComponent,
+    ListRecetteComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+ 
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
