@@ -34,6 +34,7 @@
             <button [routerLink]="['/editrapport', rapport.idRapportPsy]">Modify</button>
             <button [routerLink]="['/showrap', rapport.idRapportPsy]">Show</button>
             <button [routerLink]="['/deleter', rapport.idRapportPsy]">Delete</button>
+            <button (click)="generatePdf(rapport.idRapportPsy)">Export PDF</button>
           </td>
         </tr>
       </tbody>

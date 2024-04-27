@@ -42,4 +42,13 @@ export class AdminlisrapportpsyComponent {
              rapport.psychiatrist.username?.toLowerCase().includes(this.filterTerm.toLowerCase());
     });
   }
+  generatePdf(rapportPsyId: number): void {
+    this.psychiatristService.generatePdf(rapportPsyId)
+      .subscribe(response => {
+        console.log(response); // Response from the API
+        // Handle success message or further actions
+      }, error => {
+        console.error(error); // Handle error
+      });
+  }
 }

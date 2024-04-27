@@ -51,6 +51,8 @@ import { ListconsultationComponent } from './Back/Consultation/listconsultation/
 import { ShowconsultationadminComponent } from './Back/Consultation/showconsultationadmin/showconsultationadmin.component';
 import { ListconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/listconsultationpsychiatre/listconsultationpsychiatre.component';
 import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/showconsultationpsychiatre/showconsultationpsychiatre.component';
+import { ChatiebotieComponent } from './chatiebotie/chatiebotie.component';
+import { MessageContainerComponent } from './message-container/message-container.component';
 
 
 @NgModule({
@@ -97,6 +99,9 @@ import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-co
     ShowconsultationadminComponent,
     ListconsultationpsychiatreComponent,
     ShowconsultationpsychiatreComponent,
+    ChatiebotieComponent,
+    MessageContainerComponent,
+    
     
    
   ],
@@ -110,6 +115,7 @@ import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-co
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

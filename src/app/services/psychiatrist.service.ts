@@ -76,7 +76,7 @@ export class PsychiatristService {
     return this.http.get<any>(url);
   }
   getAllQuestions(): Observable<any[]> {
-    return this.http.get<any[]>(this.url+'questions/getall');
+    return this.http.get<any[]>(this.url+'/questions/getall');
   }
   getAnswerByQuestionId(questionId: number): Observable<any> {
     return this.http.get<any>(`${this.url}answers/${questionId}`);
@@ -99,5 +99,8 @@ getConsultationCountPerClient(psychiatristId: number): Observable<Map<string, nu
 }
 getTotalConsultationsPerPsychiatrist(): Observable<Map<string, number>> {
   return this.http.get<Map<string, number>>(`${this.url}/totalConsultationsPerPsychiatrist`);
+}
+generatePdf(rapportPsyId: number): Observable<string> {
+  return this.http.get<string>(`${this.url}/generate-pdf/${rapportPsyId}`);
 }
 }

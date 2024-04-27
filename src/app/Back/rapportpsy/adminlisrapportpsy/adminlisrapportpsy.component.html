@@ -97,6 +97,7 @@
           <td>{{ rapport.clients.username }}</td>
           <td>
             <button [routerLink]="['/showrapadmin', rapport.idRapportPsy]">show</button>
+            <button (click)="generatePdf(rapport.idRapportPsy)">Export PDF</button>
            
           </td>
         </tr>

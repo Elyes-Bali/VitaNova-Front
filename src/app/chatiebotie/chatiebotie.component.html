@@ -1,0 +1,20 @@
+<p>chatiebotie works!</p>
+<div class="chatbot-container">
+    <div id="header">
+        <h1>Chatbot</h1>
+    </div>
+    <div id="chatbot">
+        <div id="conversation" #conversation>
+            <!-- Display questions -->
+            <div *ngFor="let question of questions" class="chatbot-message">
+                <p class="chatbot-text">{{ question }}</p>
+            </div>
+        </div>
+        <form id="input-form" #inputForm (ngSubmit)="onSubmit($event)">
+            <input id="input-field" type="text" placeholder="Type your message here" #inputField>
+            <button id="submit-button" type="submit">
+                Send
+            </button>
+        </form>
+    </div>
+</div>

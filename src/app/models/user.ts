@@ -45,3 +45,8 @@ export interface Consultation {
     user: User;
     rating: number; // Rating from 0 to 5
   }
+  export interface Question {
+    idquestion: number;
+    text: string;
+  }
+  
