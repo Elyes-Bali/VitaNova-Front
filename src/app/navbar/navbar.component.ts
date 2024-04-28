@@ -13,7 +13,7 @@ export class NavbarComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
+  isClient=false;
   constructor(private storageService: StorageService, private router: Router) { }
 
   ngOnInit(): void {
@@ -22,6 +22,7 @@ export class NavbarComponent {
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       this.roles = user.roles;
+      this.isClient=this.storageService.isClient();
 
       //this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       //this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');

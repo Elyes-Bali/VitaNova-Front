@@ -19,31 +19,39 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ListUserComponent } from './list-user/list-user.component';
 import { ModifierUserComponent } from './modifier-user/modifier-user.component';
 import { VerifiactionComponent } from './verifiaction/verifiaction.component';
+import { AddQuoteComponent } from './Dashs/add-quote/add-quote.component';
+import { ChatComponent } from './chat/chat.component';
+import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
+import { ListNutrionistesComponent } from './list-nutrionistes/list-nutrionistes.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'id1',component:ServiceComponent},
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'train',component:TrainComponent},
-  {path:'phy',component:PhysiqueComponent},
-  {path:'dash',component:DashboardComponent},
-  {path:'prod',component:ProductsComponent},
-  {path:'dashProds',component:DashProductsComponent},
-  {path:'cart',component:AddToCartComponent},
-  {path:'listProds',component:ListProductsComponent},
-  {path:'editeProds/:id',component:EditProductsComponent},
-  {path:'detailProds/:id',component:DetailsProductsComponent},
-  {path:'deleteProds/:id',component:DeleteProductsComponent},
+  { path: '', component: HomeComponent },
+  { path: 'id1', component: ServiceComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'train', component: TrainComponent },
+  { path: 'phy', component: PhysiqueComponent },
+  { path: 'dash', component: DashboardComponent },
+  { path: 'prod', component: ProductsComponent },
+  { path: 'dashProds', component: DashProductsComponent },
+  { path: 'cart', component: AddToCartComponent },
+  { path: 'listProds', component: ListProductsComponent },
+  { path: 'editeProds/:id', component: EditProductsComponent },
+  { path: 'detailProds/:id', component: DetailsProductsComponent },
+  { path: 'deleteProds/:id', component: DeleteProductsComponent },
   { path: 'forgetpassword', component: ForgetpasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
-  {path:'listUser',component:ListUserComponent},
-  {path:'edituser/:id',component:ModifierUserComponent},
-  {path:'verify',component:VerifiactionComponent},
+  { path: 'listUser', component: ListUserComponent },
+  { path: 'edituser/:id', component: ModifierUserComponent },
+  { path: 'verify', component: VerifiactionComponent },
+  { path: 'quote', component: AddQuoteComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'CalculCalories', component: CalculCaloriesComponent },
+  { path: 'listNutrio', component: ListNutrionistesComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

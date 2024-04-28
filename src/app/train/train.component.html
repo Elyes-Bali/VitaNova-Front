@@ -32,6 +32,7 @@
             <img src="../../../assets/images/ph.png" />
             <h3 class="ph1">Let's Train Together</h3>
             <a
+            *ngIf="isClient"
               type="submit"
               class="btn btn-primary mt-4 rounded-pill btlog"
               routerLink="../phy"
@@ -54,6 +55,7 @@
             <img src="../../../assets/images/mental.png" />
             <h3>For a better Mentality</h3>
             <button
+            *ngIf="isClient"
               type="submit"
               class="btn btn-primary mt-4 rounded-pill btlog"
             >
@@ -64,6 +66,28 @@
       </div>
     </div>
     <!-- three -->
+    <div class="col-lg-4 mt-2">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="../../../assets/images/food.png" />
+            <h3 class="text-center text-white">Nutritional Health</h3>
+          </div>
+          <div class="flip-card-back">
+            <img src="../../../assets/images/food.png" />
+            <h3>For a better nutrition</h3>
+            <a
+            *ngIf="isClient"
+              type="submit"
+              class="btn btn-primary mt-4 rounded-pill btlog"
+              href="/listNutrio"
+            >
+            Let's Start
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- <div class="col-lg-4 mt-2">
                 <div class="flip-card">
                     <div class="flip-card-inner">

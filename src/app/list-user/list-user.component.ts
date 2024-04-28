@@ -17,11 +17,9 @@ export class ListUserComponent {
     this.status = !this.status;
   }
 
-  pageSize = 4; // Number of products per page
-  currentPage = 1; // Current page
-  totalPages = 0; // Total number of pages
-  pages: number[] = []; // Array of page numbers
-  pagedProducts: User[] = [];
+
+  currentPage: number = 1;
+  itemsPerPage: number = 5; 
   users: any[] = [];
   searchTerm: string = '';
   roles: any[] = [];
@@ -82,43 +80,27 @@ export class ListUserComponent {
     );
   }
 
-  // updatePagination(): void {
-  //   // Calculate total number of pages
-  //   this.totalPages = Math.ceil(this.filterUsers.length / this.pageSize);
-  //
-  //   // Generate an array of page numbers
-  //   this.pages = [];
-  //   for (let i = 1; i <= this.totalPages; i++) {
-  //     this.pages.push(i);
-  //   }
-  //
-  //   // Update pagedProducts
-  //   this.goToPage(1);
-  // }
-  //
-  // goToPage(page: number): void {
-  //   // Update currentPage
-  //   this.currentPage = page;
-  //
-  //   // Calculate starting index of products for the current page
-  //   const startIndex = (page - 1) * this.pageSize;
-  //
-  //   // Slice the products array to get products for the current page
-  //   this.pagedProducts = this.filterUsers.slice(startIndex, startIndex + this.pageSize);
-  // }
-  //
-  // previousPage(): void {
-  //   // Go to previous page
-  //   if (this.currentPage > 1) {
-  //     this.goToPage(this.currentPage - 1);
-  //   }
-  // }
-  //
-  // nextPage(): void {
-  //   // Go to next page
-  //   if (this.currentPage < this.totalPages) {
-  //     this.goToPage(this.currentPage + 1);
-  //   }
-  // }
+  get startIndex(): number {
+    return (this.currentPage - 1) * this.itemsPerPage;
+  }
 
+
+  get endIndex(): number {
+    return Math.min(this.startIndex + this.itemsPerPage - 1, this.users.length - 1);
+  }
+
+  onPageChange(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
+  get totalPages(): number {
+    return Math.ceil(this.filterUsers().length / this.itemsPerPage);
+  }
+
+
+  get pages(): number[] {
+    return Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  }
+  get paginatedUsers(): any[] {
+    return this.filterUsers().slice(this.startIndex, this.endIndex + 1);
+  }
 }

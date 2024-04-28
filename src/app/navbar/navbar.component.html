@@ -9,6 +9,13 @@
           <li class="nav-item">
             <a class="nav-link active" routerLink=""  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Home</a>
           </li>
+          
+          <li class="nav-item">
+            <a *ngIf="isLoggedIn" class="nav-link active" routerLink="CalculCalories"  routerLinkActive="active-link">Plats</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="isLoggedIn" class="nav-link active" routerLink="chat"  routerLinkActive="active-link" >Discussions</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="train" routerLinkActive="active-link">Discover</a>
           </li>
@@ -18,7 +25,7 @@
             <a class="nav-link" routerLink="listUser" routerLinkActive="active-link">Dash</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn && !isUserRoleAdmin()">
+        <ul class="navbar-nav ml-auto" *ngIf=" !isUserRoleAdmin()">
           <li class="nav-item">
             <a class="nav-link" routerLink="listProds" routerLinkActive="active-link">Market</a>
           </li>

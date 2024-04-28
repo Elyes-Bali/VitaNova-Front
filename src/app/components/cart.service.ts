@@ -25,6 +25,11 @@ export class CartService {
     return this.httpclient.delete<void>(url);
   }
 
+initiatePayment(ownerId: number): Observable<string> {
+  const url = `${this.PRODUCT_API_URL}pay/${ownerId}`; // Use ownerId as part of the URL path
+  return this.httpclient.post<string>(url, null);
+}
+
   // getCartByOwnerId(id: number): Observable<Cart> {
   //   return this.httpclient.get<Cart[]>(`${this.PRODUCT_API_URL}getCartByOwnerId/${id}`);
   // }

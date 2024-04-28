@@ -1,6 +1,7 @@
 export class User{
     id?:number;
     nom?:string;
+    username?:string;
     email?:string;
     password?:string;
     gender?:string;

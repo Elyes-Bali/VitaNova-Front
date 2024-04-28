@@ -31,11 +31,11 @@ export class ProductsComponent {
     if (typeof this.newProduct.imageUrl === 'object' && (this.newProduct.imageUrl as any) instanceof File) {
       formData.append('file', this.newProduct.imageUrl);
     }
-    // Call the addProduct method with the FormData object
+   
     this.productsService.addProduct(formData).subscribe(
       (response) => {
         console.log('Product added successfully:', response);
-        // Reset the form or perform any additional logic
+        
         this.newProduct = {
           prodName: '',
           typeProd: ProductType.PROTEIN,
@@ -45,18 +45,18 @@ export class ProductsComponent {
           imageUrl: '' ,
           expiration:''
         };
-        // Navigate to the dashboard page after adding the product
+   
         this.router.navigate(['/dashProds']);
       },
       (error) => {
         console.error('Error adding Product:', error);
-        // Handle the error or display an error message
+       
       }
     );
   }
   
   onFileSelected(event: any) {
-    // Get the selected image file and assign it to imageUrl
+ 
     this.newProduct.imageUrl = event.target.files[0];
   }
 

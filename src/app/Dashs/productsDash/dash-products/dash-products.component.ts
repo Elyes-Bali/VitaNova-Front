@@ -41,7 +41,7 @@ export class DashProductsComponent implements OnInit,AfterViewInit{
 
   ngAfterViewInit() {
     if (this.chartCanvas.nativeElement) {
-      // Call renderChart with appropriate arguments based on the selected chart
+      
       if (this.selectedChart === 'productCount') {
         this.renderChart([], []);
       } else if (this.selectedChart === 'productPrice') {
@@ -59,6 +59,7 @@ export class DashProductsComponent implements OnInit,AfterViewInit{
         this.products = data;
         this.filterProducts(); // Call filterProducts method after getting products
         this.updatePagination();
+        this.checkIncreaseQuantity();
       },
       (error: any) => {
         console.error('Failed to retrieve products:', error);
@@ -93,48 +94,45 @@ export class DashProductsComponent implements OnInit,AfterViewInit{
       case 'highestPrice':
         this.pagedProducts.sort((a, b) => (a.price && b.price) ? b.price - a.price : 0);
         break;
-      // Add cases for sorting by different characteristics
+     
       default:
-        // Default sorting by name
+   
         this.pagedProducts.sort((a, b) => (a.prodName && b.prodName) ? a.prodName.localeCompare(b.prodName) : 0);
         break;
     }
   }
   
   updatePagination(): void {
-    // Calculate total number of pages
+   
     this.totalPages = Math.ceil(this.filteredProducts.length / this.pageSize);
 
-    // Generate an array of page numbers
     this.pages = [];
     for (let i = 1; i <= this.totalPages; i++) {
       this.pages.push(i);
     }
 
-    // Update pagedProducts
     this.goToPage(1);
   }
 
   goToPage(page: number): void {
-    // Update currentPage
+ 
     this.currentPage = page;
 
-    // Calculate starting index of products for the current page
+
     const startIndex = (page - 1) * this.pageSize;
 
-    // Slice the products array to get products for the current page
     this.pagedProducts = this.filteredProducts.slice(startIndex, startIndex + this.pageSize);
   }
 
   previousPage(): void {
-    // Go to previous page
+ 
     if (this.currentPage > 1) {
       this.goToPage(this.currentPage - 1);
     }
   }
 
   nextPage(): void {
-    // Go to next page
+ 
     if (this.currentPage < this.totalPages) {
       this.goToPage(this.currentPage + 1);
     }
@@ -279,6 +277,40 @@ export class DashProductsComponent implements OnInit,AfterViewInit{
       this.getprodPrice();
     }
   }
+
+  // shouldIncreaseQuantity(productId: number): void {
+  //   this.productService.shouldIncreaseQuantity(productId).subscribe(
+  //     (increaseNeeded) => {
+  //       const product = this.filteredProducts.find(p => p.idProducts === productId);
+  //       if (product) {
+  //         product.increaseNeeded = increaseNeeded;
+  //       }
+  //     },
+  //     (error) => {
+  //       console.error('Error determining quantity increase:', error);
+  //     }
+  //   );
+  // }
+  checkIncreaseQuantity(): void {
+    this.products.forEach(product => {
+      // Check if idProducts is defined
+      if (product.idProducts !== undefined) {
+        this.productService.shouldIncreaseQuantity(product.idProducts).subscribe(
+          (increaseNeeded) => {
+            product.increaseNeeded = increaseNeeded;
+            console.log('Increase needed for product:', product.idProducts, increaseNeeded);
+          },
+          (error) => {
+            console.error('Error determining quantity increase for product:', product.idProducts, error);
+          }
+        );
+      } else {
+        console.error('Error: idProducts is undefined for product:', product);
+      }
+    });
+  }
+  
+  
   
 }
   

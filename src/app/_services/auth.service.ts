@@ -34,6 +34,7 @@ export class AuthService {
         username,
         email,
         password,
+        
         role, // Include the role parameter
         mfaEnabled
       },

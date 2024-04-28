@@ -10,10 +10,12 @@ export class RegisterComponent implements OnInit{
   form: any = {
     username: null,
     email: null,
+   
     password: null,
     confirmPassword: null,
     mfaEnabled: false
   };
+  gender: string = '';
   isSignupSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -39,10 +41,10 @@ export class RegisterComponent implements OnInit{
       return;
     }
 
-    const {username, email, password, mfaEnabled} = this.form;
+    const {username, email ,password, mfaEnabled} = this.form;
 
     console.log(username, email, password, mfaEnabled);
-    this.authService.register(username, email, password, mfaEnabled).subscribe({
+    this.authService.register(username, email , password, mfaEnabled).subscribe({
       next: data => {
         this.response = data;
         this.isSignupSuccessful = true;

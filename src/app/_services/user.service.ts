@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ERole } from '../models/ERole';
+import { User } from '../models/user';
 
 const API_URL = 'http://localhost:8085/vita/api/';
 
@@ -25,5 +27,7 @@ export class UserService {
   deleteUser(id: any): Observable<string> {
     return this.http.delete<string>(API_URL + 'user/deleteUser/'+ id);
   }
-
+  findByRolesName(role : ERole): Observable<User[]> {
+    return this.http.get<User[]>(API_URL + 'user/findByRolesName/' + role);
+  }
 }

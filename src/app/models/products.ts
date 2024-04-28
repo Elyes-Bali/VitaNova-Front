@@ -7,6 +7,7 @@ export class Products {
   descriptionP?: string;
   imageUrl?: string;
   expiration?: string;
+  increaseNeeded?:boolean;
 }
 export class Cart {
   idCart?:number;

@@ -30,6 +30,12 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { FoodDataServiceComponent } from './food-data-service/food-data-service.component';
+import { AddQuoteComponent } from './Dashs/add-quote/add-quote.component';
+import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
+import { ChatComponent } from './chat/chat.component';
+import { AddPlatDialogComponent } from './add-plat-dialog/add-plat-dialog.component';
+import { ListNutrionistesComponent } from './list-nutrionistes/list-nutrionistes.component';
+import { ProductsDetailsComponent } from './products-details/products-details.component';
 
 
 @NgModule({
@@ -60,7 +66,13 @@ import { FoodDataServiceComponent } from './food-data-service/food-data-service.
     ModifierUserComponent,
     ForgetpasswordComponent,
     ResetpasswordComponent,
-    FoodDataServiceComponent
+    FoodDataServiceComponent,
+    AddQuoteComponent,
+    CalculCaloriesComponent,
+    ChatComponent,
+    AddPlatDialogComponent,
+    ListNutrionistesComponent,
+    ProductsDetailsComponent
 
   ],
   imports: [

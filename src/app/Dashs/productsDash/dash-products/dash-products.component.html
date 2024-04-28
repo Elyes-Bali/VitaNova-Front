@@ -15,7 +15,7 @@
       <a
         routerLink="/dashProds"
         class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        ><i class="fas fa-project-diagram me-2"></i>Products</a
+        ><i class="fas fa-shopping-cart me-2"></i>Products</a
       >
       <a
         href="#"
@@ -80,7 +80,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a
@@ -100,7 +100,7 @@
             </ul>
           </li>
         </ul>
-      </div>
+      </div> -->
     </nav>
 
     <div class="container-fluid px-4">
@@ -244,6 +244,10 @@
                         Edit
                       </button>
                     </td>
+                    <td>
+                      <span *ngIf="prods.increaseNeeded; else noIncrease">Increase quantity needed</span>
+                      <ng-template #noIncrease>No increase needed</ng-template>
+                    </td>
                   </ng-container>
                 </tr>
               </ng-container>
@@ -272,16 +276,4 @@
     </div>
   </div>
 </div>
-<!-- /#page-content-wrapper -->
-<!-- <div class="row">
-  <div class="col-md-12">
-  
-      <canvas #chartCanvas></canvas>
-   
-  </div>
-</div> -->
-<!-- <div class="row">
-  <div class="col-md-12">
-<canvas #priceChartCanvas></canvas>
-</div>
-</div> -->
+

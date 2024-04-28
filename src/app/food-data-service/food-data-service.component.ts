@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class FoodDataServiceComponent {
   
   private apiUrl = 'https://api.nal.usda.gov/fdc/v1/foods/search';
-  private apiKey = 'WFjML3JgUyqgWb8XXrRapPwhFMrWiPWbcxvx8Mck'; // Replace with your actual API key
+  private apiKey = 'WFjML3JgUyqgWb8XXrRapPwhFMrWiPWbcxvx8Mck'; 
 
   constructor(private http: HttpClient) { }
 

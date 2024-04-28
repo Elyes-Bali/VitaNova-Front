@@ -5,7 +5,6 @@
   <div *ngIf="cartItems.length === 0" class="empty-cart">
     <p>Your cart is empty.</p>
   </div>
-
   <div *ngFor="let item of cartItems" class="cart-item">
     <div class="item-details">
       <p class="item-name">{{ item.products }}</p>
@@ -21,7 +20,9 @@
   <div *ngIf="cartItems.length > 0" class="cart-total">
     <hr>
     <p>Total: {{ total }} TND</p>
-    <button class="checkout-button">Checkout</button>
+    <button class="checkout-button" (click)="initiatePayment()">Checkout</button>
   </div>
+  <div id="card-element"></div>
+  
 </div>
 </div>

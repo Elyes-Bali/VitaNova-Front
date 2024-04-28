@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/user';
+import { ERole } from '../models/ERole';
 
 const USER_KEY = 'auth-user';
 
@@ -10,6 +12,15 @@ export class StorageService {
 
   clean(): void {
     window.sessionStorage.clear();
+  }
+  public isClient(): boolean {
+    let user = new User() ;
+    user = this.getUser();
+    if (user?.roles?.includes(ERole.ROLE_CLIENT)) {
+      return true;
+    }
+
+    return false;
   }
 
   public saveUser(user: any): void {
