@@ -1,5 +1,10 @@
 
 <div class="container">
+  <div class="sidebar text-center">
+    <h1>My Profile</h1>
+    <a class="styled-button text-decoration-none" href="/consultations">Consultations</a>
+  </div>
+  <div class="content ">
     <h2>Edit Consultation</h2>
     <form [formGroup]="consultationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -22,4 +27,5 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
+</div>
   

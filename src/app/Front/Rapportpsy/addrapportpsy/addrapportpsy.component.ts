@@ -13,7 +13,11 @@ export class AddrapportpsyComponent {
   rapportPsyForm!: FormGroup;
   psychiatristId: number | undefined;
   clients: User[] = [];
-
+  status = false;
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
   constructor(
     private formBuilder: FormBuilder,
     private rapportPsyService: PsychiatristService,

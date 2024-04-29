@@ -12,7 +12,11 @@ export class ListrapportpsyComponent {
   rapports!: RapportPsy[];
   filteredRapports!: RapportPsy[]; // Added property for filtered rapports
   filterTerm: string = ''; 
-
+  status = false;
+  addToggle()
+  {
+    this.status = !this.status;       
+  }
   constructor(private psychiatristService: PsychiatristService, private storageService: StorageService) { }
 
   ngOnInit(): void {

@@ -9,3 +9,41 @@
   .rating-stars i:hover {
     color: orange;
   }
+  .user-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  
+  .user-card:hover {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  
+  .rating-stars {
+    color: #FFD700;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .reserve-btn {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .reserve-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .rate-btn {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .rate-btn:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,4 +1,30 @@
-<div class="container">
+<div [ngClass]="status ? 'toggled' : ''" class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+        class="fas fa-user-secret me-2"></i>Admin</div>
+    <div class="list-group list-group-flush my-3">
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+          class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-project-diagram me-2"></i>Projects</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-chart-line me-2"></i>Analytics</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-paperclip me-2"></i>Reports</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-shopping-cart me-2"></i>Store Mng</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-gift me-2"></i>Products</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-comment-dots me-2"></i>Chat</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-map-marker-alt me-2"></i>Outlet</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+          class="fas fa-power-off me-2"></i>Logout</a>
+    </div>
+  </div>
+  <div class="container mt-4">
   <h2>Add Rapport Psy</h2>
   <form [formGroup]="rapportPsyForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -24,7 +50,11 @@
         Please select a client
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="d-flex submitting">
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button routerLink="/rap" class="btn btn-primary ">back</button>
+  </div>
   </form>
-  <button routerLink="/rap" class="router-link-button">back</button>
+ 
+</div>
 </div>

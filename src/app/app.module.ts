@@ -52,7 +52,6 @@ import { ShowconsultationadminComponent } from './Back/Consultation/showconsulta
 import { ListconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/listconsultationpsychiatre/listconsultationpsychiatre.component';
 import { ShowconsultationpsychiatreComponent } from './Front/psy/listpsyfront-component/psyconsultation/showconsultationpsychiatre/showconsultationpsychiatre.component';
 import { ChatiebotieComponent } from './chatiebotie/chatiebotie.component';
-import { MessageContainerComponent } from './message-container/message-container.component';
 
 
 @NgModule({
@@ -100,7 +99,7 @@ import { MessageContainerComponent } from './message-container/message-container
     ListconsultationpsychiatreComponent,
     ShowconsultationpsychiatreComponent,
     ChatiebotieComponent,
-    MessageContainerComponent,
+    
     
     
    
