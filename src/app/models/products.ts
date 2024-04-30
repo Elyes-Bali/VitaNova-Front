@@ -8,11 +8,14 @@ export class Products {
   imageUrl?: string;
   expiration?: string;
   increaseNeeded?:boolean;
+  quantityLow?:boolean;
+  quantityExceeded?:Boolean;
 }
 export class Cart {
   idCart?:number;
   ownerId?: number;
   products?: string;
+  idProducts?:number;
   quantity?: number;
   total?: number;
   prods?: Products[];

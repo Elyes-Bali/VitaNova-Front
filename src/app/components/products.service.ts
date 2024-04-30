@@ -49,9 +49,16 @@ export class ProductsService {
     );
   }
 
-  shouldIncreaseQuantity(idProducts: number): Observable<boolean> {
-    return this.httpclient.get<boolean>(
-      `${this.PRODUCT_API_URL}shouldIncrease/${idProducts}`
-    );
-  }
+  // shouldIncreaseQuantity(idProducts: number): Observable<boolean> {
+  //   return this.httpclient.get<boolean>(
+  //     `${this.PRODUCT_API_URL}shouldIncrease/${idProducts}`
+  //   );
+  // }
+
+  sellProduct(idProducts: number, quantitySold: number): Observable<void> {
+    const url = `${this.PRODUCT_API_URL}sellProduct/${idProducts}?quantitySold=${quantitySold}`;
+    return this.httpclient.post<void>(url, null);
+}
+
+
 }

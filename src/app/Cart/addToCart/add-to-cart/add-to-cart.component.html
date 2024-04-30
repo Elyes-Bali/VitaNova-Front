@@ -20,7 +20,8 @@
   <div *ngIf="cartItems.length > 0" class="cart-total">
     <hr>
     <p>Total: {{ total }} TND</p>
-    <button class="checkout-button" (click)="initiatePayment()">Checkout</button>
+    <button (click)=" initiatePayment(currentUser)">Initiate Payment</button>
+
   </div>
   <div id="card-element"></div>
   

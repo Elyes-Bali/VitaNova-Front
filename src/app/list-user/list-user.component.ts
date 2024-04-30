@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import {RoleService} from "../_services/role.service";
 import {Router} from "@angular/router";
 import {UserService} from "../_services/user.service";
+import { StorageService } from '../_services/storage.service';
 
 @Component({
   selector: 'app-list-user',
@@ -16,7 +17,8 @@ export class ListUserComponent {
   {
     this.status = !this.status;
   }
-
+  private role: string[] = [];
+  isLoggedIn = false;
 
   currentPage: number = 1;
   itemsPerPage: number = 5; 
@@ -24,11 +26,20 @@ export class ListUserComponent {
   searchTerm: string = '';
   roles: any[] = [];
   roleFilter: string = '';
-  constructor(private userService: UserService,private roleService: RoleService, private router : Router) { }
+  constructor(private userService: UserService,private roleService: RoleService, private router : Router,private storageService: StorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
     this.getAllUsers()
     this.getRoles()
+    if (this.isLoggedIn) {
+      const user = this.storageService.getUser();
+      this.role = user.roles;
+    }
+  }
+
+  isUserRoleAdmin(): boolean {
+    return this.role.includes('ROLE_ADMIN');
   }
   getAllUsers() {
     this.userService.getAllUsers().subscribe({

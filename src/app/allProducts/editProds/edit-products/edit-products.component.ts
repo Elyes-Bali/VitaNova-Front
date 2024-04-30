@@ -11,7 +11,10 @@ import { Products } from 'src/app/models/products';
 export class EditProductsComponent {
   id: number=0;
   product: Products = new Products();
-
+  status = false;
+  addToggle() {
+    this.status = !this.status;
+  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,

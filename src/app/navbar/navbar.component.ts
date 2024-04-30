@@ -34,6 +34,12 @@ export class NavbarComponent {
   isUserRoleAdmin(): boolean {
     return this.roles.includes('ROLE_ADMIN');
   }
+  isUserRolePsy(): boolean {
+    return this.roles.includes('ROLE_PSYCOLOGIST');
+  }
+  isUserRoleClient(): boolean {
+    return this.roles.includes('ROLE_CLIENT');
+  }
   logout(): void {
     this.storageService.clean();
     this.router.navigate(['/login']);

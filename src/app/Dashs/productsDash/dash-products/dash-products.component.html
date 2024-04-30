@@ -6,27 +6,22 @@
     >
       <i class="fas fa-user-secret me-2"></i>Admin
     </div>
-    <div class="list-group list-group-flush my-3">
+    <div class="list-group list-group-flush my-3" *ngIf="isLoggedIn && isUserRoleAdmin()">
       <a
-        href="/listUser"
-        class="list-group-item list-group-item-action bg-transparent second-text active"
-        ><i class="fas fa-user me-2"></i>Users</a
-      >
-      <a
-        routerLink="/dashProds"
-        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        ><i class="fas fa-shopping-cart me-2"></i>Products</a
-      >
-      <a
-        href="#"
-        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        ><i class="fas fa-chart-line me-2"></i>Analytics</a
-      >
-      <a
-        href="#"
-        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        ><i class="fas fa-paperclip me-2"></i>Reports</a
-      >
+          href="/listUser"
+          class="list-group-item list-group-item-action bg-transparent second-text active"
+          ><i class="fas fa-user me-2"></i>Users</a
+        >
+        <a
+          routerLink="/dashProds"
+          class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+          ><i class="fas fa-shopping-cart me-2"></i>Products</a
+        >
+        <a href="listpsy" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+          class="fas fa-user-md"></i>psychiatrists</a>
+          <a href="consultationsadmin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i class="fa fa-connectdevelop" aria-hidden="true"></i>Consultations</a>
+            <a href="rapadmin" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                    class="fas fa-paperclip me-2"></i>Reports</a>
       <a
         href="#"
         class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
@@ -200,6 +195,8 @@
                 <th scope="col">Quantity</th>
                 <th scope="col">Details</th>
                 <th scope="col">Expiration</th>
+                <th scope="col">Warnings</th>
+                <th scope="col">Infos</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -229,24 +226,41 @@
                     <td>{{ prods.descriptionP }}</td>
                     <td>{{ prods.expiration }}</td>
                     <td>
+                      <ng-container *ngIf="prods.quantityLow === true">
+                        <span class="badge bg-danger">Increase needed</span>
+                      </ng-container>
+                      <ng-container *ngIf="prods.quantityLow === false">
+                        <span class="badge bg-success">sufficient amount </span>
+                      </ng-container>
+                    </td>
+                    
+                    <td>
+                      <ng-container *ngIf="prods.quantityExceeded === true">
+                        the sales of this product has reached 70% <br/> of its stock, please consider increasing it.
+                      </ng-container>
+                      <ng-container *ngIf="prods.quantityExceeded === false">
+                       the sales of this product is below 70% 
+                      </ng-container>
+                    </td>
+                    <td>
                       <a
                         routerLink="/deleteProds/{{ prods.idProducts }}"
                         class="btn btn-danger"
                         style="margin-left: 10px"
-                        >delete</a
+                        ><i class="fa fa-trash" aria-hidden="true"></i></a
                       >
-                      or
+                   
                       <button
                         routerLink="/editeProds/{{ prods.idProducts }}"
                         class="btn btn-info"
                         style="margin-left: 10px"
                       >
-                        Edit
+                      <i class="fa fa-pencil" aria-hidden="true"></i>
                       </button>
                     </td>
                     <td>
-                      <span *ngIf="prods.increaseNeeded; else noIncrease">Increase quantity needed</span>
-                      <ng-template #noIncrease>No increase needed</ng-template>
+                      <!-- <span *ngIf="prods.increaseNeeded; else noIncrease">Increase quantity needed</span>
+                      <ng-template #noIncrease>No increase needed</ng-template> -->
                     </td>
                   </ng-container>
                 </tr>

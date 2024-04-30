@@ -17,6 +17,7 @@ export class DetailsProductsComponent {
   product: Products = new Products();
   quantity: number = 1; // Default quantity is 1
   ownerId: number = 0;
+  idProducts:number=0;
   isLoggedIn = false;
 
   constructor(
@@ -84,6 +85,7 @@ export class DetailsProductsComponent {
               ownerId: this.ownerId,
               products: this.product.prodName,
               quantity: this.quantity,
+              idProducts:this.product.idProducts,
               total: (this.product.price ?? 0) * this.quantity,
             };
 

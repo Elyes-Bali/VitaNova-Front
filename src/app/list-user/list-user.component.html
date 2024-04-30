@@ -6,7 +6,7 @@
     >
       <i class="fas fa-user-secret me-2"></i>Admin
     </div>
-    <div class="list-group list-group-flush my-3">
+    <div class="list-group list-group-flush my-3" *ngIf="isLoggedIn && isUserRoleAdmin()">
       <a
         href="/listUser"
         class="list-group-item list-group-item-action bg-transparent second-text active"
@@ -18,12 +18,17 @@
         ><i class="fas fa-shopping-cart me-2"></i>Products</a
       >
       <a
-        href="#"
+        href="listpsy"
         class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        ><i class="fas fa-chart-line me-2"></i>Analytics</a
+        ><i class="fas fa-user-md"></i>psychiatrists</a
       >
       <a
-        href="#"
+        href="consultationsadmin"
+        class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        ><i class="fa fa-connectdevelop" aria-hidden="true"></i>Consultations</a
+      >
+      <a
+        href="rapadmin"
         class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
         ><i class="fas fa-paperclip me-2"></i>Reports</a
       >
@@ -104,9 +109,7 @@
     </nav>
 
     <div class="container-fluid px-4">
-      <div class="row g-3 my-2">
-      
-      </div>
+      <div class="row g-3 my-2"></div>
 
       <div class="row my-5">
         <h3 class="fs-4 mb-3">Users List</h3>
@@ -119,14 +122,13 @@
             class="search-input mb-2"
           />
 
-
           <!-- <div class="d-flex justify-content-center" style="height: 50px;">
             <select [(ngModel)]="roleFilter" class="form-control" style="width: 200px;">
               <option value="">Select a role to filter</option>
               <option *ngFor="let role of roles" [value]="role.name">{{ role.name }}</option>
             </select>
           </div> -->
-          
+
           <table class="table bg-white rounded shadow-sm table-hover">
             <thead>
               <tr>
@@ -145,8 +147,8 @@
                 <td>{{ u.username }}</td>
                 <td>{{ u.email }}</td>
                 <td>{{ u.creationDate | date }}</td>
-                <td>{{u.activated ? 'Yes' : 'No'}}</td>
-                <td>{{u.banned ? 'Yes' : 'No'}}</td>
+                <td>{{ u.activated ? "Yes" : "No" }}</td>
+                <td>{{ u.banned ? "Yes" : "No" }}</td>
                 <td>
                   <div *ngFor="let role of u.roles">
                     {{ role.name }}
@@ -154,29 +156,49 @@
                 </td>
                 <td></td>
                 <td>
-                  <a class="btn btn-danger" style="margin-left: 10px" (click)="confirmDelete(u.id)">Delete</a>
+                  <a
+                    class="btn btn-danger"
+                    style="margin-left: 10px"
+                    (click)="confirmDelete(u.id)"
+                    >Delete</a
+                  >
                   or
-                  <button class="btn btn-info" style="margin-left: 10px" (click)="editUser(u.id)">Edit</button>
+                  <button
+                    class="btn btn-info"
+                    style="margin-left: 10px"
+                    (click)="editUser(u.id)"
+                  >
+                    Edit
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
-          
+
           <div class="d-flex justify-content-center my-4">
             <ul class="pagination">
               <li class="page-item" [class.disabled]="currentPage === 1">
-                <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+                <a class="page-link" (click)="onPageChange(currentPage - 1)"
+                  >Previous</a
+                >
               </li>
-              <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+              <li
+                class="page-item"
+                *ngFor="let page of pages"
+                [class.active]="currentPage === page"
+              >
                 <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
               </li>
-              <li class="page-item" [class.disabled]="currentPage === totalPages">
-                <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+              <li
+                class="page-item"
+                [class.disabled]="currentPage === totalPages"
+              >
+                <a class="page-link" (click)="onPageChange(currentPage + 1)"
+                  >Next</a
+                >
               </li>
             </ul>
           </div>
-          
-          
         </div>
       </div>
     </div>
