@@ -33,6 +33,9 @@ import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.compo
 import { ChatComponent } from './chat/chat.component';
 import { AddPlatDialogComponent } from './add-plat-dialog/add-plat-dialog.component';
 import { ListNutrionistesComponent } from './list-nutrionistes/list-nutrionistes.component';
+import { ProfileNutriComponent } from './profile-nutri/profile-nutri.component';
+import { UserTimeDataChartComponent } from './user-time-data-chart/user-time-data-chart.component';
+import { ChartNutriComponent } from './chart-nutri/chart-nutri.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +67,10 @@ import { ListNutrionistesComponent } from './list-nutrionistes/list-nutrionistes
     CalculCaloriesComponent,
     ChatComponent,
     AddPlatDialogComponent,
-    ListNutrionistesComponent
+    ListNutrionistesComponent,
+    ProfileNutriComponent,
+    UserTimeDataChartComponent,
+    ChartNutriComponent
 
   ],
   imports: [

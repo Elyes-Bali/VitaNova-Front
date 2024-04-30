@@ -30,4 +30,11 @@ export class UserService {
   findByRolesName(role : ERole): Observable<User[]> {
     return this.http.get<User[]>(API_URL + 'user/findByRolesName/' + role);
   }
+  ///////////////////////
+  updateTimeConsumed(userId: number, timeConsumed: number): Observable<string> {
+    return this.http.put<string>(API_URL + 'user/updateTimeConsumed/' + userId + '?timeConsumed=' + timeConsumed, {});
+  }
+  getUserTimeData(): Observable<{ name: string, timeConsumed: number }[]> {
+    return this.http.get<{ name: string, timeConsumed: number }[]>(API_URL + 'user/getUserTimeData');
+  }
 }

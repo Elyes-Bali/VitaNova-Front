@@ -22,6 +22,9 @@ import { VerifiactionComponent } from './verifiaction/verifiaction.component';
 import { ChatComponent } from './chat/chat.component';
 import { CalculCaloriesComponent } from './calcul-calories/calcul-calories.component';
 import { ListNutrionistesComponent } from './list-nutrionistes/list-nutrionistes.component';
+import { ProfileNutriComponent } from './profile-nutri/profile-nutri.component';
+import { UserTimeDataChartComponent } from './user-time-data-chart/user-time-data-chart.component';
+import { ChartNutriComponent } from './chart-nutri/chart-nutri.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -46,6 +49,9 @@ const routes: Routes = [
   {path:'chat',component:ChatComponent},
   {path:'CalculCalories',component:CalculCaloriesComponent},
   {path:'listNutrio',component:ListNutrionistesComponent},
+  {path:'profileNutri',component:ProfileNutriComponent},
+  {path:'nutriTimeData',component:UserTimeDataChartComponent},
+  {path:'chartnut',component:ChartNutriComponent},
 ];
 
 @NgModule({

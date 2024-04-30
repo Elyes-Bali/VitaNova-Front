@@ -15,6 +15,7 @@ export class User{
     roles?: string[]; // Enumérations devraient être traitées différemment
     connected?: boolean;
     banned?: boolean;
-
+    timeConsumed?:number;
+    
 
 }
