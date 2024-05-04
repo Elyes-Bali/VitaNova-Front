@@ -55,10 +55,22 @@ export class ProductsService {
   //   );
   // }
 
-  sellProduct(idProducts: number, quantitySold: number): Observable<void> {
-    const url = `${this.PRODUCT_API_URL}sellProduct/${idProducts}?quantitySold=${quantitySold}`;
-    return this.httpclient.post<void>(url, null);
+//   sellProduct(idProducts: number, quantitySold: number): Observable<void> {
+//     const url = `${this.PRODUCT_API_URL}sellProduct/${idProducts}?quantitySold=${quantitySold}`;
+//     return this.httpclient.post<void>(url, null);
+// }
+
+sellProduct(idProducts: number, quantitySold: number, buyerId: number): Observable<void> {
+  const url = `${this.PRODUCT_API_URL}sellProduct/${idProducts}?quantitySold=${quantitySold}&buyerId=${buyerId}`;
+  return this.httpclient.post<void>(url, null);
 }
+
+// sellProduct(idProducts: number, quantitySold: number, buyerId: number): Observable<void> {
+//   const url = `${this.PRODUCT_API_URL}sellProduct/${idProducts}?quantitySold=${quantitySold}`;
+//   const body = { quantitySold, buyerId }; // Include quantitySold and buyerId in the request body
+//   return this.httpclient.post<void>(url, body);
+// }
+
 
 
 }

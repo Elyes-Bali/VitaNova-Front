@@ -30,3 +30,9 @@ export enum ProductType {
   BOOKS = 'BOOKS',
   OTHER = 'OTHER'
 }
+
+export class Sale {
+  idProducts?:number;
+  quantitySold?:number;
+  buyerId? : number;
+}
